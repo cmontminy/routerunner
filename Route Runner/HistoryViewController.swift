@@ -61,13 +61,18 @@ class HistoryViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: textCellIdentifier, for: indexPath) as! HistoryTableViewCell
+        
         let row = indexPath.row
         
         let run = runs[row]
         cell.runName.text = "\(run.name) - \(run.distance) mi"
         cell.runLocations.text = "\(run.locations) Locations"
         cell.runDate.text = run.getDateString()
+        
         cell.runImage?.image = UIImage(named: "dummy")
+        cell.runImage?.layer.cornerRadius = 8.0
+        cell.runImage?.layer.masksToBounds = true
+
         return cell
     }
         

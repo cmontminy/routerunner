@@ -38,13 +38,23 @@
                                     <segue destination="w9k-HI-K3E" kind="show" identifier="" id="DbI-db-uxk"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dRv-cw-bgh">
+                                <rect key="frame" x="179" y="600" width="71" height="31"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="History"/>
+                                <connections>
+                                    <segue destination="24B-R6-Txe" kind="show" id="Zbp-BJ-CWe"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="WYB-1Z-L9v" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="4kW-Tf-DMu"/>
                             <constraint firstItem="srw-KZ-F2o" firstAttribute="top" secondItem="WYB-1Z-L9v" secondAttribute="bottom" constant="57.333333333333314" id="6Ox-bt-HES"/>
+                            <constraint firstItem="dRv-cw-bgh" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="179" id="Bo2-Fe-iGm"/>
                             <constraint firstItem="WYB-1Z-L9v" firstAttribute="centerY" secondItem="5EZ-qb-Rvc" secondAttribute="centerY" id="JPO-FR-XLR"/>
+                            <constraint firstItem="dRv-cw-bgh" firstAttribute="top" secondItem="srw-KZ-F2o" secondAttribute="bottom" constant="38" id="Qf7-wp-feB"/>
                             <constraint firstItem="pHF-DA-gbL" firstAttribute="centerY" secondItem="5EZ-qb-Rvc" secondAttribute="centerY" constant="-334.5" id="UmU-Eb-uIp"/>
                             <constraint firstItem="srw-KZ-F2o" firstAttribute="centerX" secondItem="vDu-zF-Fre" secondAttribute="centerX" id="dXE-lh-b1l"/>
                             <constraint firstItem="pHF-DA-gbL" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" constant="114" id="p6W-Pq-WFg"/>
@@ -64,6 +74,16 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CPs-UQ-NqE" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="850" y="-113"/>
+        </scene>
+        <!--History-->
+        <scene sceneID="pKN-ZX-PD8">
+            <objects>
+                <viewControllerPlaceholder storyboardName="History" id="24B-R6-Txe" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="n5J-BC-ReB"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="JKp-Tb-5AS" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="906" y="82"/>
         </scene>
         <!--Run-->
         <scene sceneID="q9m-kZ-Thi">
