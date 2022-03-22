@@ -16,42 +16,22 @@ func addDummyData() {
     
     let day = 86400.0
     
-    runs.append(RunData(name: "Test 1",
-                        locations: 1,
-                        image: nil,
-                        date: Date(timeIntervalSinceNow: day),
-                        distance: 2.1))
-    runs.append(RunData(name: "Test 2",
-                        locations: 7,
-                        image: nil,
-                        date: Date(timeIntervalSinceNow: day * 5),
-                        distance: 2.7))
-    runs.append(RunData(name: "Test 3",
-                        locations: 20,
-                        image: nil,
-                        date: Date(timeIntervalSinceNow: day * 10),
-                        distance: 23.7))
-    runs.append(RunData(name: "Test 4",
-                        locations: 12,
-                        image: nil,
-                        date: Date(timeIntervalSinceNow: day * 1000),
-                        distance: 2.1))
-    runs.append(RunData(name: "Test 5",
-                        locations: 9,
-                        image: nil,
-                        date: Date(timeIntervalSinceNow: day * 100),
-                        distance: 2.7))
-    runs.append(RunData(name: "Test 6",
-                        locations: 20,
-                        image: nil,
-                        date: Date(timeIntervalSinceNow: day * 30),
-                        distance: 23.7))
-    
+    for i in 1...8 {
+        runs.append(RunData(name: "Test \(i)",
+                            locations: 4 * i,
+                            image: UIImage(named: "sample\(i % 6)"),
+                            date: Date(timeIntervalSinceNow: day * Double(i)),
+                            distance: 4.0 + Double(i),
+                            points: 5 + i,
+                            time: i * 45,
+                            pace: i * 32))
+    }
 }
 
 class HistoryViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     let textCellIdentifier = "HistoryCell"
+    let segueIdentifier = "HistorySegue"
     
     @IBOutlet weak var tableView: UITableView!
     
@@ -69,7 +49,7 @@ class HistoryViewController: UIViewController, UITableViewDelegate, UITableViewD
         cell.runLocations.text = "\(run.locations) Locations"
         cell.runDate.text = run.getDateString()
         
-        cell.runImage?.image = UIImage(named: "dummy")
+        cell.runImage?.image = run.image ?? UIImage(named: "dummy")
         cell.runImage?.layer.cornerRadius = 8.0
         cell.runImage?.layer.masksToBounds = true
 
@@ -86,5 +66,13 @@ class HistoryViewController: UIViewController, UITableViewDelegate, UITableViewD
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         addDummyData()
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == segueIdentifier,
+           let destination = segue.destination as? PastRunViewController,
+           let runIndex = tableView.indexPathForSelectedRow?.row {
+            destination.run = runs[runIndex]
+        }
     }
 }
