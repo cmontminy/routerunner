@@ -88,6 +88,48 @@
 			path = Observers;
 			sourceTree = "<group>";
 		};
+		FB37D22F27EA3F7A0020715D /* Home Screen */ = {
+			isa = PBXGroup;
+			children = (
+				8D5B54F627E819A500BDB2AD /* Home.storyboard */,
+				8D5B54F827E81B4400BDB2AD /* HomeViewController.swift */,
+			);
+			path = "Home Screen";
+			sourceTree = "<group>";
+		};
+		FB37D23127EA3FB30020715D /* Run Screen */ = {
+			isa = PBXGroup;
+			children = (
+				2CC0B8A227E95EF60020FCAD /* Run.storyboard */,
+				2CDEAAFA27E957D9000DDA40 /* RunViewController.swift */,
+				8C035C3927E945BF004E269B /* RunData.swift */,
+				2CDEAAF627E9556A000DDA40 /* PaceView.swift */,
+				2CDEAAF827E9557C000DDA40 /* CancelButton.swift */,
+			);
+			path = "Run Screen";
+			sourceTree = "<group>";
+		};
+		FB37D23327EA402D0020715D /* History Screen */ = {
+			isa = PBXGroup;
+			children = (
+				8C035C3527E92E7E004E269B /* History.storyboard */,
+				8C035C3B27E94E66004E269B /* HistoryViewController.swift */,
+				8C035C3727E941CA004E269B /* HistoryTableViewCell.swift */,
+			);
+			path = "History Screen";
+			sourceTree = "<group>";
+		};
+		FB37D23427EA40510020715D /* Settings Screen */ = {
+			isa = PBXGroup;
+			children = (
+				FB27BE8A27E902E80012AB17 /* Settings.storyboard */,
+				FB27BE9127E90D010012AB17 /* SettingsTableViewCell.xib */,
+				FB27BE8C27E907DE0012AB17 /* SettingsViewController.swift */,
+				FB27BE9027E90D010012AB17 /* SettingsTableViewCell.swift */,
+			);
+			path = "Settings Screen";
+			sourceTree = "<group>";
+		};
 		FB9405A927D7E7B0009DB256 = {
 			isa = PBXGroup;
 			children = (
@@ -109,28 +151,18 @@
 			children = (
 				FB9405B527D7E7B0009DB256 /* AppDelegate.swift */,
 				FB9405B727D7E7B0009DB256 /* SceneDelegate.swift */,
-				FB0EE89427E96B5E005AD4F7 /* Observers */,
 				FB9405B927D7E7B0009DB256 /* ViewController.swift */,
 				FB9405BB27D7E7B0009DB256 /* Main.storyboard */,
-				8D0CE21C27EA18F0000362A2 /* TabBar.storyboard */,
-				8D5B54F827E81B4400BDB2AD /* HomeViewController.swift */,
-				8D5B54F627E819A500BDB2AD /* Home.storyboard */,
-				2CC0B8A227E95EF60020FCAD /* Run.storyboard */,
-				2CDEAAFA27E957D9000DDA40 /* RunViewController.swift */,
-				FB27BE8A27E902E80012AB17 /* Settings.storyboard */,
-				FB27BE8C27E907DE0012AB17 /* SettingsViewController.swift */,
-				8C035C3527E92E7E004E269B /* History.storyboard */,
-				8C035C3927E945BF004E269B /* RunData.swift */,
-				8C035C3727E941CA004E269B /* HistoryTableViewCell.swift */,
-				8C035C3B27E94E66004E269B /* HistoryViewController.swift */,
-				FB27BE9027E90D010012AB17 /* SettingsTableViewCell.swift */,
-				FB27BE9127E90D010012AB17 /* SettingsTableViewCell.xib */,
-				FB9405C127D7E7B1009DB256 /* Assets.xcassets */,
 				FB9405C327D7E7B1009DB256 /* LaunchScreen.storyboard */,
+				8D0CE21C27EA18F0000362A2 /* TabBar.storyboard */,
+				FB37D22F27EA3F7A0020715D /* Home Screen */,
+				FB37D23127EA3FB30020715D /* Run Screen */,
+				FB37D23327EA402D0020715D /* History Screen */,
+				FB37D23427EA40510020715D /* Settings Screen */,
+				FB0EE89427E96B5E005AD4F7 /* Observers */,
+				FB9405C127D7E7B1009DB256 /* Assets.xcassets */,
 				FB9405C627D7E7B1009DB256 /* Info.plist */,
 				FB9405BE27D7E7B0009DB256 /* Route_Runner.xcdatamodeld */,
-				2CDEAAF627E9556A000DDA40 /* PaceView.swift */,
-				2CDEAAF827E9557C000DDA40 /* CancelButton.swift */,
 			);
 			path = "Route Runner";
 			sourceTree = "<group>";
