@@ -34,9 +34,21 @@ class RunViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         configureLocationServices() // start location services
-        // hide nav bar
-        self.navigationController?.setNavigationBarHidden(true, animated: false)
         startObserving(&UserInterfaceStyleManager.shared)
+    }
+    
+    // to run anytime the view appears on the screen
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        // remove back button in nav bar
+        navigationController?.setNavigationBarHidden(true, animated: animated)
+    }
+    
+    // to run anytime the view leaves the screen
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        // return back button in nav bar
+        navigationController?.setNavigationBarHidden(false, animated: animated)
     }
 
     private func configureLocationServices() {
@@ -95,11 +107,14 @@ class RunViewController: UIViewController {
             message: "Are you sure you want to cancel your current run?",
             preferredStyle: .alert)
         controller.addAction(UIAlertAction(title: "Yes", style: .cancel, handler: {
-            (action) in print("Navigate user home");
-            self.cancelLocationUpdates(locationManager: self.locationManager);
-            let storyBoard : UIStoryboard = UIStoryboard(name: "Home", bundle:nil);
-            let nextViewController = storyBoard.instantiateViewController(withIdentifier: "HomeRef") as! HomeViewController;
-            self.show(nextViewController, sender:self);
+            (action) in
+            // cancel location updates
+            self.cancelLocationUpdates(locationManager: self.locationManager)
+            
+            // navigate to home page
+            let storyBoard : UIStoryboard = UIStoryboard(name: "TabBar", bundle:nil)
+            let nextViewController = storyBoard.instantiateViewController(withIdentifier: "TabBarStoryboard") as! UITabBarController
+            self.show(nextViewController, sender:self)
         }))
         controller.addAction(UIAlertAction(title: "No", style: .default, handler: nil))
         present(controller, animated: true, completion: nil)
