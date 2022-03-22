@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2CC0B8A327E95EF60020FCAD /* Run.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2CC0B8A227E95EF60020FCAD /* Run.storyboard */; };
+		2CDEAAF727E9556A000DDA40 /* PaceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CDEAAF627E9556A000DDA40 /* PaceView.swift */; };
+		2CDEAAF927E9557C000DDA40 /* CancelButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CDEAAF827E9557C000DDA40 /* CancelButton.swift */; };
+		2CDEAAFB27E957D9000DDA40 /* RunViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CDEAAFA27E957D9000DDA40 /* RunViewController.swift */; };
 		8D5B54F727E819A500BDB2AD /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8D5B54F627E819A500BDB2AD /* Home.storyboard */; };
 		8D5B54F927E81B4400BDB2AD /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D5B54F827E81B4400BDB2AD /* HomeViewController.swift */; };
 		FB27BE8B27E902E80012AB17 /* Settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FB27BE8A27E902E80012AB17 /* Settings.storyboard */; };
@@ -23,6 +27,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2CC0B8A227E95EF60020FCAD /* Run.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Run.storyboard; sourceTree = "<group>"; };
+		2CDEAAF627E9556A000DDA40 /* PaceView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaceView.swift; sourceTree = "<group>"; };
+		2CDEAAF827E9557C000DDA40 /* CancelButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CancelButton.swift; sourceTree = "<group>"; };
+		2CDEAAFA27E957D9000DDA40 /* RunViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunViewController.swift; sourceTree = "<group>"; };
 		8D5B54F627E819A500BDB2AD /* Home.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Home.storyboard; sourceTree = "<group>"; };
 		8D5B54F827E81B4400BDB2AD /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		FB27BE8A27E902E80012AB17 /* Settings.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Settings.storyboard; sourceTree = "<group>"; };
@@ -76,6 +84,8 @@
 				FB9405BB27D7E7B0009DB256 /* Main.storyboard */,
 				8D5B54F827E81B4400BDB2AD /* HomeViewController.swift */,
 				8D5B54F627E819A500BDB2AD /* Home.storyboard */,
+				2CC0B8A227E95EF60020FCAD /* Run.storyboard */,
+				2CDEAAFA27E957D9000DDA40 /* RunViewController.swift */,
 				FB27BE8A27E902E80012AB17 /* Settings.storyboard */,
 				FB27BE8C27E907DE0012AB17 /* SettingsViewController.swift */,
 				FB27BE9027E90D010012AB17 /* SettingsTableViewCell.swift */,
@@ -84,6 +94,8 @@
 				FB9405C327D7E7B1009DB256 /* LaunchScreen.storyboard */,
 				FB9405C627D7E7B1009DB256 /* Info.plist */,
 				FB9405BE27D7E7B0009DB256 /* Route_Runner.xcdatamodeld */,
+				2CDEAAF627E9556A000DDA40 /* PaceView.swift */,
+				2CDEAAF827E9557C000DDA40 /* CancelButton.swift */,
 			);
 			path = "Route Runner";
 			sourceTree = "<group>";
@@ -148,6 +160,7 @@
 			files = (
 				FB27BE9327E90D010012AB17 /* SettingsTableViewCell.xib in Resources */,
 				FB9405C527D7E7B1009DB256 /* LaunchScreen.storyboard in Resources */,
+				2CC0B8A327E95EF60020FCAD /* Run.storyboard in Resources */,
 				FB9405C227D7E7B1009DB256 /* Assets.xcassets in Resources */,
 				FB9405BD27D7E7B0009DB256 /* Main.storyboard in Resources */,
 				8D5B54F727E819A500BDB2AD /* Home.storyboard in Resources */,
@@ -164,9 +177,12 @@
 			files = (
 				8D5B54F927E81B4400BDB2AD /* HomeViewController.swift in Sources */,
 				FB9405BA27D7E7B0009DB256 /* ViewController.swift in Sources */,
+				2CDEAAF927E9557C000DDA40 /* CancelButton.swift in Sources */,
 				FB9405C027D7E7B0009DB256 /* Route_Runner.xcdatamodeld in Sources */,
+				2CDEAAFB27E957D9000DDA40 /* RunViewController.swift in Sources */,
 				FB9405B627D7E7B0009DB256 /* AppDelegate.swift in Sources */,
 				FB27BE9227E90D010012AB17 /* SettingsTableViewCell.swift in Sources */,
+				2CDEAAF727E9556A000DDA40 /* PaceView.swift in Sources */,
 				FB9405B827D7E7B0009DB256 /* SceneDelegate.swift in Sources */,
 				FB27BE8D27E907DE0012AB17 /* SettingsViewController.swift in Sources */,
 			);
@@ -322,6 +338,7 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -349,6 +366,7 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (

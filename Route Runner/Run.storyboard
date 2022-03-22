@@ -1,0 +1,225 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="ZKq-Af-wQn">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
+        <capability name="Image references" minToolsVersion="12.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Run View Controller-->
+        <scene sceneID="Hcx-2Z-b9j">
+            <objects>
+                <viewController id="ZKq-Af-wQn" userLabel="Run View Controller" customClass="RunViewController" customModule="Route_Runner" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="WmG-EO-ryl">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eOc-MW-NyS" userLabel="Directions View">
+                                <rect key="frame" x="0.0" y="0.0" width="428" height="149.66666666666666"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QhB-IP-kO5" userLabel="Cancel Button" customClass="CancelButton" customModule="Route_Runner" customModuleProvider="target">
+                                        <rect key="frame" x="373" y="16" width="42" height="42"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="QhB-IP-kO5" secondAttribute="height" multiplier="1:1" id="2SI-g9-Brd"/>
+                                        </constraints>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="filled" title="">
+                                            <imageReference key="image" image="xmark" catalog="system" symbolScale="large"/>
+                                            <color key="baseBackgroundColor" systemColor="systemRedColor"/>
+                                        </buttonConfiguration>
+                                        <connections>
+                                            <action selector="cancelButtonPressed:" destination="ZKq-Af-wQn" eventType="touchUpInside" id="qCj-Ce-lEG"/>
+                                        </connections>
+                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Route Name - 5 mi" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="49T-DD-8hR" userLabel="Route Label">
+                                        <rect key="frame" x="15" y="8" width="278.66666666666669" height="64.666666666666671"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="49T-DD-8hR" secondAttribute="height" multiplier="125:29" id="g8h-Zp-tZh"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="MuktaMahee-Bold" family="Mukta Mahee" pointSize="35"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qWV-24-Wrm" userLabel="Divider">
+                                        <rect key="frame" x="-180" y="74" width="715" height="2"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </view>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="For 1 mi" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rnv-es-A5Y" userLabel="Direction Label">
+                                        <rect key="frame" x="63" y="93" width="300" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" name="MuktaMahee-Light" family="Mukta Mahee" pointSize="25"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="NHw-xv-awG" userLabel="Direction Icon">
+                                        <rect key="frame" x="16" y="93" width="30" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <imageReference key="image" image="arrow.up" catalog="system" symbolScale="medium"/>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" white="0.20188602780000001" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="QhB-IP-kO5" firstAttribute="top" secondItem="eOc-MW-NyS" secondAttribute="top" constant="16" id="FOq-ap-E7r"/>
+                                    <constraint firstItem="49T-DD-8hR" firstAttribute="leading" secondItem="eOc-MW-NyS" secondAttribute="leading" constant="15" id="X6f-k7-ePL"/>
+                                    <constraint firstAttribute="width" secondItem="eOc-MW-NyS" secondAttribute="height" multiplier="75:28" constant="26.785714285714334" id="atW-f1-hu7"/>
+                                    <constraint firstItem="49T-DD-8hR" firstAttribute="top" secondItem="eOc-MW-NyS" secondAttribute="top" constant="8" id="kyd-W3-zgw"/>
+                                    <constraint firstAttribute="trailing" secondItem="QhB-IP-kO5" secondAttribute="trailing" constant="13" id="su2-U9-Alp"/>
+                                </constraints>
+                            </view>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="yvF-8F-sm9">
+                                <rect key="frame" x="0.0" y="147.66666666666669" width="428" height="690.33333333333326"/>
+                            </mapView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Lyg-qi-NU7" userLabel="Stats View">
+                                <rect key="frame" x="0.0" y="724" width="428" height="114"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="min" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eMi-aP-L2f" userLabel="Time Label">
+                                        <rect key="frame" x="333" y="57" width="32.333333333333314" height="35"/>
+                                        <fontDescription key="fontDescription" name="MuktaMahee-Regular" family="Mukta Mahee" pointSize="20"/>
+                                        <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="0.0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="J21-7A-2A0" userLabel="Elapsed Meter">
+                                        <rect key="frame" x="49" y="15" width="59.666666666666657" height="35"/>
+                                        <fontDescription key="fontDescription" name="MuktaMahee-Bold" family="Mukta Mahee" pointSize="40"/>
+                                        <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="mi elapsed" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zpY-Gb-OEQ" userLabel="Elapsed Label">
+                                        <rect key="frame" x="34" y="57" width="90" height="35"/>
+                                        <fontDescription key="fontDescription" name="MuktaMahee-Regular" family="Mukta Mahee" pointSize="20"/>
+                                        <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dTo-50-7S1" userLabel="Pace View" customClass="PaceView" customModule="Route_Runner" customModuleProvider="target">
+                                        <rect key="frame" x="144.33333333333331" y="-36" width="139.33333333333331" height="139"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="mi/hr" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0c0-nL-53N" userLabel="Pace Label">
+                                                <rect key="frame" x="4.3333333333333144" y="70" width="130.66666666666666" height="33.333333333333343"/>
+                                                <fontDescription key="fontDescription" name="MuktaMahee-Regular" family="Mukta Mahee" pointSize="20"/>
+                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WXO-I7-lUL" userLabel="Pace Meter">
+                                                <rect key="frame" x="4.3333333333333144" y="8" width="130.66666666666666" height="83"/>
+                                                <fontDescription key="fontDescription" name="MuktaMahee-Bold" family="Mukta Mahee" pointSize="50"/>
+                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstItem="WXO-I7-lUL" firstAttribute="leading" secondItem="dTo-50-7S1" secondAttribute="leading" constant="4.25" id="B84-4X-xBd"/>
+                                            <constraint firstAttribute="trailing" secondItem="WXO-I7-lUL" secondAttribute="trailing" constant="4.25" id="KcA-SZ-ozC"/>
+                                            <constraint firstItem="0c0-nL-53N" firstAttribute="top" secondItem="dTo-50-7S1" secondAttribute="top" constant="70" id="Lbd-RE-ZJS"/>
+                                            <constraint firstAttribute="trailing" secondItem="0c0-nL-53N" secondAttribute="trailing" constant="4.25" id="aAE-9L-8sU"/>
+                                            <constraint firstAttribute="width" secondItem="dTo-50-7S1" secondAttribute="height" multiplier="1:1" id="dID-S5-Hkw"/>
+                                            <constraint firstItem="WXO-I7-lUL" firstAttribute="top" secondItem="dTo-50-7S1" secondAttribute="top" constant="8" id="eDv-sB-VDX"/>
+                                            <constraint firstItem="0c0-nL-53N" firstAttribute="leading" secondItem="dTo-50-7S1" secondAttribute="leading" constant="4.25" id="ul4-12-LP0"/>
+                                        </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="shadowColor">
+                                                <color key="value" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="shadowOpacity">
+                                                <real key="value" value="5"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="size" keyPath="shadowOffset">
+                                                <size key="value" width="5" height="5"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="shadowRadius">
+                                                <real key="value" value="15"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="startColor">
+                                                <color key="value" red="0.96078431369999995" green="0.21960784310000001" blue="0.01176470588" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="endColor">
+                                                <color key="value" red="0.96078431369999995" green="0.81568627449999997" blue="0.12549019610000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="horizontalMode" value="NO"/>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="diagonalMode" value="YES"/>
+                                        </userDefinedRuntimeAttributes>
+                                    </view>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="0.0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1pr-v2-hkZ" userLabel="Time Meter">
+                                        <rect key="frame" x="319.33333333333331" y="14" width="59.666666666666686" height="35"/>
+                                        <fontDescription key="fontDescription" name="MuktaMahee-Bold" family="Mukta Mahee" pointSize="40"/>
+                                        <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="1pr-v2-hkZ" firstAttribute="leading" secondItem="WXO-I7-lUL" secondAttribute="trailing" constant="40" id="0mU-GV-5jE"/>
+                                    <constraint firstItem="zpY-Gb-OEQ" firstAttribute="top" secondItem="J21-7A-2A0" secondAttribute="bottom" constant="1" id="8wC-MT-FFg"/>
+                                    <constraint firstItem="eMi-aP-L2f" firstAttribute="top" secondItem="1pr-v2-hkZ" secondAttribute="bottom" constant="1" id="AsE-Mj-0k8"/>
+                                    <constraint firstItem="dTo-50-7S1" firstAttribute="centerX" secondItem="Lyg-qi-NU7" secondAttribute="centerX" id="Gmf-Pd-Qgr"/>
+                                    <constraint firstItem="WXO-I7-lUL" firstAttribute="leading" secondItem="J21-7A-2A0" secondAttribute="trailing" constant="40" id="OxF-ZP-Nns"/>
+                                    <constraint firstItem="J21-7A-2A0" firstAttribute="leading" secondItem="Lyg-qi-NU7" secondAttribute="leading" constant="49" id="RMs-te-49U"/>
+                                    <constraint firstAttribute="width" secondItem="Lyg-qi-NU7" secondAttribute="height" multiplier="15:4" id="SbL-ms-nMj"/>
+                                    <constraint firstAttribute="trailing" secondItem="1pr-v2-hkZ" secondAttribute="trailing" constant="49" id="Sxk-g7-O0f"/>
+                                    <constraint firstItem="zpY-Gb-OEQ" firstAttribute="centerX" secondItem="J21-7A-2A0" secondAttribute="centerX" id="U27-e2-Rlf"/>
+                                    <constraint firstAttribute="bottom" secondItem="dTo-50-7S1" secondAttribute="bottom" constant="11" id="Wfh-nj-tK2"/>
+                                    <constraint firstItem="dTo-50-7S1" firstAttribute="top" secondItem="Lyg-qi-NU7" secondAttribute="top" constant="-36" id="ZHl-cS-yUO"/>
+                                    <constraint firstItem="eMi-aP-L2f" firstAttribute="centerX" secondItem="1pr-v2-hkZ" secondAttribute="centerX" id="qiA-p1-ope"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ptT-Xl-IjN" userLabel="Filler">
+                                <rect key="frame" x="0.0" y="835" width="428" height="37"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="428" id="2CE-i0-rn5"/>
+                                    <constraint firstAttribute="height" constant="37" id="vOP-L1-j8B"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="0ew-qF-ouQ"/>
+                        <color key="backgroundColor" white="0.20188602780000001" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="yvF-8F-sm9" firstAttribute="leading" secondItem="0ew-qF-ouQ" secondAttribute="leading" id="5bl-nU-dev"/>
+                            <constraint firstItem="Lyg-qi-NU7" firstAttribute="bottom" secondItem="0ew-qF-ouQ" secondAttribute="bottom" id="5hx-Fa-9QB"/>
+                            <constraint firstItem="Lyg-qi-NU7" firstAttribute="trailing" secondItem="0ew-qF-ouQ" secondAttribute="trailing" id="E5B-Bh-hmZ"/>
+                            <constraint firstItem="yvF-8F-sm9" firstAttribute="bottom" secondItem="Lyg-qi-NU7" secondAttribute="bottom" id="Knd-y7-MuG"/>
+                            <constraint firstItem="yvF-8F-sm9" firstAttribute="top" secondItem="eOc-MW-NyS" secondAttribute="bottom" constant="-2" id="TMd-aP-wKG"/>
+                            <constraint firstItem="eOc-MW-NyS" firstAttribute="leading" secondItem="0ew-qF-ouQ" secondAttribute="leading" id="TQi-vn-eOe"/>
+                            <constraint firstItem="0ew-qF-ouQ" firstAttribute="trailing" secondItem="Lyg-qi-NU7" secondAttribute="trailing" id="Xlt-rE-jdp"/>
+                            <constraint firstItem="eOc-MW-NyS" firstAttribute="top" secondItem="0ew-qF-ouQ" secondAttribute="top" id="ZgT-Kk-S0l"/>
+                            <constraint firstItem="Lyg-qi-NU7" firstAttribute="leading" secondItem="0ew-qF-ouQ" secondAttribute="leading" id="ZiF-Ys-eVe"/>
+                            <constraint firstItem="yvF-8F-sm9" firstAttribute="trailing" secondItem="0ew-qF-ouQ" secondAttribute="trailing" id="hf7-Dw-1GK"/>
+                            <constraint firstItem="eOc-MW-NyS" firstAttribute="trailing" secondItem="0ew-qF-ouQ" secondAttribute="trailing" id="nAG-Wl-059"/>
+                            <constraint firstItem="Lyg-qi-NU7" firstAttribute="leading" secondItem="0ew-qF-ouQ" secondAttribute="leading" id="nIE-rf-IFq"/>
+                            <constraint firstItem="ptT-Xl-IjN" firstAttribute="top" secondItem="dTo-50-7S1" secondAttribute="bottom" constant="8" symbolic="YES" id="u3d-Hh-xIP"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="QIa-m4-HFD"/>
+                    <connections>
+                        <outlet property="directionIcon" destination="NHw-xv-awG" id="hEv-kS-wzU"/>
+                        <outlet property="directionLabel" destination="rnv-es-A5Y" id="6Ik-6P-K6y"/>
+                        <outlet property="elapsedLabel" destination="zpY-Gb-OEQ" id="hey-ay-Gno"/>
+                        <outlet property="elapsedMeter" destination="J21-7A-2A0" id="bi3-dG-LrQ"/>
+                        <outlet property="mapView" destination="yvF-8F-sm9" id="wcI-uU-jVZ"/>
+                        <outlet property="paceLabel" destination="0c0-nL-53N" id="ZGy-VE-pHJ"/>
+                        <outlet property="paceMeter" destination="WXO-I7-lUL" id="oDS-3F-9bL"/>
+                        <outlet property="routeLabel" destination="49T-DD-8hR" id="qtO-4j-SE3"/>
+                        <outlet property="timeLabel" destination="eMi-aP-L2f" id="zX9-CH-22U"/>
+                        <outlet property="timeMeter" destination="1pr-v2-hkZ" id="RlS-rG-zVt"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Y1b-kb-iJK" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="794.85981308411215" y="81.641468682505405"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="arrow.up" catalog="system" width="120" height="128"/>
+        <image name="xmark" catalog="system" width="128" height="113"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemRedColor">
+            <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
+</document>
