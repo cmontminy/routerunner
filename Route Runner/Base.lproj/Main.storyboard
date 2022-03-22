@@ -16,8 +16,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="428" height="926"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yLQ-gK-Kku">
-                                <rect key="frame" x="20" y="438" width="388" height="42"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yLQ-gK-Kku">
+                                <rect key="frame" x="20" y="440" width="388" height="42"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="42" id="bAS-Lv-jaV"/>
                                     <constraint firstAttribute="width" constant="388" id="jbC-v0-ek7"/>
@@ -59,14 +59,8 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Don't have an account?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zVY-l3-pWI">
-                                <rect key="frame" x="149" y="525" width="131.66666666666663" height="20"/>
-                                <fontDescription key="fontDescription" name="GillSans" family="Gill Sans" pointSize="14"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SQt-0y-QLF">
-                                <rect key="frame" x="20" y="570" width="388" height="42"/>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SQt-0y-QLF">
+                                <rect key="frame" x="20" y="560" width="388" height="42"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="388" id="bbt-Z3-cei"/>
                                     <constraint firstAttribute="height" constant="42" id="vTR-3P-0ta"/>
@@ -100,20 +94,27 @@
                                 </attributedString>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Don't have an account?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zVY-l3-pWI">
+                                <rect key="frame" x="148" y="530" width="132" height="16.333333333333371"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" name="GillSans" family="Gill Sans" pointSize="14"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="highlightedColor" red="0.79707884790000005" green="0.38869500159999998" blue="0.072388909759999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="SQt-0y-QLF" firstAttribute="top" secondItem="zVY-l3-pWI" secondAttribute="bottom" constant="25" id="24H-Jr-0s1"/>
                             <constraint firstItem="NZv-VM-FB5" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="3fc-4w-c6h"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="SQt-0y-QLF" secondAttribute="bottom" constant="280" id="41i-yW-682"/>
+                            <constraint firstItem="zVY-l3-pWI" firstAttribute="top" secondItem="yLQ-gK-Kku" secondAttribute="bottom" constant="48" id="4hs-BC-j8U"/>
                             <constraint firstItem="SQt-0y-QLF" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="5fb-wD-Won"/>
                             <constraint firstItem="yLQ-gK-Kku" firstAttribute="top" secondItem="NZv-VM-FB5" secondAttribute="bottom" constant="46" id="7yw-nI-BH0"/>
                             <constraint firstItem="zVY-l3-pWI" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="FAV-xP-xJT"/>
                             <constraint firstItem="YEO-s5-S3K" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="192" id="YaJ-tT-gah"/>
                             <constraint firstItem="NZv-VM-FB5" firstAttribute="top" secondItem="YEO-s5-S3K" secondAttribute="bottom" constant="34" id="ecB-ed-E6h"/>
-                            <constraint firstItem="zVY-l3-pWI" firstAttribute="top" secondItem="yLQ-gK-Kku" secondAttribute="bottom" constant="55" id="oaD-EE-F30"/>
                             <constraint firstItem="yLQ-gK-Kku" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="pnh-hk-8cB"/>
+                            <constraint firstItem="SQt-0y-QLF" firstAttribute="top" secondItem="zVY-l3-pWI" secondAttribute="bottom" constant="23.666666666666742" id="qf7-nY-dDI"/>
                             <constraint firstItem="TJ1-AO-Pso" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="sIY-RF-Dgm"/>
                             <constraint firstItem="YEO-s5-S3K" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="tqi-Ie-4Ds"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="TJ1-AO-Pso" secondAttribute="bottom" constant="30" id="vUW-iX-1qE"/>

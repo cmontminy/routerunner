@@ -77,41 +77,15 @@
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dRv-cw-bgh">
-                                <rect key="frame" x="154" y="599" width="120" height="31"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="dRv-cw-bgh" secondAttribute="height" multiplier="120:31" id="fez-E2-mc7"/>
-                                </constraints>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="History"/>
-                                <connections>
-                                    <segue destination="24B-R6-Txe" kind="show" id="Zbp-BJ-CWe"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <constraints>
-                            <constraint firstItem="dRv-cw-bgh" firstAttribute="centerX" secondItem="vDu-zF-Fre" secondAttribute="centerX" id="nra-F7-ee4"/>
-                            <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="dRv-cw-bgh" secondAttribute="bottom" constant="262" id="xdJ-xN-Aiq"/>
-                        </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Item" id="tWq-fh-cFy"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="19.626168224299064" y="81.641468682505405"/>
-        </scene>
-        <!--History-->
-        <scene sceneID="pKN-ZX-PD8">
-            <objects>
-                <viewControllerPlaceholder storyboardName="History" id="24B-R6-Txe" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="DSy-p0-dJa"/>
-                    <navigationItem key="navigationItem" id="n5J-BC-ReB"/>
-                </viewControllerPlaceholder>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="JKp-Tb-5AS" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="905" y="93"/>
         </scene>
         <!--Run-->
         <scene sceneID="q9m-kZ-Thi">
