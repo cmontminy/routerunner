@@ -28,6 +28,8 @@
 		FB27BE8D27E907DE0012AB17 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB27BE8C27E907DE0012AB17 /* SettingsViewController.swift */; };
 		FB27BE9227E90D010012AB17 /* SettingsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB27BE9027E90D010012AB17 /* SettingsTableViewCell.swift */; };
 		FB27BE9327E90D010012AB17 /* SettingsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FB27BE9127E90D010012AB17 /* SettingsTableViewCell.xib */; };
+		FB37D23727EA59800020715D /* SwitchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB37D23527EA59800020715D /* SwitchTableViewCell.swift */; };
+		FB37D23827EA59800020715D /* SwitchTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FB37D23627EA59800020715D /* SwitchTableViewCell.xib */; };
 		FB9405B627D7E7B0009DB256 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB9405B527D7E7B0009DB256 /* AppDelegate.swift */; };
 		FB9405B827D7E7B0009DB256 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB9405B727D7E7B0009DB256 /* SceneDelegate.swift */; };
 		FB9405BA27D7E7B0009DB256 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB9405B927D7E7B0009DB256 /* ViewController.swift */; };
@@ -59,6 +61,8 @@
 		FB27BE8C27E907DE0012AB17 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		FB27BE9027E90D010012AB17 /* SettingsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableViewCell.swift; sourceTree = "<group>"; };
 		FB27BE9127E90D010012AB17 /* SettingsTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingsTableViewCell.xib; sourceTree = "<group>"; };
+		FB37D23527EA59800020715D /* SwitchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwitchTableViewCell.swift; sourceTree = "<group>"; };
+		FB37D23627EA59800020715D /* SwitchTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SwitchTableViewCell.xib; sourceTree = "<group>"; };
 		FB9405B227D7E7B0009DB256 /* Route Runner.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Route Runner.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FB9405B527D7E7B0009DB256 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FB9405B727D7E7B0009DB256 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -129,9 +133,11 @@
 			isa = PBXGroup;
 			children = (
 				FB27BE8A27E902E80012AB17 /* Settings.storyboard */,
-				FB27BE9127E90D010012AB17 /* SettingsTableViewCell.xib */,
 				FB27BE8C27E907DE0012AB17 /* SettingsViewController.swift */,
+				FB27BE9127E90D010012AB17 /* SettingsTableViewCell.xib */,
 				FB27BE9027E90D010012AB17 /* SettingsTableViewCell.swift */,
+				FB37D23627EA59800020715D /* SwitchTableViewCell.xib */,
+				FB37D23527EA59800020715D /* SwitchTableViewCell.swift */,
 			);
 			path = "Settings Screen";
 			sourceTree = "<group>";
@@ -232,6 +238,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FB27BE9327E90D010012AB17 /* SettingsTableViewCell.xib in Resources */,
+				FB37D23827EA59800020715D /* SwitchTableViewCell.xib in Resources */,
 				8D0CE21D27EA18F0000362A2 /* TabBar.storyboard in Resources */,
 				FB9405C527D7E7B1009DB256 /* LaunchScreen.storyboard in Resources */,
 				8C035C3627E92E7E004E269B /* History.storyboard in Resources */,
@@ -256,6 +263,7 @@
 				FB9405BA27D7E7B0009DB256 /* ViewController.swift in Sources */,
 				FB0EE89327E96B52005AD4F7 /* WeakStyleObserver.swift in Sources */,
 				8C035C3A27E945BF004E269B /* RunData.swift in Sources */,
+				FB37D23727EA59800020715D /* SwitchTableViewCell.swift in Sources */,
 				8C035C3C27E94E66004E269B /* HistoryViewController.swift in Sources */,
 				FB0EE88F27E96B28005AD4F7 /* UserInterfaceStyleManager.swift in Sources */,
 				8C035C3827E941CA004E269B /* HistoryTableViewCell.swift in Sources */,

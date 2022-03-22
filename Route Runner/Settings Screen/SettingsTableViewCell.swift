@@ -4,28 +4,17 @@
 //
 //  Created by Colette Montminy on 3/21/22.
 //
+//  https://www.youtube.com/watch?v=2FigkAlz1Bg - Referenced for configure function
 
 import UIKit
 
 class SettingsTableViewCell: UITableViewCell {
     
+    static let identifier = "SettingsTableViewCell"
+    
     @IBOutlet weak var label: UILabel!
-    @IBOutlet weak var uiSwitch: UISwitch!
     
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
-        
-        //Turn off all switches first
-        uiSwitch.isOn = false
-    }
-    
-    //Called when the switch is pressed
-    @IBAction func changeSwitch(_ sender: UISwitch) {
-        if sender.isOn {
-            print("on")
-        } else {
-            print("off")
-        }
+    public func configure(with model: SettingsOption) {
+        label.text = model.title
     }
 }
