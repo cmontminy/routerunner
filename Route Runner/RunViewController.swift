@@ -36,6 +36,7 @@ class RunViewController: UIViewController {
         configureLocationServices() // start location services
         // hide nav bar
         self.navigationController?.setNavigationBarHidden(true, animated: false)
+        startObserving(&UserInterfaceStyleManager.shared)
     }
 
     private func configureLocationServices() {

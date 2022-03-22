@@ -20,6 +20,7 @@
 		FB0EE88F27E96B28005AD4F7 /* UserInterfaceStyleManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB0EE88E27E96B28005AD4F7 /* UserInterfaceStyleManager.swift */; };
 		FB0EE89127E96B3C005AD4F7 /* UserInterfaceStyleObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB0EE89027E96B3C005AD4F7 /* UserInterfaceStyleObserver.swift */; };
 		FB0EE89327E96B52005AD4F7 /* WeakStyleObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB0EE89227E96B52005AD4F7 /* WeakStyleObserver.swift */; };
+		FB0EE89627E97A81005AD4F7 /* StyledNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB0EE89527E97A81005AD4F7 /* StyledNavigationController.swift */; };
 		FB27BE8B27E902E80012AB17 /* Settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FB27BE8A27E902E80012AB17 /* Settings.storyboard */; };
 		FB27BE8D27E907DE0012AB17 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB27BE8C27E907DE0012AB17 /* SettingsViewController.swift */; };
 		FB27BE9227E90D010012AB17 /* SettingsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB27BE9027E90D010012AB17 /* SettingsTableViewCell.swift */; };
@@ -47,6 +48,7 @@
 		FB0EE88E27E96B28005AD4F7 /* UserInterfaceStyleManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInterfaceStyleManager.swift; sourceTree = "<group>"; };
 		FB0EE89027E96B3C005AD4F7 /* UserInterfaceStyleObserver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInterfaceStyleObserver.swift; sourceTree = "<group>"; };
 		FB0EE89227E96B52005AD4F7 /* WeakStyleObserver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeakStyleObserver.swift; sourceTree = "<group>"; };
+		FB0EE89527E97A81005AD4F7 /* StyledNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StyledNavigationController.swift; sourceTree = "<group>"; };
 		FB27BE8A27E902E80012AB17 /* Settings.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Settings.storyboard; sourceTree = "<group>"; };
 		FB27BE8C27E907DE0012AB17 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		FB27BE9027E90D010012AB17 /* SettingsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableViewCell.swift; sourceTree = "<group>"; };
@@ -79,6 +81,7 @@
 				FB0EE88E27E96B28005AD4F7 /* UserInterfaceStyleManager.swift */,
 				FB0EE89027E96B3C005AD4F7 /* UserInterfaceStyleObserver.swift */,
 				FB0EE89227E96B52005AD4F7 /* WeakStyleObserver.swift */,
+				FB0EE89527E97A81005AD4F7 /* StyledNavigationController.swift */,
 			);
 			path = Observers;
 			sourceTree = "<group>";
@@ -219,6 +222,7 @@
 				FB9405B627D7E7B0009DB256 /* AppDelegate.swift in Sources */,
 				FB27BE9227E90D010012AB17 /* SettingsTableViewCell.swift in Sources */,
 				2CDEAAF727E9556A000DDA40 /* PaceView.swift in Sources */,
+				FB0EE89627E97A81005AD4F7 /* StyledNavigationController.swift in Sources */,
 				FB9405B827D7E7B0009DB256 /* SceneDelegate.swift in Sources */,
 				FB27BE8D27E907DE0012AB17 /* SettingsViewController.swift in Sources */,
 			);

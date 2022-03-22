@@ -23,6 +23,9 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
         tableView.dataSource = self
         
         tableView.register(UINib(nibName: "SettingsTableViewCell", bundle: nil), forCellReuseIdentifier: "TextCell")
+        
+        startObserving(&UserInterfaceStyleManager.shared)
+//        darkModeSwitch.isOn = UserInterfaceStyleManager.shared.currentStyle == .dark
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -35,6 +38,7 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
         cell.label?.text = settingsList[row].description
         //IndexPath on switch tag.Enter the value of row
         cell.uiSwitch.tag = indexPath.row
+        cell.uiSwitch.isOn = UserInterfaceStyleManager.shared.currentStyle == .dark
         //Behavior when the switch is pressed
         cell.uiSwitch.addTarget(self, action: #selector(changeSwitch(_:)), for: UIControl.Event.valueChanged)
         
