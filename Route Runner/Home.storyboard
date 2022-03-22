@@ -8,7 +8,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Home View Controller-->
+        <!--Item-->
         <scene sceneID="s0d-6b-0kx">
             <objects>
                 <viewController storyboardIdentifier="HomeRef" id="Y6W-OH-hqX" customClass="HomeViewController" customModule="Route_Runner" customModuleProvider="target" sceneMemberID="viewController">
@@ -60,6 +60,7 @@
                             <constraint firstItem="pHF-DA-gbL" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" constant="114" id="p6W-Pq-WFg"/>
                         </constraints>
                     </view>
+                    <tabBarItem key="tabBarItem" title="Item" id="tWq-fh-cFy"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -69,6 +70,7 @@
         <scene sceneID="JgJ-DI-4VH">
             <objects>
                 <viewControllerPlaceholder storyboardName="Settings" id="mAd-Lx-PWy" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" id="m2a-BO-bIo"/>
                     <navigationItem key="navigationItem" id="xOp-h7-P93"/>
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CPs-UQ-NqE" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -79,6 +81,7 @@
         <scene sceneID="pKN-ZX-PD8">
             <objects>
                 <viewControllerPlaceholder storyboardName="History" id="24B-R6-Txe" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" id="DSy-p0-dJa"/>
                     <navigationItem key="navigationItem" id="n5J-BC-ReB"/>
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JKp-Tb-5AS" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -89,13 +92,39 @@
         <scene sceneID="q9m-kZ-Thi">
             <objects>
                 <viewControllerPlaceholder storyboardName="Run" id="w9k-HI-K3E" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" id="8n4-HG-tRP"/>
                     <navigationItem key="navigationItem" id="iq2-Aj-7P3"/>
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Aiq-Yc-lQP" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="869" y="260"/>
         </scene>
+        <!--Tab Bar Controller-->
+        <scene sceneID="TCn-fu-4gy">
+            <objects>
+                <tabBarController id="jvy-Jn-CkY" sceneMemberID="viewController">
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="dQH-fG-O3u">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="mAd-Lx-PWy" kind="relationship" relationship="viewControllers" id="Twt-4U-Ewy"/>
+                        <segue destination="24B-R6-Txe" kind="relationship" relationship="viewControllers" id="oYj-2L-5MY"/>
+                        <segue destination="w9k-HI-K3E" kind="relationship" relationship="viewControllers" id="TFe-pk-anJ"/>
+                        <segue destination="Y6W-OH-hqX" kind="relationship" relationship="viewControllers" id="j2M-9b-t5c"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="l5Z-Gd-My3" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="700" y="-693"/>
+        </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="DbI-db-uxk"/>
+        <segue reference="Zbp-BJ-CWe"/>
+        <segue reference="XXh-Nf-MxO"/>
+    </inferredMetricsTieBreakers>
     <resources>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
