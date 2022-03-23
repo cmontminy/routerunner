@@ -16,6 +16,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="428" height="926"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Yellow background" translatesAutoresizingMaskIntoConstraints="NO" id="87i-1a-6l7">
+                                <rect key="frame" x="0.0" y="0.0" width="428" height="926"/>
+                            </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yLQ-gK-Kku">
                                 <rect key="frame" x="20" y="440" width="388" height="42"/>
                                 <constraints>
@@ -105,14 +108,18 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="87i-1a-6l7" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" id="2SQ-qy-WC1"/>
                             <constraint firstItem="NZv-VM-FB5" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="3fc-4w-c6h"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="SQt-0y-QLF" secondAttribute="bottom" constant="280" id="41i-yW-682"/>
                             <constraint firstItem="zVY-l3-pWI" firstAttribute="top" secondItem="yLQ-gK-Kku" secondAttribute="bottom" constant="48" id="4hs-BC-j8U"/>
                             <constraint firstItem="SQt-0y-QLF" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="5fb-wD-Won"/>
                             <constraint firstItem="yLQ-gK-Kku" firstAttribute="top" secondItem="NZv-VM-FB5" secondAttribute="bottom" constant="46" id="7yw-nI-BH0"/>
                             <constraint firstItem="zVY-l3-pWI" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="FAV-xP-xJT"/>
+                            <constraint firstItem="87i-1a-6l7" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="WQ7-pF-KqW"/>
                             <constraint firstItem="YEO-s5-S3K" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="192" id="YaJ-tT-gah"/>
+                            <constraint firstItem="87i-1a-6l7" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="Yd6-2k-SXE"/>
                             <constraint firstItem="NZv-VM-FB5" firstAttribute="top" secondItem="YEO-s5-S3K" secondAttribute="bottom" constant="34" id="ecB-ed-E6h"/>
+                            <constraint firstItem="87i-1a-6l7" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" id="lwc-uw-2z7"/>
                             <constraint firstItem="yLQ-gK-Kku" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="pnh-hk-8cB"/>
                             <constraint firstItem="SQt-0y-QLF" firstAttribute="top" secondItem="zVY-l3-pWI" secondAttribute="bottom" constant="23.666666666666742" id="qf7-nY-dDI"/>
                             <constraint firstItem="TJ1-AO-Pso" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="sIY-RF-Dgm"/>
@@ -156,6 +163,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="Yellow background" width="648" height="692"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

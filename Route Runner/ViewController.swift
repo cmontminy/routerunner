@@ -17,7 +17,6 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         startObserving(&UserInterfaceStyleManager.shared)
-        self.view.backgroundColor = UIColor(patternImage: UIImage(named: "Yellow background")!)
     }
 
 
