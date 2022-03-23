@@ -17,6 +17,7 @@ class PastRunViewController: UIViewController {
     @IBOutlet weak var runDistance: UILabel!
     @IBOutlet weak var runPoints: UILabel!
     @IBOutlet weak var runTime: UILabel!
+    @IBOutlet weak var paceLabel: UILabel!
     @IBOutlet weak var runPace: UILabel!
     
     var run: RunData? = nil
@@ -32,12 +33,18 @@ class PastRunViewController: UIViewController {
         let currentRun = run!
         runImage.image = currentRun.image ?? UIImage(named: "dummy")
         runName.text = currentRun.name
-        runDistance.text = "\(currentRun.distance) mi"
+        runDistance.text = "\(currentRun.getDistance()) \(usingKilometers() ? "km" : "mi")"
         runPoints.text = "\(currentRun.points) points"
-        runTime.text = "\(currentRun.time / 60):\(currentRun.time % 60)"
-        runPace.text = "\(currentRun.pace / 60):\(currentRun.pace % 60)"
+        runTime.text = "\(currentRun.time / 60):\(String(format: "%02d", currentRun.time % 60))"
+        paceLabel.text = usingKilometers() ? "Pace (km)" : "Pace (mi)"
+        
+        runPace.text = "\(currentRun.getPace() / 60):\(String(format: "%02d", currentRun.getPace() % 60))"
         
         runImage.layer.cornerRadius = 8.0
         runImage.layer.masksToBounds = true
+    }
+    
+    private func usingKilometers() -> Bool {
+        return UserDefaults.standard.bool(forKey:"RouteRunnerKilometerModeOn")
     }
 }

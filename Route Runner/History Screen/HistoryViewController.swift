@@ -18,13 +18,11 @@ func addDummyData() {
     
     for i in 1...8 {
         runs.append(RunData(name: "Test \(i)",
-                            locations: 4 * i,
                             image: UIImage(named: "sample\(i % 6)"),
                             date: Date(timeIntervalSinceNow: day * Double(i)),
                             distance: 4.0 + Double(i),
                             points: 5 + i,
-                            time: i * 45,
-                            pace: i * 32))
+                            time: i * 45))
     }
 }
 
@@ -45,8 +43,8 @@ class HistoryViewController: UIViewController, UITableViewDelegate, UITableViewD
         let row = indexPath.row
         
         let run = runs[row]
-        cell.runName.text = "\(run.name) - \(run.distance) mi"
-        cell.runLocations.text = "\(run.locations) Locations"
+        cell.runName.text = "\(run.name) - \(String(format: "%.1f", run.getDistance())) \(usingKilometers() ? "km" : "mi")"
+        cell.runLocations.text = "\(run.locations.count) Locations"
         cell.runDate.text = run.getDateString()
         
         cell.runImage?.image = run.image ?? UIImage(named: "dummy")
@@ -66,6 +64,7 @@ class HistoryViewController: UIViewController, UITableViewDelegate, UITableViewD
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         addDummyData()
+        tableView.reloadData()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -74,5 +73,9 @@ class HistoryViewController: UIViewController, UITableViewDelegate, UITableViewD
            let runIndex = tableView.indexPathForSelectedRow?.row {
             destination.run = runs[runIndex]
         }
+    }
+    
+    private func usingKilometers() -> Bool {
+        return UserDefaults.standard.bool(forKey:"RouteRunnerKilometerModeOn")
     }
 }
