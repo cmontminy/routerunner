@@ -1,6 +1,8 @@
 //
 //  SwitchTableViewCell.swift
-//  Route Runner
+//  Project: Route Runner
+//  EID: crm4772
+//  Course: CS371L
 //
 //  Created by Colette Montminy on 3/21/22.
 //
@@ -8,6 +10,7 @@
 
 import UIKit
 
+// delegate to handle switch toggle action
 protocol SwitchCellDelegate: AnyObject {
     func didTapSwitch(option: String, isOn: Bool)
 }
@@ -15,7 +18,7 @@ protocol SwitchCellDelegate: AnyObject {
 class SwitchTableViewCell: UITableViewCell {
     
     static let identifier = "SwitchTableViewCell"
-
+    
     weak var delegate: SwitchCellDelegate?
     
     @IBOutlet weak var label: UILabel!
@@ -25,10 +28,12 @@ class SwitchTableViewCell: UITableViewCell {
         super.awakeFromNib()
     }
     
+    // passes action to delegate function to keep this file generic
     @IBAction func switchTapped(_ sender: Any) {
         delegate?.didTapSwitch(option: label.text!, isOn: uiSwitch.isOn)
     }
     
+    // configure function to populate cell variables with preset model parameters
     public func configure(with model: SettingsSwitchOption) {
         label.text = model.title
         uiSwitch.isOn = model.isOn
