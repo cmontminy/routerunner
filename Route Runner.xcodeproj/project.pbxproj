@@ -18,6 +18,7 @@
 		8C035C3E27EA537F004E269B /* PastRun.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8C035C3D27EA537F004E269B /* PastRun.storyboard */; };
 		8C035C4027EA5939004E269B /* PastRunViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C035C3F27EA5939004E269B /* PastRunViewController.swift */; };
 		8D0CE21D27EA18F0000362A2 /* TabBar.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8D0CE21C27EA18F0000362A2 /* TabBar.storyboard */; };
+		8D19E5E627EABFC400477297 /* ProfileCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D19E5E527EABFC400477297 /* ProfileCollectionViewCell.swift */; };
 		8D5B54F727E819A500BDB2AD /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8D5B54F627E819A500BDB2AD /* Home.storyboard */; };
 		8D5B54F927E81B4400BDB2AD /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D5B54F827E81B4400BDB2AD /* HomeViewController.swift */; };
 		8DAF5A2427EA87B30011B580 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DAF5A2327EA87B30011B580 /* TabBarViewController.swift */; };
@@ -57,6 +58,7 @@
 		8C035C3D27EA537F004E269B /* PastRun.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PastRun.storyboard; sourceTree = "<group>"; };
 		8C035C3F27EA5939004E269B /* PastRunViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PastRunViewController.swift; sourceTree = "<group>"; };
 		8D0CE21C27EA18F0000362A2 /* TabBar.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = TabBar.storyboard; sourceTree = "<group>"; };
+		8D19E5E527EABFC400477297 /* ProfileCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileCollectionViewCell.swift; sourceTree = "<group>"; };
 		8D5B54F627E819A500BDB2AD /* Home.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Home.storyboard; sourceTree = "<group>"; };
 		8D5B54F827E81B4400BDB2AD /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		8DAF5A2327EA87B30011B580 /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
@@ -102,6 +104,7 @@
 			children = (
 				8DAF5A2527EA88720011B580 /* ProfileViewController.swift */,
 				8DAF5A2727EA88BA0011B580 /* Profile.storyboard */,
+				8D19E5E527EABFC400477297 /* ProfileCollectionViewCell.swift */,
 			);
 			path = "Profile Screen";
 			sourceTree = "<group>";
@@ -296,6 +299,7 @@
 				FBED8A1B27EAA37500CCDBA5 /* ProfileSettingsViewController.swift in Sources */,
 				FB0EE88F27E96B28005AD4F7 /* UserInterfaceStyleManager.swift in Sources */,
 				8DAF5A2427EA87B30011B580 /* TabBarViewController.swift in Sources */,
+				8D19E5E627EABFC400477297 /* ProfileCollectionViewCell.swift in Sources */,
 				8C035C3827E941CA004E269B /* HistoryTableViewCell.swift in Sources */,
 				2CDEAAF927E9557C000DDA40 /* CancelButton.swift in Sources */,
 				FBED8A1E27EAA3F200CCDBA5 /* EditableTableViewCell.swift in Sources */,
