@@ -1,6 +1,8 @@
 //
 //  EditableTableViewCell.swift
-//  Route Runner
+//  Project: Route Runner
+//  EID: crm4772
+//  Course: CS371L
 //
 //  Created by Colette Montminy on 3/21/22.
 //
@@ -15,6 +17,7 @@ class EditableTableViewCell: UITableViewCell {
     @IBOutlet weak var label: UILabel!
     @IBOutlet weak var subLabel: UILabel!
     
+    // configure function to populate cell variables with preset model parameters
     public func configure(with model: SettingsEditOption) {
         label.text = model.title
         subLabel.text = model.subtitle

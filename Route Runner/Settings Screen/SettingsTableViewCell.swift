@@ -1,6 +1,8 @@
 //
 //  SettingsTableViewCell.swift
-//  Route Runner
+//  Project: Route Runner
+//  EID: crm4772
+//  Course: CS371L
 //
 //  Created by Colette Montminy on 3/21/22.
 //
@@ -15,6 +17,7 @@ class SettingsTableViewCell: UITableViewCell {
     
     @IBOutlet weak var label: UILabel!
     
+    // configure function to populate cell variables with preset model parameters
     public func configure(with model: SettingsOption) {
         label.text = model.title
     }
