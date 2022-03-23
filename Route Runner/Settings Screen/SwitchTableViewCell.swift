@@ -9,7 +9,7 @@
 import UIKit
 
 protocol SwitchCellDelegate: AnyObject {
-    func didTapSwitch(with isOn: Bool)
+    func didTapSwitch(option: String, isOn: Bool)
 }
 
 class SwitchTableViewCell: UITableViewCell {
@@ -26,7 +26,7 @@ class SwitchTableViewCell: UITableViewCell {
     }
     
     @IBAction func switchTapped(_ sender: Any) {
-        delegate?.didTapSwitch(with: uiSwitch.isOn)
+        delegate?.didTapSwitch(option: label.text!, isOn: uiSwitch.isOn)
     }
     
     public func configure(with model: SettingsSwitchOption) {

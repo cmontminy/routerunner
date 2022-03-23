@@ -51,9 +51,8 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
         models.append(Section(title: "General", options: [
             .switchCell(model: SettingsSwitchOption(title: "Dark Mode", isOn: UserInterfaceStyleManager.shared.currentStyle == .dark) {
                 print("tapped dark mode")
-//                isOn = UserInterfaceStyleManager.shared.currentStyle == .dark
             }),
-            .staticCell(model: SettingsOption(title: "Distance") {
+            .switchCell(model: SettingsSwitchOption(title: "Distance", isOn: UserDefaults.standard.bool(forKey:"RouteRunnerKilometerModeOn")) {
                 print("tapped distance")
             })
         ]))
@@ -106,18 +105,6 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
         let type = models[indexPath.section].options[indexPath.row]
         switch type.self {
         case .staticCell(let model):
-//            model.handler()
-            print("pog")
-        case .switchCell(let model):
-//            model.handler()
-            print("pogpog")
-        }
-    }
-    
-    func tableView(_ tableView: UITableView, accessoryButtonTappedForRowWith indexPath: IndexPath) {
-        let type = models[indexPath.section].options[indexPath.row]
-        switch type.self {
-        case .staticCell(let model):
             model.handler()
         case .switchCell(let model):
             model.handler()
@@ -126,15 +113,17 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
 }
 
 extension SettingsViewController: SwitchCellDelegate {
-    func didTapSwitch(with isOn: Bool) {
-        let darkModeOn = isOn
-                
-        // 2
-        // Store in UserDefaults
-        UserDefaults.standard.set(darkModeOn, forKey: UserInterfaceStyleManager.userInterfaceStyleDarkModeOn)
-        
-        // 3
-        // Update interface style
-        UserInterfaceStyleManager.shared.updateUserInterfaceStyle(darkModeOn)
+    func didTapSwitch(option: String, isOn: Bool) {
+        if option == "Dark Mode" {
+            let darkModeOn = isOn
+            // Store in UserDefaults
+            UserDefaults.standard.set(darkModeOn, forKey: UserInterfaceStyleManager.userInterfaceStyleDarkModeOn)
+            // Update interface style
+            UserInterfaceStyleManager.shared.updateUserInterfaceStyle(darkModeOn)
+        } else if option == "Distance" {
+            let kmOn = isOn
+            // Store in UserDefaults
+            UserDefaults.standard.set(kmOn, forKey: "RouteRunnerKilometerModeOn")
+        }
     }
 }
