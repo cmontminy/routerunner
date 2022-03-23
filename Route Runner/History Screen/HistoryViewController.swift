@@ -70,7 +70,9 @@ class HistoryViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        addDummyData()
+        if (runs.count == 0) {
+            addDummyData()
+        }
         
         // Reload to account for new runs / changed distance unit preference
         tableView.reloadData()
