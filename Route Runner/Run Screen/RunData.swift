@@ -9,6 +9,7 @@ import UIKit
 
 class RunData {
     
+    // Data fields
     var name: String
     var locations: [String] // potentially want to create Location class
     var challenges: [String] // potentially want to create Challenge class
@@ -29,12 +30,14 @@ class RunData {
         self.time = time
     }
     
+    // Return the run's date in the format 01/31/1999
     func getDateString() -> String {
         let formatter = DateFormatter()
         formatter.dateFormat = "MM/dd/YYYY"
         return formatter.string(from: self.date)
     }
     
+    // Return the pace, in seconds, accounting for mi/km
     func getPace() -> Int {
         let km = UserDefaults.standard.bool(forKey:"RouteRunnerKilometerModeOn")
         let milesToKilo = 1.609344
@@ -45,6 +48,7 @@ class RunData {
         }
     }
     
+    // Return the distance, accounting for mi/km
     func getDistance() -> Double {
         let km = UserDefaults.standard.bool(forKey:"RouteRunnerKilometerModeOn")
         let milesToKilo = 1.609344
@@ -54,6 +58,4 @@ class RunData {
             return self.distance
         }
     }
-    
-    
 }

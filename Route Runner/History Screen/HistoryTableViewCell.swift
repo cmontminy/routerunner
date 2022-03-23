@@ -7,6 +7,7 @@
 
 import UIKit
 
+// Simple custom cell class to provide outlets to cell's labels / image
 class HistoryTableViewCell: UITableViewCell {
     @IBOutlet weak var runImage: UIImageView!
     
