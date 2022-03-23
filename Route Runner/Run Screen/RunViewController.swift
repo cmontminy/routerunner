@@ -49,6 +49,10 @@ class RunViewController: UIViewController {
         super.viewWillAppear(animated)
         // remove back button in nav bar
         navigationController?.setNavigationBarHidden(true, animated: animated)
+        
+        // set labels to km or mi
+        elapsedLabel.text = usingKilometers() ? "km" : "mi"
+        paceLabel.text = usingKilometers() ? "km/hr" : "mi/hr"
     }
     
     // to run anytime the view leaves the screen
@@ -120,16 +124,19 @@ class RunViewController: UIViewController {
         let endTime = NSDate().timeIntervalSince1970
         totalTime = Int((endTime - startTime) / 60)
         
+        // detemrmine unit to convert to
+        let conversion = usingKilometers() ? metersToKm : metersToMiles
+
         // calculate pace
         var pace:Double = 0.0
         if prevTime != 0.0 {
-            let distConverted = distance * metersToMiles
+            let distConverted = distance * conversion
             pace = round((distConverted / ((endTime - prevTime) / 3600) ) * 10) / 10.0 // round to tenths
         }
         prevTime = endTime
         
         // convert total distance from meters to mi/km and round to tenths
-        let roundedMiles = round((totalDistanceTravelled * metersToMiles) * 10)/10.0
+        let roundedMiles = round((totalDistanceTravelled * conversion) * 10)/10.0
         
         // update meters
         elapsedMeter.text = String(roundedMiles)
@@ -165,6 +172,12 @@ class RunViewController: UIViewController {
         }))
         controller.addAction(UIAlertAction(title: "No", style: .default, handler: nil))
         present(controller, animated: true, completion: nil)
+    }
+    
+    // Helper function to return true if the kilo option is selected
+    // TODO: potentially create a util class
+    private func usingKilometers() -> Bool {
+        return UserDefaults.standard.bool(forKey:"RouteRunnerKilometerModeOn")
     }
 }
 
