@@ -1,6 +1,8 @@
 //
 //  UserInterfaceStyleManager.swift
-//  Route Runner
+//  Project: Route Runner
+//  EID: crm4772
+//  Course: CS371L
 //
 //  Created by Colette Montminy on 3/21/22.
 //
