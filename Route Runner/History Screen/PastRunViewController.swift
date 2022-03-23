@@ -33,7 +33,7 @@ class PastRunViewController: UIViewController {
         let currentRun = run!
         runImage.image = currentRun.image ?? UIImage(named: "dummy")
         runName.text = currentRun.name
-        runDistance.text = "\(currentRun.getDistance()) \(usingKilometers() ? "km" : "mi")"
+        runDistance.text = "\(String(format: "%.1f", currentRun.getDistance())) \(usingKilometers() ? "km" : "mi")"
         runPoints.text = "\(currentRun.points) points"
         runTime.text = "\(currentRun.time / 60):\(String(format: "%02d", currentRun.time % 60))"
         paceLabel.text = usingKilometers() ? "Pace (km)" : "Pace (mi)"
