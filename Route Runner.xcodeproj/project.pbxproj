@@ -40,6 +40,9 @@
 		FB9405C027D7E7B0009DB256 /* Route_Runner.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = FB9405BE27D7E7B0009DB256 /* Route_Runner.xcdatamodeld */; };
 		FB9405C227D7E7B1009DB256 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FB9405C127D7E7B1009DB256 /* Assets.xcassets */; };
 		FB9405C527D7E7B1009DB256 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FB9405C327D7E7B1009DB256 /* LaunchScreen.storyboard */; };
+		FBED8A1B27EAA37500CCDBA5 /* ProfileSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBED8A1A27EAA37500CCDBA5 /* ProfileSettingsViewController.swift */; };
+		FBED8A1E27EAA3F200CCDBA5 /* EditableTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBED8A1C27EAA3F200CCDBA5 /* EditableTableViewCell.swift */; };
+		FBED8A1F27EAA3F200CCDBA5 /* EditableTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FBED8A1D27EAA3F200CCDBA5 /* EditableTableViewCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -78,6 +81,9 @@
 		FB9405C127D7E7B1009DB256 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FB9405C427D7E7B1009DB256 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		FB9405C627D7E7B1009DB256 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FBED8A1A27EAA37500CCDBA5 /* ProfileSettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileSettingsViewController.swift; sourceTree = "<group>"; };
+		FBED8A1C27EAA3F200CCDBA5 /* EditableTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditableTableViewCell.swift; sourceTree = "<group>"; };
+		FBED8A1D27EAA3F200CCDBA5 /* EditableTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EditableTableViewCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -149,6 +155,9 @@
 			children = (
 				FB27BE8A27E902E80012AB17 /* Settings.storyboard */,
 				FB27BE8C27E907DE0012AB17 /* SettingsViewController.swift */,
+				FBED8A1A27EAA37500CCDBA5 /* ProfileSettingsViewController.swift */,
+				FBED8A1D27EAA3F200CCDBA5 /* EditableTableViewCell.xib */,
+				FBED8A1C27EAA3F200CCDBA5 /* EditableTableViewCell.swift */,
 				FB27BE9127E90D010012AB17 /* SettingsTableViewCell.xib */,
 				FB27BE9027E90D010012AB17 /* SettingsTableViewCell.swift */,
 				FB37D23627EA59800020715D /* SwitchTableViewCell.xib */,
@@ -262,6 +271,7 @@
 				8C035C3E27EA537F004E269B /* PastRun.storyboard in Resources */,
 				8DAF5A2827EA88BA0011B580 /* Profile.storyboard in Resources */,
 				2CC0B8A327E95EF60020FCAD /* Run.storyboard in Resources */,
+				FBED8A1F27EAA3F200CCDBA5 /* EditableTableViewCell.xib in Resources */,
 				FB9405C227D7E7B1009DB256 /* Assets.xcassets in Resources */,
 				FB9405BD27D7E7B0009DB256 /* Main.storyboard in Resources */,
 				8D5B54F727E819A500BDB2AD /* Home.storyboard in Resources */,
@@ -283,10 +293,12 @@
 				8C035C3A27E945BF004E269B /* RunData.swift in Sources */,
 				FB37D23727EA59800020715D /* SwitchTableViewCell.swift in Sources */,
 				8C035C3C27E94E66004E269B /* HistoryViewController.swift in Sources */,
+				FBED8A1B27EAA37500CCDBA5 /* ProfileSettingsViewController.swift in Sources */,
 				FB0EE88F27E96B28005AD4F7 /* UserInterfaceStyleManager.swift in Sources */,
 				8DAF5A2427EA87B30011B580 /* TabBarViewController.swift in Sources */,
 				8C035C3827E941CA004E269B /* HistoryTableViewCell.swift in Sources */,
 				2CDEAAF927E9557C000DDA40 /* CancelButton.swift in Sources */,
+				FBED8A1E27EAA3F200CCDBA5 /* EditableTableViewCell.swift in Sources */,
 				FB9405C027D7E7B0009DB256 /* Route_Runner.xcdatamodeld in Sources */,
 				2CDEAAFB27E957D9000DDA40 /* RunViewController.swift in Sources */,
 				FB9405B627D7E7B0009DB256 /* AppDelegate.swift in Sources */,

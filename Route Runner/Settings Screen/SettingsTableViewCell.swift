@@ -8,6 +8,7 @@
 
 import UIKit
 
+
 class SettingsTableViewCell: UITableViewCell {
     
     static let identifier = "SettingsTableViewCell"

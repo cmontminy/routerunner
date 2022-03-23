@@ -16,7 +16,6 @@ struct Section {
 struct SettingsSwitchOption {
     let title: String
     var isOn: Bool
-    let handler: (() -> Void)
 }
 
 struct SettingsOption {
@@ -24,9 +23,16 @@ struct SettingsOption {
     let handler: (() -> Void)
 }
 
+struct SettingsEditOption {
+    let title: String
+    let subtitle: String
+    let handler: (() -> Void)
+}
+
 enum SettingsOptionType {
     case staticCell(model: SettingsOption)
     case switchCell(model: SettingsSwitchOption)
+    case editableCell(model: SettingsEditOption)
 }
 
 class SettingsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
@@ -43,18 +49,20 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
         
         tableView.register(UINib(nibName: "SettingsTableViewCell", bundle: nil), forCellReuseIdentifier: "SettingsTableViewCell")
         tableView.register(UINib(nibName: "SwitchTableViewCell", bundle: nil), forCellReuseIdentifier: "SwitchTableViewCell")
+        tableView.register(UINib(nibName: "EditableTableViewCell", bundle: nil), forCellReuseIdentifier: "EditableTableViewCell")
         
         startObserving(&UserInterfaceStyleManager.shared)
     }
     
     func configure() {
-        models.append(Section(title: "General", options: [
-            .switchCell(model: SettingsSwitchOption(title: "Dark Mode", isOn: UserInterfaceStyleManager.shared.currentStyle == .dark) {
-                print("tapped dark mode")
+        models.append(Section(title: "", options:[
+            .staticCell(model: SettingsOption(title: "Profile Settings") {
+                self.performSegue(withIdentifier: "ProfileSettingsIdentifier", sender: self)
             }),
-            .switchCell(model: SettingsSwitchOption(title: "Distance", isOn: UserDefaults.standard.bool(forKey:"RouteRunnerKilometerModeOn")) {
-                print("tapped distance")
-            })
+        ]))
+        models.append(Section(title: "General", options: [
+            .switchCell(model: SettingsSwitchOption(title: "Dark Mode", isOn: UserInterfaceStyleManager.shared.currentStyle == .dark)),
+            .switchCell(model: SettingsSwitchOption(title: "Distance", isOn: UserDefaults.standard.bool(forKey:"RouteRunnerKilometerModeOn")))
         ]))
             
         models.append(Section(title: "Notifications", options: [
@@ -94,10 +102,20 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
             guard let cell = tableView.dequeueReusableCell(withIdentifier: SwitchTableViewCell.identifier, for: indexPath) as? SwitchTableViewCell else {
                 return UITableViewCell()
             }
+            cell.selectionStyle = .none
             cell.configure(with: model)
             cell.delegate = self
             return cell
+        
+        case .editableCell(let model):
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: EditableTableViewCell.identifier, for: indexPath) as? EditableTableViewCell else {
+                return UITableViewCell()
+            }
+            cell.selectionStyle = .none
+            cell.configure(with: model)
+            return cell
         }
+            
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -106,7 +124,9 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
         switch type.self {
         case .staticCell(let model):
             model.handler()
-        case .switchCell(let model):
+        case .switchCell(_):
+            return
+        case .editableCell(let model):
             model.handler()
         }
     }

@@ -36,6 +36,9 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="DRO-pC-CiW" kind="show" identifier="ProfileSettingsIdentifier" id="O3u-sb-n9N"/>
+                                        </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="SwitchTableViewCell" textLabel="F60-6C-Lu6" style="IBUITableViewCellStyleDefault" id="gm9-Y6-qM9" customClass="SwitchTableViewCell" customModule="Route_Runner" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="88" width="374" height="43.5"/>
@@ -68,12 +71,12 @@
             </objects>
             <point key="canvasLocation" x="850.72463768115949" y="81.696428571428569"/>
         </scene>
-        <!--View Controller-->
+        <!--Profile Settings View Controller-->
         <scene sceneID="xSa-Bs-8cE">
             <objects>
-                <viewController id="DRO-pC-CiW" sceneMemberID="viewController">
+                <viewController id="DRO-pC-CiW" customClass="ProfileSettingsViewController" customModule="Route_Runner" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ada-Go-BB6">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Profile Settings" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2m5-ai-Rxe">
@@ -92,6 +95,10 @@
                         <viewLayoutGuide key="safeArea" id="Sv7-o5-YKf"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
+                    <navigationItem key="navigationItem" id="jgG-GF-s7P"/>
+                    <connections>
+                        <outlet property="tableView" destination="Tai-dQ-87h" id="Yea-i4-Mpk"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FCu-Dc-ubg" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
