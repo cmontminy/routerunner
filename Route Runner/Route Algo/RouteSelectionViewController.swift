@@ -137,7 +137,8 @@ class RouteSelectionViewController: UIViewController {
       field.text = ""
     }
 
-    guard let query = field.contents else {
+//    guard let query = field.contents else {
+      guard let query = field.text else {
       hideSuggestionView(animated: true)
 
       if completer.isSearching {
@@ -179,15 +180,18 @@ class RouteSelectionViewController: UIViewController {
     let segment: RouteBuilder.Segment?
     if let currentLocation = currentPlace?.location {
       segment = .location(currentLocation)
-    } else if let originValue = originTextField.contents {
+//    } else if let originValue = originTextField.contents {
+    } else if let originValue = originTextField.text {
       segment = .text(originValue)
     } else {
       segment = nil
     }
 
     let stopSegments: [RouteBuilder.Segment] = [
-      stopTextField.contents,
-      extraStopTextField.contents
+//      stopTextField.contents,
+//      extraStopTextField.contents
+        stopTextField.text,
+        extraStopTextField.text
     ]
     .compactMap { contents in
       if let value = contents {
@@ -297,12 +301,13 @@ extension RouteSelectionViewController: CLLocationManagerDelegate {
     completer.region = region
 
     CLGeocoder().reverseGeocodeLocation(firstLocation) { places, _ in
-      guard let firstPlace = places?.first, self.originTextField.contents == nil else {
+//      guard let firstPlace = places?.first, self.originTextField.contents == nil else {
+        guard let firstPlace = places?.first, self.originTextField.text == nil else {
         return
       }
 
       self.currentPlace = firstPlace
-      self.originTextField.text = firstPlace.abbreviation
+//      self.originTextField.text = firstPlace.abbreviation
     }
   }
 

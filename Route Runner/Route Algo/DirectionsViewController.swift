@@ -114,7 +114,7 @@ class DirectionsViewController: UIViewController {
     totalTravelTime += mapRoute.expectedTravelTime
 
     let informationComponents = [
-      totalTravelTime.formatted,
+        totalTravelTime.formatted(),
       "• \(distanceFormatter.string(fromDistance: totalDistance))"
     ]
     informationLabel.text = informationComponents.joined(separator: " ")
