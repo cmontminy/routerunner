@@ -84,7 +84,7 @@
                                     </attributedString>
                                 </buttonConfiguration>
                                 <connections>
-                                    <segue destination="n72-nO-B8n" kind="show" id="Nqg-Xs-t4n"/>
+                                    <segue destination="gtF-k8-72w" kind="show" id="Nqg-Xs-t4n"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TJ1-AO-Pso">
@@ -140,6 +140,34 @@
             </objects>
             <point key="canvasLocation" x="928.03738317757006" y="81.641468682505405"/>
         </scene>
+        <!--Register View Controller-->
+        <scene sceneID="iRq-Nd-NMx">
+            <objects>
+                <viewController id="gtF-k8-72w" customClass="RegisterViewController" customModule="Route_Runner" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="iAK-Vl-hPI">
+                        <rect key="frame" x="0.0" y="0.0" width="428" height="926"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="register VC" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Akc-wr-nCI">
+                                <rect key="frame" x="171.66666666666666" y="452.66666666666669" width="84.999999999999972" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="pWo-dy-UMn"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="Akc-wr-nCI" firstAttribute="centerY" secondItem="iAK-Vl-hPI" secondAttribute="centerY" id="W2e-cd-Q9a"/>
+                            <constraint firstItem="Akc-wr-nCI" firstAttribute="centerX" secondItem="iAK-Vl-hPI" secondAttribute="centerX" id="WIe-54-xED"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="Y1T-iO-Igg"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="eHT-2B-wVU" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1888" y="223"/>
+        </scene>
         <!--TabBarStoryboard-->
         <scene sceneID="7T8-2L-QhN">
             <objects>
@@ -167,16 +195,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2ta-4H-6Wk" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="18.840579710144929" y="81.696428571428569"/>
-        </scene>
-        <!--Register-->
-        <scene sceneID="cAJ-jt-ZRq">
-            <objects>
-                <viewControllerPlaceholder storyboardName="Register" id="n72-nO-B8n" sceneMemberID="viewController">
-                    <navigationItem key="navigationItem" id="GaW-PG-iHq"/>
-                </viewControllerPlaceholder>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="K4e-HD-DnM" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1888" y="223"/>
         </scene>
     </scenes>
     <resources>
