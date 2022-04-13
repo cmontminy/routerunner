@@ -37,6 +37,7 @@
 		FB0EE89127E96B3C005AD4F7 /* UserInterfaceStyleObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB0EE89027E96B3C005AD4F7 /* UserInterfaceStyleObserver.swift */; };
 		FB0EE89327E96B52005AD4F7 /* WeakStyleObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB0EE89227E96B52005AD4F7 /* WeakStyleObserver.swift */; };
 		FB0EE89627E97A81005AD4F7 /* StyledNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB0EE89527E97A81005AD4F7 /* StyledNavigationController.swift */; };
+		FB12E1AC280780840008CBE5 /* Route Algo in Resources */ = {isa = PBXBuildFile; fileRef = FB12E1AB280780840008CBE5 /* Route Algo */; };
 		FB27BE8B27E902E80012AB17 /* Settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FB27BE8A27E902E80012AB17 /* Settings.storyboard */; };
 		FB27BE8D27E907DE0012AB17 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB27BE8C27E907DE0012AB17 /* SettingsViewController.swift */; };
 		FB27BE9227E90D010012AB17 /* SettingsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB27BE9027E90D010012AB17 /* SettingsTableViewCell.swift */; };
@@ -86,6 +87,7 @@
 		FB0EE89027E96B3C005AD4F7 /* UserInterfaceStyleObserver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInterfaceStyleObserver.swift; sourceTree = "<group>"; };
 		FB0EE89227E96B52005AD4F7 /* WeakStyleObserver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeakStyleObserver.swift; sourceTree = "<group>"; };
 		FB0EE89527E97A81005AD4F7 /* StyledNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StyledNavigationController.swift; sourceTree = "<group>"; };
+		FB12E1AB280780840008CBE5 /* Route Algo */ = {isa = PBXFileReference; lastKnownFileType = folder; path = "Route Algo"; sourceTree = "<group>"; };
 		FB27BE8A27E902E80012AB17 /* Settings.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Settings.storyboard; sourceTree = "<group>"; };
 		FB27BE8C27E907DE0012AB17 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		FB27BE9027E90D010012AB17 /* SettingsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableViewCell.swift; sourceTree = "<group>"; };
@@ -229,7 +231,11 @@
 				FB9405C327D7E7B1009DB256 /* LaunchScreen.storyboard */,
 				8D0CE21C27EA18F0000362A2 /* TabBar.storyboard */,
 				8DAF5A2327EA87B30011B580 /* TabBarViewController.swift */,
+<<<<<<< Updated upstream
 				8CAB74A62807641B00D96993 /* Route Algo */,
+=======
+				FB12E1AB280780840008CBE5 /* Route Algo */,
+>>>>>>> Stashed changes
 				FB37D22F27EA3F7A0020715D /* Home Screen */,
 				FB37D23127EA3FB30020715D /* Run Screen */,
 				FB37D23327EA402D0020715D /* History Screen */,
@@ -301,6 +307,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FB12E1AC280780840008CBE5 /* Route Algo in Resources */,
 				FB27BE9327E90D010012AB17 /* SettingsTableViewCell.xib in Resources */,
 				FB37D23827EA59800020715D /* SwitchTableViewCell.xib in Resources */,
 				8D0CE21D27EA18F0000362A2 /* TabBar.storyboard in Resources */,
