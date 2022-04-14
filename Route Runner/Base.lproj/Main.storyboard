@@ -148,7 +148,7 @@
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="u0b-bw-Jnz" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2671" y="13"/>
+            <point key="canvasLocation" x="2645" y="-3"/>
         </scene>
         <!--Register View Controller-->
         <scene sceneID="WQ9-6a-gMp">
@@ -255,7 +255,7 @@
                                             </attributedString>
                                         </buttonConfiguration>
                                         <connections>
-                                            <segue destination="8UE-6E-ASw" kind="show" id="egm-9q-yI1"/>
+                                            <action selector="registerButtonPressed:" destination="Bja-Pp-SFg" eventType="touchUpInside" id="XVt-Y3-t4h"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -341,9 +341,6 @@
             <point key="canvasLocation" x="18.840579710144929" y="81.696428571428569"/>
         </scene>
     </scenes>
-    <inferredMetricsTieBreakers>
-        <segue reference="egm-9q-yI1"/>
-    </inferredMetricsTieBreakers>
     <resources>
         <image name="Yellow background" width="648" height="692"/>
         <systemColor name="placeholderTextColor">
