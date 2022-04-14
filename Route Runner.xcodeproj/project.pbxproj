@@ -53,8 +53,7 @@
 		8DAF5A2427EA87B30011B580 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DAF5A2327EA87B30011B580 /* TabBarViewController.swift */; };
 		8DAF5A2627EA88720011B580 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DAF5A2527EA88720011B580 /* ProfileViewController.swift */; };
 		8DAF5A2827EA88BA0011B580 /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8DAF5A2727EA88BA0011B580 /* Profile.storyboard */; };
-		8DEF5BB82807707800CAC544 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8DEF5BB72807707800CAC544 /* GoogleService-Info.plist */; };
-		8DEF5BBB280773AF00CAC544 /* Register.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8DEF5BB9280773AF00CAC544 /* Register.storyboard */; };
+		8DEF5BBD2808530200CAC544 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8DEF5BBC2808530200CAC544 /* GoogleService-Info.plist */; };
 		FB0EE88F27E96B28005AD4F7 /* UserInterfaceStyleManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB0EE88E27E96B28005AD4F7 /* UserInterfaceStyleManager.swift */; };
 		FB0EE89127E96B3C005AD4F7 /* UserInterfaceStyleObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB0EE89027E96B3C005AD4F7 /* UserInterfaceStyleObserver.swift */; };
 		FB0EE89327E96B52005AD4F7 /* WeakStyleObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB0EE89227E96B52005AD4F7 /* WeakStyleObserver.swift */; };
@@ -96,8 +95,7 @@
 		8DAF5A2327EA87B30011B580 /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 		8DAF5A2527EA88720011B580 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		8DAF5A2727EA88BA0011B580 /* Profile.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Profile.storyboard; sourceTree = "<group>"; };
-		8DEF5BB72807707800CAC544 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "GoogleService-Info.plist"; sourceTree = SOURCE_ROOT; };
-		8DEF5BBA280773AF00CAC544 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = "Route Runner/Base.lproj/Register.storyboard"; sourceTree = "<group>"; };
+		8DEF5BBC2808530200CAC544 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../Downloads/ClassDemo7/ClassDemo5/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		FB0EE88E27E96B28005AD4F7 /* UserInterfaceStyleManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInterfaceStyleManager.swift; sourceTree = "<group>"; };
 		FB0EE89027E96B3C005AD4F7 /* UserInterfaceStyleObserver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInterfaceStyleObserver.swift; sourceTree = "<group>"; };
 		FB0EE89227E96B52005AD4F7 /* WeakStyleObserver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeakStyleObserver.swift; sourceTree = "<group>"; };
@@ -255,7 +253,6 @@
 				FB9405B927D7E7B0009DB256 /* ViewController.swift */,
 				8D5F9F282800875D009C3D78 /* RegisterViewController.swift */,
 				FB9405BB27D7E7B0009DB256 /* Main.storyboard */,
-				8DEF5BB9280773AF00CAC544 /* Register.storyboard */,
 				FB9405C327D7E7B1009DB256 /* LaunchScreen.storyboard */,
 				8D0CE21C27EA18F0000362A2 /* TabBar.storyboard */,
 				8DAF5A2327EA87B30011B580 /* TabBarViewController.swift */,
@@ -268,7 +265,7 @@
 				FB9405C127D7E7B1009DB256 /* Assets.xcassets */,
 				FB9405C627D7E7B1009DB256 /* Info.plist */,
 				FB9405BE27D7E7B0009DB256 /* Route_Runner.xcdatamodeld */,
-				8DEF5BB72807707800CAC544 /* GoogleService-Info.plist */,
+				8DEF5BBC2808530200CAC544 /* GoogleService-Info.plist */,
 			);
 			path = "Route Runner";
 			sourceTree = "<group>";
@@ -377,8 +374,7 @@
 				FB9405BD27D7E7B0009DB256 /* Main.storyboard in Resources */,
 				8D5B54F727E819A500BDB2AD /* Home.storyboard in Resources */,
 				FB27BE8B27E902E80012AB17 /* Settings.storyboard in Resources */,
-				8DEF5BB82807707800CAC544 /* GoogleService-Info.plist in Resources */,
-				8DEF5BBB280773AF00CAC544 /* Register.storyboard in Resources */,
+				8DEF5BBD2808530200CAC544 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -420,14 +416,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		8DEF5BB9280773AF00CAC544 /* Register.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				8DEF5BBA280773AF00CAC544 /* Base */,
-			);
-			name = Register.storyboard;
-			sourceTree = "<group>";
-		};
 		FB9405BB27D7E7B0009DB256 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
