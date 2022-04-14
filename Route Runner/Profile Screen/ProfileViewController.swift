@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Firebase
 
 public let dummyData = ["sample0", "sample1", "sample2", "sample3", "sample4", "sample5"]
 
@@ -28,11 +29,10 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource, UICol
         startObserving(&UserInterfaceStyleManager.shared)
         
         //style profile picture
-        //make circular
         profilePicture.layer.borderWidth = 1
         profilePicture.layer.masksToBounds = false
         profilePicture.layer.borderColor = UIColor.white.cgColor
-        profilePicture.layer.cornerRadius = profilePicture.frame.height/0.5
+        profilePicture.layer.cornerRadius = profilePicture.frame.height/1
         profilePicture.clipsToBounds = true
         profilePicture.sizeToFit()
         //add shadow
@@ -44,6 +44,7 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource, UICol
         //customize fonts
         //let fontArr = UIFont.familyNames
         
+
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
