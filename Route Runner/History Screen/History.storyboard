@@ -8,7 +8,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--History View Controller-->
+        <!--History-->
         <scene sceneID="s0d-6b-0kx">
             <objects>
                 <viewController storyboardIdentifier="HistoryRef" id="Y6W-OH-hqX" customClass="HistoryViewController" customModule="Route_Runner" customModuleProvider="target" sceneMemberID="viewController">
@@ -79,6 +79,8 @@
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
+                    <tabBarItem key="tabBarItem" title="History" image="book.fill" catalog="system" id="ubl-Hl-6Rz"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="tableView" destination="tg8-Dp-vPf" id="3zq-mo-A39"/>
                     </connections>
@@ -99,6 +101,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="book.fill" catalog="system" width="128" height="95"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
