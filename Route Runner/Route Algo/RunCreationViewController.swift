@@ -65,6 +65,12 @@ class RunCreationViewController: UIViewController {
 
             directions = MKDirections(request: request)
             
+            guard directions != nil else {
+                return
+            }
+            
+            routes.append(RunData(route: directions!))
+            
             performSegue(withIdentifier:"ShowTesting", sender: nil)
         }
         
