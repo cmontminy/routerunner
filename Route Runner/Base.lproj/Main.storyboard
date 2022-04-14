@@ -41,7 +41,7 @@
                                 </buttonConfiguration>
                                 <connections>
                                     <action selector="loginButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="PHo-mt-sle"/>
-                                    <segue destination="8UE-6E-ASw" kind="show" id="cYA-VV-iqv"/>
+                                    <segue destination="8UE-6E-ASw" kind="show" id="6Pw-O5-L52"/>
                                 </connections>
                             </button>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="YEO-s5-S3K">
@@ -132,8 +132,8 @@
                     </view>
                     <navigationItem key="navigationItem" id="jJo-kb-gNf"/>
                     <connections>
+                        <outlet property="emailField" destination="YEO-s5-S3K" id="Els-Vl-uH2"/>
                         <outlet property="passwordField" destination="NZv-VM-FB5" id="Z6f-HC-HVa"/>
-                        <outlet property="userNameField" destination="YEO-s5-S3K" id="MFp-7q-M6D"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -148,7 +148,7 @@
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="u0b-bw-Jnz" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2645" y="-3"/>
+            <point key="canvasLocation" x="1686" y="31"/>
         </scene>
         <!--Register View Controller-->
         <scene sceneID="WQ9-6a-gMp">
@@ -320,7 +320,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="71g-4r-Fx8" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1840.6542056074766" y="230.66954643628512"/>
+            <point key="canvasLocation" x="928" y="813"/>
         </scene>
         <!--Styled Navigation Controller-->
         <scene sceneID="OeO-EJ-cj8">

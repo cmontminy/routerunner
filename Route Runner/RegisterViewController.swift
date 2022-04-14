@@ -6,6 +6,8 @@
 //
 
 import UIKit
+import FirebaseAuth
+import Firebase
 
 class RegisterViewController: UIViewController {
 
@@ -58,17 +60,53 @@ class RegisterViewController: UIViewController {
         let error = validateFields()
         if(error != nil){
             //error has occured, display error text
-            let errorController = UIAlertController(
-                title: "Error",
-                message: "\(error!)",
-                preferredStyle: .alert)
-            let OKAction = UIAlertAction(title: "Ok", style: .default, handler: nil)
-            errorController.addAction(OKAction)
-            present(errorController, animated: true, completion: nil)
+            showError(error!)
             return
+        } else {
+            //strip out whitespace and new lines from text fields
+            let firstName = firstNameField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
+            let lastName = lastNameField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
+            let email = emailField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
+            let password = passwordField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
+            //create user
+            Auth.auth().createUser(withEmail: email, password: password) { (res, err) in
+                //check for errors
+                if let err = err {
+                    //there was an error
+                    self.showError("Error creating user")
+                } else{
+                    //store first and last name
+                    let db = Firestore.firestore()
+                    db.collection("users").addDocument(data: ["firstName": firstName, "lastName": lastName, "uid": res!.user.uid]) { (error) in
+                        if (error != nil) {
+                            self.showError("first and last name couldn't be stored")
+                        }
+                    }
+                    //store running skill level
+                    
+                }
+            }
+            //transition to home screen
+            self.transitionToHomeScreen()
         }
-        //create user
-        //transition to home screen
+
+    }
+    
+    func transitionToHomeScreen() {
+        let storyboard = UIStoryboard(name: "TabBar", bundle: nil)
+        let homeVC = storyboard.instantiateViewController(withIdentifier: "TabBarStoryboard") as? HomeViewController
+        view.window?.rootViewController = homeVC
+        view.window?.makeKeyAndVisible()
+    }
+    
+    func showError(_ message:String){
+        let errorController = UIAlertController(
+            title: "Error",
+            message: "\(message)",
+            preferredStyle: .alert)
+        let OKAction = UIAlertAction(title: "Ok", style: .default, handler: nil)
+        errorController.addAction(OKAction)
+        present(errorController, animated: true, completion: nil)
     }
     
     //check fields and validates that all data is correct
@@ -94,8 +132,6 @@ class RegisterViewController: UIViewController {
             return "Please enter a valid password of at least 6 characters"
         }
         //check if confirm password field matches password field
-        
-        
         
         return nil
     }
