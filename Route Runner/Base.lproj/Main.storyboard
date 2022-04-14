@@ -316,6 +316,7 @@
                         <outlet property="lastNameField" destination="BSl-jK-eQn" id="rdh-6r-Wzg"/>
                         <outlet property="passwordField" destination="55H-Tw-Pdw" id="y4L-kr-dYt"/>
                         <outlet property="selectSkillButton" destination="dUz-AD-IUd" id="kHb-x2-DDH"/>
+                        <segue destination="8UE-6E-ASw" kind="show" identifier="RegisterToHomeSegue" id="DMT-fB-3eM"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="71g-4r-Fx8" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -341,6 +342,9 @@
             <point key="canvasLocation" x="18.840579710144929" y="81.696428571428569"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="DMT-fB-3eM"/>
+    </inferredMetricsTieBreakers>
     <resources>
         <image name="Yellow background" width="648" height="692"/>
         <systemColor name="placeholderTextColor">

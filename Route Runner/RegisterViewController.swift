@@ -93,10 +93,7 @@ class RegisterViewController: UIViewController {
     }
     
     func transitionToHomeScreen() {
-        let storyboard = UIStoryboard(name: "TabBar", bundle: nil)
-        let homeVC = storyboard.instantiateViewController(withIdentifier: "TabBarStoryboard") as? HomeViewController
-        view.window?.rootViewController = homeVC
-        view.window?.makeKeyAndVisible()
+        performSegue(withIdentifier: "RegisterToHomeSegue", sender: nil)
     }
     
     func showError(_ message:String){
