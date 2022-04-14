@@ -34,11 +34,46 @@ class RunViewController: UIViewController {
     private var startTime = NSDate().timeIntervalSince1970 // start time stamp
     private var prevTime: Double = 0.0 // used to keep track of time since last updated for pace
     private var totalTime: Int = 0 // total time since this page loaded in minutes
+    private var sourceLocation: CLLocationCoordinate2D = CLLocationCoordinate2D(latitude: 30.283469, longitude: -97.737408)
+    private var destinationLocation: CLLocationCoordinate2D = CLLocationCoordinate2D(latitude: 30.287699, longitude: -97.741558)
     var timer = Timer() // timer to be used to update time variables
     
     // -- Functions --
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        mapView.delegate = self // use delegate implementation to render route
+        
+        // configure place marks
+        let sourcePlacemark: MKPlacemark = MKPlacemark(coordinate: sourceLocation, addressDictionary: nil) // Map Icon for destination location
+        let destinationPlacemark: MKPlacemark = MKPlacemark(coordinate: destinationLocation, addressDictionary: nil) // Map Icon for source location
+        let sourceMapItem: MKMapItem = MKMapItem(placemark: sourcePlacemark) // Map Icon for source location
+        let destinationMapItem: MKMapItem = MKMapItem(placemark: destinationPlacemark) // Map Icon for destination location
+        
+        // get directions between source and destination
+        let directionRequest = MKDirections.Request()
+        directionRequest.source = sourceMapItem
+        directionRequest.destination = destinationMapItem
+        directionRequest.transportType = .walking
+        
+        // Calculate the direction
+        let directions = MKDirections(request: directionRequest)
+
+        directions.calculate {
+            (response, error) -> Void in
+
+            guard let response = response else {
+                if let error = error {
+                    print("Error: \(error)")
+                }
+
+                return
+            }
+
+            let route = response.routes[0]
+            self.mapView.addOverlay((route.polyline), level: MKOverlayLevel.aboveRoads)
+        }
+        
         configureLocationServices() // start location services
         scheduledTimerWithTimeInterval() // start timer
         startObserving(&UserInterfaceStyleManager.shared)
@@ -214,6 +249,17 @@ extension RunViewController: CLLocationManagerDelegate {
     // to run whenever device provides app with updated heading information
     func locationManager(_ manager: CLLocationManager, didUpdateHeading newHeading: CLHeading){
         rotateCamera(direction: newHeading.magneticHeading)
-   }
+    }
+}
+
+extension RunViewController: MKMapViewDelegate {
+  func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
+    let renderer = MKPolylineRenderer(overlay: overlay)
+
+      renderer.strokeColor = .systemBlue // use default blue color for route
+      renderer.lineWidth = 7.5
+    
+    return renderer
+  }
 }
 
