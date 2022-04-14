@@ -31,6 +31,7 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource, UICol
         cell.runImage?.image = UIImage(named: dummyData[row])
         cell.runImage?.layer.cornerRadius = 8.0
         cell.runImage?.layer.masksToBounds = true
+        
         return cell
     }
     
@@ -41,6 +42,20 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource, UICol
     func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
         // add the code here to perform action on the cell
         //when run is clicked on, run detials will be shown, similar to past run in history
-        let cell = collectionView.cellForItem(at: indexPath) as? ProfileCollectionViewCell
+//        let cell = collectionView.cellForItem(at: indexPath) as? ProfileCollectionViewCell
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        
+        let layout = UICollectionViewFlowLayout()
+        let containerWidth = collectionView.bounds.width
+        let cellSize = (containerWidth - 45) / 3
+        layout.itemSize = CGSize(width: cellSize, height: cellSize)
+        layout.minimumInteritemSpacing = 5
+        layout.minimumLineSpacing = 5
+        layout.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+        collectionView.collectionViewLayout = layout
+        
     }
 }
