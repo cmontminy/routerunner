@@ -12,8 +12,15 @@ class RouteTestingViewController: UIViewController {
     @IBOutlet weak var map: MKMapView!
     var directions: MKDirections!
     
+
+    // show routes in diff colors
+    var idx = 0
+    var colors: [UIColor] = [.systemRed, .systemBlue, .systemGreen, .systemPurple, .systemOrange]
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        map.delegate = self
         
         directions!.calculate { [unowned self] response, error in
             guard let unwrappedResponse = response else { return }
@@ -26,5 +33,15 @@ class RouteTestingViewController: UIViewController {
                 }
             }
         }
+    }
+}
+
+extension RouteTestingViewController: MKMapViewDelegate {
+    func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
+         let renderer = MKPolylineRenderer(overlay: overlay)
+        renderer.strokeColor = colors[idx % colors.count]
+        idx += 1
+         renderer.lineWidth = 5.0
+         return renderer
     }
 }
