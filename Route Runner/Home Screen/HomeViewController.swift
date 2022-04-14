@@ -6,6 +6,8 @@
 //
 
 import UIKit
+import Firebase
+import FirebaseFirestoreSwift
 
 class HomeViewController: UIViewController {
 
@@ -13,6 +15,31 @@ class HomeViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         startObserving(&UserInterfaceStyleManager.shared)
+        createDummyRunFirebase()
+    }
+    
+    func createDummyRunFirebase() {
+        print("Making dummy run")
+        let db = Firestore.firestore()
+        let docRef = db.collection("runs").document("sample")
+
+        docRef.getDocument(as: RunData.self) { result  in
+            // The Result type encapsulates deserialization errors or
+            // successful deserialization, and can be handled as follows:
+            //
+            //      Result
+            //        /\
+            //   Error  City
+            switch result {
+            case .success(let run):
+                // A `City` value was successfully initialized from the DocumentSnapshot.
+                print("Run: \(run.name)")
+            case .failure(let error):
+                // A `City` value could not be initialized from the DocumentSnapshot.
+                print("Error decoding run: \(error)")
+            }
+        }
+        try? db.collection("runs").addDocument(from: RunData(name: "testing", image: nil, date: Date(), distance: 123.4, points: 5, time: 8))
     }
     
     // to run anytime the view appears on the screen

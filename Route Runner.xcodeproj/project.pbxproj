@@ -58,6 +58,7 @@
 		FB0EE89127E96B3C005AD4F7 /* UserInterfaceStyleObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB0EE89027E96B3C005AD4F7 /* UserInterfaceStyleObserver.swift */; };
 		FB0EE89327E96B52005AD4F7 /* WeakStyleObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB0EE89227E96B52005AD4F7 /* WeakStyleObserver.swift */; };
 		FB0EE89627E97A81005AD4F7 /* StyledNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB0EE89527E97A81005AD4F7 /* StyledNavigationController.swift */; };
+		FB12E1F828079E5D0008CBE5 /* TTS.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB12E1F728079E5D0008CBE5 /* TTS.swift */; };
 		FB27BE8B27E902E80012AB17 /* Settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FB27BE8A27E902E80012AB17 /* Settings.storyboard */; };
 		FB27BE8D27E907DE0012AB17 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB27BE8C27E907DE0012AB17 /* SettingsViewController.swift */; };
 		FB27BE9227E90D010012AB17 /* SettingsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB27BE9027E90D010012AB17 /* SettingsTableViewCell.swift */; };
@@ -100,6 +101,7 @@
 		FB0EE89027E96B3C005AD4F7 /* UserInterfaceStyleObserver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInterfaceStyleObserver.swift; sourceTree = "<group>"; };
 		FB0EE89227E96B52005AD4F7 /* WeakStyleObserver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeakStyleObserver.swift; sourceTree = "<group>"; };
 		FB0EE89527E97A81005AD4F7 /* StyledNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StyledNavigationController.swift; sourceTree = "<group>"; };
+		FB12E1F728079E5D0008CBE5 /* TTS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TTS.swift; sourceTree = "<group>"; };
 		FB27BE8A27E902E80012AB17 /* Settings.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Settings.storyboard; sourceTree = "<group>"; };
 		FB27BE8C27E907DE0012AB17 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		FB27BE9027E90D010012AB17 /* SettingsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableViewCell.swift; sourceTree = "<group>"; };
@@ -178,6 +180,14 @@
 				FB0EE89527E97A81005AD4F7 /* StyledNavigationController.swift */,
 			);
 			path = Observers;
+			sourceTree = "<group>";
+		};
+		FB12E1F628079E3C0008CBE5 /* TextToSpeech */ = {
+			isa = PBXGroup;
+			children = (
+				FB12E1F728079E5D0008CBE5 /* TTS.swift */,
+			);
+			path = TextToSpeech;
 			sourceTree = "<group>";
 		};
 		FB37D22F27EA3F7A0020715D /* Home Screen */ = {
@@ -262,6 +272,7 @@
 				FB37D23427EA40510020715D /* Settings Screen */,
 				8DAF5A2927EA8B490011B580 /* Profile Screen */,
 				FB0EE89427E96B5E005AD4F7 /* Observers */,
+				FB12E1F628079E3C0008CBE5 /* TextToSpeech */,
 				FB9405C127D7E7B1009DB256 /* Assets.xcassets */,
 				8DEF5BBE280871AC00CAC544 /* GoogleService-Info.plist */,
 				FB9405C627D7E7B1009DB256 /* Info.plist */,
@@ -398,6 +409,7 @@
 				8D19E5E627EABFC400477297 /* ProfileCollectionViewCell.swift in Sources */,
 				8C035C3827E941CA004E269B /* HistoryTableViewCell.swift in Sources */,
 				2CDEAAF927E9557C000DDA40 /* CancelButton.swift in Sources */,
+				FB12E1F828079E5D0008CBE5 /* TTS.swift in Sources */,
 				FBED8A1E27EAA3F200CCDBA5 /* EditableTableViewCell.swift in Sources */,
 				FB9405C027D7E7B0009DB256 /* Route_Runner.xcdatamodeld in Sources */,
 				2CDEAAFB27E957D9000DDA40 /* RunViewController.swift in Sources */,
