@@ -65,7 +65,8 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
         ]))
         models.append(Section(title: "General", options: [
             .switchCell(model: SettingsSwitchOption(title: "Dark Mode", isOn: UserInterfaceStyleManager.shared.currentStyle == .dark)),
-            .switchCell(model: SettingsSwitchOption(title: "Distance", isOn: UserDefaults.standard.bool(forKey:"RouteRunnerKilometerModeOn")))
+            .switchCell(model: SettingsSwitchOption(title: "Distance", isOn: UserDefaults.standard.bool(forKey:"RouteRunnerKilometerModeOn"))),
+            .switchCell(model: SettingsSwitchOption(title: "TTS Directions", isOn: UserDefaults.standard.bool(forKey:"RouteRunnerTTSModeOn")))
         ]))
             
         models.append(Section(title: "Notifications", options: [
@@ -145,6 +146,9 @@ extension SettingsViewController: SwitchCellDelegate {
         } else if option == "Distance" { // action when distance mode switch is flipped
             let kmOn = isOn // isOn: true = kilometer mode on
             UserDefaults.standard.set(kmOn, forKey: "RouteRunnerKilometerModeOn")
+        } else if option == "TTS Directions" { // action when TTS  mode switch is flipped
+            let kmOn = isOn // isOn: true = TTS mode on
+            UserDefaults.standard.set(kmOn, forKey: "RouteRunnerTTSModeOn")
         }
     }
 }
