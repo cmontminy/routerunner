@@ -171,11 +171,28 @@
                                     <constraint firstAttribute="height" constant="37" id="vOP-L1-j8B"/>
                                 </constraints>
                             </view>
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JK7-H4-aJG" userLabel="Location Popup View">
+                                <rect key="frame" x="20" y="206" width="374" height="51"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GSY-KV-QaB" userLabel="Location Popup Label">
+                                        <rect key="frame" x="8" y="8" width="358" height="34"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" name="MuktaMahee-Regular" family="Mukta Mahee" pointSize="20"/>
+                                        <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="JK7-H4-aJG" secondAttribute="height" multiplier="22:3" id="DRY-Ke-kU2"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="0ew-qF-ouQ"/>
                         <color key="backgroundColor" white="0.20188602780000001" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="yvF-8F-sm9" firstAttribute="leading" secondItem="0ew-qF-ouQ" secondAttribute="leading" id="5bl-nU-dev"/>
+                            <constraint firstItem="0ew-qF-ouQ" firstAttribute="trailing" secondItem="JK7-H4-aJG" secondAttribute="trailing" constant="20" id="5g3-C3-6nv"/>
                             <constraint firstItem="Lyg-qi-NU7" firstAttribute="bottom" secondItem="0ew-qF-ouQ" secondAttribute="bottom" id="5hx-Fa-9QB"/>
                             <constraint firstItem="Lyg-qi-NU7" firstAttribute="trailing" secondItem="0ew-qF-ouQ" secondAttribute="trailing" id="E5B-Bh-hmZ"/>
                             <constraint firstItem="yvF-8F-sm9" firstAttribute="bottom" secondItem="Lyg-qi-NU7" secondAttribute="bottom" id="Knd-y7-MuG"/>
@@ -184,10 +201,12 @@
                             <constraint firstItem="0ew-qF-ouQ" firstAttribute="trailing" secondItem="Lyg-qi-NU7" secondAttribute="trailing" id="Xlt-rE-jdp"/>
                             <constraint firstItem="eOc-MW-NyS" firstAttribute="top" secondItem="0ew-qF-ouQ" secondAttribute="top" id="ZgT-Kk-S0l"/>
                             <constraint firstItem="Lyg-qi-NU7" firstAttribute="leading" secondItem="0ew-qF-ouQ" secondAttribute="leading" id="ZiF-Ys-eVe"/>
+                            <constraint firstItem="JK7-H4-aJG" firstAttribute="leading" secondItem="0ew-qF-ouQ" secondAttribute="leading" constant="20" id="fL8-i4-lm9"/>
                             <constraint firstItem="yvF-8F-sm9" firstAttribute="trailing" secondItem="0ew-qF-ouQ" secondAttribute="trailing" id="hf7-Dw-1GK"/>
                             <constraint firstItem="eOc-MW-NyS" firstAttribute="trailing" secondItem="0ew-qF-ouQ" secondAttribute="trailing" id="nAG-Wl-059"/>
                             <constraint firstItem="Lyg-qi-NU7" firstAttribute="leading" secondItem="0ew-qF-ouQ" secondAttribute="leading" id="nIE-rf-IFq"/>
                             <constraint firstItem="ptT-Xl-IjN" firstAttribute="top" secondItem="dTo-50-7S1" secondAttribute="bottom" constant="8" symbolic="YES" id="u3d-Hh-xIP"/>
+                            <constraint firstItem="JK7-H4-aJG" firstAttribute="top" secondItem="eOc-MW-NyS" secondAttribute="bottom" constant="17.5" id="xcr-4e-afb"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="QIa-m4-HFD"/>
@@ -196,6 +215,8 @@
                         <outlet property="directionLabel" destination="rnv-es-A5Y" id="6Ik-6P-K6y"/>
                         <outlet property="elapsedLabel" destination="zpY-Gb-OEQ" id="hey-ay-Gno"/>
                         <outlet property="elapsedMeter" destination="J21-7A-2A0" id="bi3-dG-LrQ"/>
+                        <outlet property="locationPopupLabel" destination="GSY-KV-QaB" id="VU6-2K-bAE"/>
+                        <outlet property="locationPopupView" destination="JK7-H4-aJG" id="HyT-5v-Csb"/>
                         <outlet property="mapView" destination="yvF-8F-sm9" id="wcI-uU-jVZ"/>
                         <outlet property="paceLabel" destination="0c0-nL-53N" id="ZGy-VE-pHJ"/>
                         <outlet property="paceMeter" destination="WXO-I7-lUL" id="oDS-3F-9bL"/>
@@ -206,7 +227,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Y1b-kb-iJK" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="794.85981308411215" y="81.641468682505405"/>
+            <point key="canvasLocation" x="794.20289855072474" y="81.026785714285708"/>
         </scene>
     </scenes>
     <designables>

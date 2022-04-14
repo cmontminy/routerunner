@@ -28,6 +28,8 @@ class RunViewController: UIViewController {
     @IBOutlet weak var routeLabel: UILabel! // route label
     @IBOutlet weak var directionLabel: UILabel! // label to display next direction user should take
     @IBOutlet weak var directionIcon: UIImageView! // icon displaying next action user should take
+    @IBOutlet weak var locationPopupView: UIView! // new location popup view
+    @IBOutlet weak var locationPopupLabel: UILabel! // new location popup text
     
     // -- Other Variables --
     private var totalDistanceTravelled: Double = 0 // used to store total distance user had travelled
@@ -36,7 +38,9 @@ class RunViewController: UIViewController {
     private var totalTime: Int = 0 // total time since this page loaded in minutes
     private var sourceLocation: CLLocationCoordinate2D = CLLocationCoordinate2D(latitude: 30.283469, longitude: -97.737408)
     private var destinationLocation: CLLocationCoordinate2D = CLLocationCoordinate2D(latitude: 30.287699, longitude: -97.741558)
-    var timer = Timer() // timer to be used to update time variables
+    private var timer = Timer() // timer to be used to update time variables
+    private var popupTimer = Timer() // timer to be used to close popups
+    private var newPlaces: [(String, String)] = [] // array of place strings to store new places a user visits during their run
     
     // -- Functions --
     override func viewDidLoad() {
@@ -177,6 +181,53 @@ class RunViewController: UIViewController {
         elapsedMeter.text = String(roundedMiles)
         timeMeter.text = String(totalTime)
         paceMeter.text = String(pace)
+        
+        // identify nearby points of interest around a 75 meter radius
+        let nearbyPointsReq = MKLocalPointsOfInterestRequest(center: latestLocation.coordinate, radius: 75.0)
+        // filter requests
+        nearbyPointsReq.pointOfInterestFilter = MKPointOfInterestFilter(including: [.amusementPark, .aquarium, .beach, .museum, .nationalPark, .stadium, .university, .zoo, .campground, .brewery, .library, .winery, .school, .theater, .movieTheater, .park])
+        // search using request
+        let search = MKLocalSearch(request: nearbyPointsReq)
+        search.start { response, error in
+            guard let response = response else {
+                print(error as Any)
+                return
+            }
+            for item in response.mapItems {
+                let name = item.name!
+                let locationType = item.pointOfInterestCategory?.rawValue
+                let place = (name, locationType!)
+
+                // if name is unique, add to new place array and display msg to user
+                if (!self.contains(arr:self.newPlaces,t:place)) {
+                    // append name to array
+                    self.newPlaces.append(place)
+                    
+                    // display location
+                    self.locationPopupLabel.text = "New Place: " + name + "!"
+                    self.setView(view: self.locationPopupView, hidden: false)
+                    
+                    // close popup after 3 seconds
+                    self.popupTimer = Timer.scheduledTimer(withTimeInterval: 3, repeats: false, block: { _ in
+                        self.setView(view: self.locationPopupView, hidden: true)
+                    })
+                }
+            }
+        }
+    }
+    
+    // helper func to close new location popup
+    private func setView(view: UIView, hidden: Bool) {
+        UIView.transition(with: view, duration: 0.5, options: .transitionCrossDissolve, animations: {
+            view.isHidden = hidden
+        })
+    }
+    
+    // helper func to compare tuples
+    func contains(arr:[(String, String)], t:(String,String)) -> Bool {
+      let (c1, c2) = t
+      for (v1, v2) in arr { if v1 == c1 && v2 == c2 { return true } }
+      return false
     }
     
     // update time variable and label
