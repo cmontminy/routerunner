@@ -108,11 +108,12 @@
                         <outlet property="endField" destination="ca4-Kx-v8E" id="8Ce-dJ-Y5W"/>
                         <outlet property="startField" destination="blE-SH-FWx" id="3IQ-uD-Y9g"/>
                         <segue destination="dXq-Fo-73O" kind="show" identifier="ShowTesting" id="Hon-19-kNJ"/>
+                        <segue destination="fuf-ni-dm7" kind="show" identifier="RunScreenIdentifier" id="Dq1-GG-8Ko"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-13.043478260869566" y="69.642857142857139"/>
+            <point key="canvasLocation" x="-77" y="59"/>
         </scene>
         <!--route testing-->
         <scene sceneID="rok-Lu-8sQ">
@@ -145,6 +146,16 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="h3p-78-0SA" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="757.97101449275374" y="58.928571428571423"/>
+        </scene>
+        <!--Run-->
+        <scene sceneID="HJM-A5-lcb">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Run" id="fuf-ni-dm7" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="s7H-s8-F9e"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="5vS-ZS-tKK" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-77" y="463"/>
         </scene>
     </scenes>
     <resources>

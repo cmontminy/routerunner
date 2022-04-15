@@ -22,6 +22,7 @@ class RunData {
     var points: Int
     var time: Int // in seconds
     var route: MKDirections?
+    var routeOverlay: MKRoute?
     
     init(name: String, image: UIImage?, date: Date, distance: Double, points: Int, time: Int) {
         self.name = name
@@ -43,14 +44,15 @@ class RunData {
         points = 0
         distance = 0
         time = 0
-        directions.calculate {response ,error in
-            guard let directionsRoute = response?.routes[0] else {
-                print("Error in RunData.init: \(error?.localizedDescription ?? "nil")")
-                      return
-            }
-            self.distance = directionsRoute.distance
-            self.time = Int(directionsRoute.expectedTravelTime)
-        }
+//        directions.calculate {response ,error in
+//            guard let directionsRoute = response?.routes[0] else {
+//                print("Error in RunData.init: \(error?.localizedDescription ?? "nil")")
+//                      return
+//            }
+//            self.distance = directionsRoute.distance
+//            self.time = Int(directionsRoute.expectedTravelTime)
+//            self.routeOverlay = directionsRoute
+//        }
     }
     
     // Return the run's date in the format 01/31/1999

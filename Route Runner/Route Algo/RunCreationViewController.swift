@@ -15,10 +15,10 @@ class RunCreationViewController: UIViewController {
     @IBOutlet weak var endField: UITextField!
     
     var locationManager = CLLocationManager()
-    
     var startPoint: CLPlacemark?
     var region: MKCoordinateRegion?
     var directions: MKDirections?
+    var newRunData: RunData?
 //    var endPoint: CLPlacemark?
     
     @IBAction func currentLocationButtonPressed() {
@@ -69,18 +69,23 @@ class RunCreationViewController: UIViewController {
                 return
             }
             
-            routes.append(RunData(route: directions!))
+            newRunData = RunData(route: directions!)
+
+            routes.append(newRunData!)
             
-            performSegue(withIdentifier:"ShowTesting", sender: nil)
+            // navigate to run screen
+            performSegue(withIdentifier:"RunScreenIdentifier", sender: nil) // navigate
+            //performSegue(withIdentifier:"ShowTesting", sender: nil)
         }
-        
-        
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "ShowTesting" {
             let nextVC = segue.destination as! RouteTestingViewController
             nextVC.directions = directions
+        } else if segue.identifier == "RunScreenIdentifier" {
+            let nextVC = segue.destination as! RunViewController
+            nextVC.routeData = newRunData // add new route that was just appended
         }
     }
     
