@@ -28,17 +28,63 @@ class RunViewController: UIViewController {
     @IBOutlet weak var routeLabel: UILabel! // route label
     @IBOutlet weak var directionLabel: UILabel! // label to display next direction user should take
     @IBOutlet weak var directionIcon: UIImageView! // icon displaying next action user should take
+    @IBOutlet weak var popupView: UIView! // view for popup over map
+    @IBOutlet weak var popupLabel: UILabel! // text for popup over map
     
     // -- Other Variables --
     private var totalDistanceTravelled: Double = 0 // used to store total distance user had travelled
     private var startTime = NSDate().timeIntervalSince1970 // start time stamp
     private var prevTime: Double = 0.0 // used to keep track of time since last updated for pace
     private var totalTime: Int = 0 // total time since this page loaded in minutes
-    var timer = Timer() // timer to be used to update time variables
+    private var timer = Timer() // timer to be used to update time variables
+    private var popupTimer = Timer() // timer used to control popup view
+    public var routeData: RunData! = nil
+    private var newPlaces: [(String,String)] = []
+    private var distanceFormatter = MKDistanceFormatter()
     
     // -- Functions --
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        mapView.delegate = self
+        
+        // draw route on map
+        if(routeData != nil && routeData.route != nil) {
+            routeData.route!.calculate {response ,error in
+                guard let response = response else {
+                    if let error = error {
+                        print("Error: \(error)")
+                    }
+                    return
+                }
+                let directionsRoute = response.routes[0]
+
+                self.mapView.addOverlay((directionsRoute.polyline), level: MKOverlayLevel.aboveRoads)
+                
+                // set title to name and route distance length
+                let unit = self.usingKilometers() ? "km" : "mi"
+                // round distance to tenth and add everything to route label
+                self.routeLabel.text = self.routeData.name + "-" + String(round((directionsRoute.distance / 1000.0) * 10) / 10.0 ) + unit
+                
+                let nextStep = directionsRoute.steps[1] // first step is starting position, want the next step
+                let nextStepText = nextStep.notice ?? nextStep.instructions
+                let nextStepDistance = self.distanceFormatter.string(
+                    fromDistance: nextStep.distance
+                  )
+                self.directionLabel.text = nextStepText + "-" + nextStepDistance
+                
+                // set direction icon
+                if nextStepText.contains("left") {
+                    self.directionIcon.image = UIImage(systemName: "arrow.left")
+                } else if nextStepText.contains("right") {
+                    self.directionIcon.image = UIImage(systemName: "arrow.right")
+                } else {
+                    self.directionIcon.image = UIImage(systemName: "arrow.up")
+                }
+                
+            }
+        }
+        
         configureLocationServices() // start location services
         scheduledTimerWithTimeInterval() // start timer
         startObserving(&UserInterfaceStyleManager.shared)
@@ -142,6 +188,53 @@ class RunViewController: UIViewController {
         elapsedMeter.text = String(roundedMiles)
         timeMeter.text = String(totalTime)
         paceMeter.text = String(pace)
+        
+        // identify nearby points of interest around a 75 meter radius
+        let nearbyPointsReq = MKLocalPointsOfInterestRequest(center: latestLocation.coordinate, radius: 75.0)
+        // filter requests
+        nearbyPointsReq.pointOfInterestFilter = MKPointOfInterestFilter(including: [.amusementPark, .aquarium, .beach, .museum, .nationalPark, .stadium, .university, .zoo, .campground, .brewery, .library, .winery, .school, .theater, .movieTheater, .park])
+        // search using request
+        let search = MKLocalSearch(request: nearbyPointsReq)
+        search.start { response, error in
+            guard let response = response else {
+                print(error as Any)
+                return
+            }
+            for item in response.mapItems {
+                let name = item.name!
+                let locationType = item.pointOfInterestCategory?.rawValue
+                let place = (name, locationType!)
+
+                // if name is unique, add to new place array and display msg to user
+                if (!self.contains(arr:self.newPlaces,t:place)) {
+                    // append name to array
+                    self.newPlaces.append(place)
+                    
+                    // display location
+                    self.popupLabel.text = "New Place: " + name + "!"
+                    self.setView(view: self.popupView, hidden: false)
+                    
+                    // close popup after 3 seconds
+                    self.popupTimer = Timer.scheduledTimer(withTimeInterval: 3, repeats: false, block: { _ in
+                        self.setView(view: self.popupView, hidden: true)
+                    })
+                }
+            }
+        }
+    }
+    
+    // helper func to close/reveal views
+    private func setView(view: UIView, hidden: Bool) {
+        UIView.transition(with: view, duration: 0.5, options: .transitionCrossDissolve, animations: {
+            view.isHidden = hidden
+        })
+    }
+    
+    // helper func to compare tuples
+    func contains(arr:[(String, String)], t:(String,String)) -> Bool {
+      let (c1, c2) = t
+      for (v1, v2) in arr { if v1 == c1 && v2 == c2 { return true } }
+      return false
     }
     
     // update time variable and label
@@ -217,3 +310,13 @@ extension RunViewController: CLLocationManagerDelegate {
    }
 }
 
+extension RunViewController: MKMapViewDelegate {
+  func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
+    let renderer = MKPolylineRenderer(overlay: overlay)
+
+      renderer.strokeColor = .systemBlue // use default blue color for route
+      renderer.lineWidth = 7.5
+    
+    return renderer
+  }
+}

@@ -34,8 +34,8 @@
                                             <action selector="cancelButtonPressed:" destination="ZKq-Af-wQn" eventType="touchUpInside" id="qCj-Ce-lEG"/>
                                         </connections>
                                     </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hyde Park" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="15" translatesAutoresizingMaskIntoConstraints="NO" id="49T-DD-8hR" userLabel="Route Label">
-                                        <rect key="frame" x="15" y="8" width="252" height="58.5"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="15" translatesAutoresizingMaskIntoConstraints="NO" id="49T-DD-8hR" userLabel="Route Label">
+                                        <rect key="frame" x="15" y="8" width="0.0" height="0.0"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="49T-DD-8hR" secondAttribute="height" multiplier="125:29" id="g8h-Zp-tZh"/>
                                         </constraints>
@@ -48,7 +48,7 @@
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </view>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Next Direction" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="13" translatesAutoresizingMaskIntoConstraints="NO" id="rnv-es-A5Y" userLabel="Direction Label">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="13" translatesAutoresizingMaskIntoConstraints="NO" id="rnv-es-A5Y" userLabel="Direction Label">
                                         <rect key="frame" x="63" y="93" width="300" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" name="MuktaMahee-Light" family="Mukta Mahee" pointSize="25"/>
@@ -59,7 +59,6 @@
                                         <rect key="frame" x="16" y="93" width="30" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <imageReference key="image" image="arrow.up" catalog="system" symbolScale="medium"/>
                                     </imageView>
                                 </subviews>
                                 <color key="backgroundColor" white="0.20188602780000001" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -171,13 +170,31 @@
                                     <constraint firstAttribute="height" constant="37" id="vOP-L1-j8B"/>
                                 </constraints>
                             </view>
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hSm-yV-ZsH" userLabel="Popup View">
+                                <rect key="frame" x="20" y="203.5" width="374" height="50"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ab5-mB-1BL" userLabel="Popup Label">
+                                        <rect key="frame" x="8" y="8" width="358" height="34"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" name="MuktaMahee-Regular" family="Mukta Mahee" pointSize="20"/>
+                                        <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="hSm-yV-ZsH" secondAttribute="height" multiplier="187:25" id="wm3-w8-GtG"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="0ew-qF-ouQ"/>
                         <color key="backgroundColor" white="0.20188602780000001" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="hSm-yV-ZsH" firstAttribute="top" secondItem="eOc-MW-NyS" secondAttribute="bottom" constant="15" id="55O-es-Whu"/>
                             <constraint firstItem="yvF-8F-sm9" firstAttribute="leading" secondItem="0ew-qF-ouQ" secondAttribute="leading" id="5bl-nU-dev"/>
                             <constraint firstItem="Lyg-qi-NU7" firstAttribute="bottom" secondItem="0ew-qF-ouQ" secondAttribute="bottom" id="5hx-Fa-9QB"/>
                             <constraint firstItem="Lyg-qi-NU7" firstAttribute="trailing" secondItem="0ew-qF-ouQ" secondAttribute="trailing" id="E5B-Bh-hmZ"/>
+                            <constraint firstItem="0ew-qF-ouQ" firstAttribute="trailing" secondItem="hSm-yV-ZsH" secondAttribute="trailing" constant="20" id="EHe-Xc-MQC"/>
                             <constraint firstItem="yvF-8F-sm9" firstAttribute="bottom" secondItem="Lyg-qi-NU7" secondAttribute="bottom" id="Knd-y7-MuG"/>
                             <constraint firstItem="yvF-8F-sm9" firstAttribute="top" secondItem="eOc-MW-NyS" secondAttribute="bottom" constant="-2" id="TMd-aP-wKG"/>
                             <constraint firstItem="eOc-MW-NyS" firstAttribute="leading" secondItem="0ew-qF-ouQ" secondAttribute="leading" id="TQi-vn-eOe"/>
@@ -188,6 +205,7 @@
                             <constraint firstItem="eOc-MW-NyS" firstAttribute="trailing" secondItem="0ew-qF-ouQ" secondAttribute="trailing" id="nAG-Wl-059"/>
                             <constraint firstItem="Lyg-qi-NU7" firstAttribute="leading" secondItem="0ew-qF-ouQ" secondAttribute="leading" id="nIE-rf-IFq"/>
                             <constraint firstItem="ptT-Xl-IjN" firstAttribute="top" secondItem="dTo-50-7S1" secondAttribute="bottom" constant="8" symbolic="YES" id="u3d-Hh-xIP"/>
+                            <constraint firstItem="hSm-yV-ZsH" firstAttribute="leading" secondItem="0ew-qF-ouQ" secondAttribute="leading" constant="20" id="yTy-z6-V73"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="QIa-m4-HFD"/>
@@ -199,6 +217,8 @@
                         <outlet property="mapView" destination="yvF-8F-sm9" id="wcI-uU-jVZ"/>
                         <outlet property="paceLabel" destination="0c0-nL-53N" id="ZGy-VE-pHJ"/>
                         <outlet property="paceMeter" destination="WXO-I7-lUL" id="oDS-3F-9bL"/>
+                        <outlet property="popupLabel" destination="ab5-mB-1BL" id="xtW-Hz-k2V"/>
+                        <outlet property="popupView" destination="hSm-yV-ZsH" id="9RM-Uz-JAo"/>
                         <outlet property="routeLabel" destination="49T-DD-8hR" id="qtO-4j-SE3"/>
                         <outlet property="timeLabel" destination="eMi-aP-L2f" id="zX9-CH-22U"/>
                         <outlet property="timeMeter" destination="1pr-v2-hkZ" id="RlS-rG-zVt"/>
@@ -206,7 +226,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Y1b-kb-iJK" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="794.85981308411215" y="81.641468682505405"/>
+            <point key="canvasLocation" x="794.20289855072474" y="81.026785714285708"/>
         </scene>
     </scenes>
     <designables>
@@ -215,7 +235,6 @@
         </designable>
     </designables>
     <resources>
-        <image name="arrow.up" catalog="system" width="120" height="128"/>
         <image name="xmark" catalog="system" width="128" height="113"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
