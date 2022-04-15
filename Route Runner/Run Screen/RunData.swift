@@ -36,7 +36,9 @@ class RunData: Codable {
         self.time = time
     }
     
+    // decoder constructor for comply with Codable
     required init(from decoder: Decoder) throws {
+        // Assign all values except image; need to figure out a solution/alternative for images
         let values = try decoder.container(keyedBy: CodingKeys.self)
         name = try values.decode(String.self, forKey: .name)
         locations = try values.decode([String].self, forKey: .locations)
@@ -48,6 +50,7 @@ class RunData: Codable {
         image = nil
     }
     
+    // keys for use with decoding/encoding
     enum CodingKeys: String, CodingKey {
             case name
             case locations
@@ -60,6 +63,7 @@ class RunData: Codable {
             case uid
     }
     
+    // Instructions on how to create JSON document
     func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encode(name, forKey: .name)
@@ -115,31 +119,3 @@ class RunData: Codable {
         }
     }
 }
-
-//extension RunData: Codable {
-//
-//    enum CodingKeys: String, CodingKey {
-//            case name
-//            case locations
-//            case challenges
-//            case image
-//            case date
-//            case distance
-//            case points
-//            case time
-//
-//    }
-//
-//    func encode(to encoder: Encoder) throws {
-//        var container = encoder.container(keyedBy: CodingKeys.self)
-//        try container.encode(name, forKey: .name)
-//        try container.encode(locations, forKey: .locations)
-//        try container.encode(challenges, forKey: .challenges)
-//        try container.encode(date, forKey: .date)
-//        try container.encode(distance, forKey: .distance)
-//        try container.encode(points, forKey: .points)
-//        try container.encode(time, forKey: .time)
-//    }
-//
-//
-//}

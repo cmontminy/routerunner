@@ -60,7 +60,7 @@ class ProfileSettingsViewController: UIViewController, UITableViewDelegate, UITa
     // function to set up option list - subtitles are dummy variables "test" for now
     func configure() {
         models.append(Section(title: "User Information", options: [
-            .editableCell(model: SettingsEditOption(title: "Name", subtitle: "\() \()") {
+            .editableCell(model: SettingsEditOption(title: "Name", subtitle: "Test") {
                 let controller = UIAlertController(
                     title: "Edit Name",
                     message: "",

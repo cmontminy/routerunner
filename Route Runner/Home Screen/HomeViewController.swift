@@ -18,8 +18,8 @@ class HomeViewController: UIViewController {
         createDummyRunFirebase()
     }
     
+    // Create a dummy run document on page load for firebase testing
     func createDummyRunFirebase() {
-        print("Making dummy run")
         let db = Firestore.firestore()
         let docRef = db.collection("runs").document("sample")
 

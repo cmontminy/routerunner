@@ -8,6 +8,7 @@
 import UIKit
 import FirebaseAuth
 
+// Data Class for storing/updating user info in firebase
 class UserData: Codable {
     
     // Data fields
@@ -17,8 +18,6 @@ class UserData: Codable {
     var experienceLevel: String
     var uid: String
     
-    
-    
     init(firstName: String, lastName: String, email: String, experienceLevel: String, uid: String) {
         self.firstName = firstName
         self.lastName = lastName
@@ -26,5 +25,4 @@ class UserData: Codable {
         self.experienceLevel = experienceLevel
         self.uid = uid
     }
-    
 }

@@ -19,8 +19,8 @@ class RunCreationViewController: UIViewController {
     var region: MKCoordinateRegion?
     var directions: MKDirections?
     var newRunData: RunData?
-//    var endPoint: CLPlacemark?
     
+    // Fill startField with current location
     @IBAction func currentLocationButtonPressed() {
         guard locationManager.location != nil else {
             return
@@ -30,17 +30,15 @@ class RunCreationViewController: UIViewController {
             if error == nil {
                 self.startField.text = placemarks![0].name
                 self.startPoint = placemarks![0]
-//                print("Placemarks: \(placemarks!)")
             } else {
                 print("CLGeocoder error: \(error!.localizedDescription)")
             }
         })
     }
     
+    // Get directions for a route based on start/endpoints
     @IBAction func createRoute() {
-        
-        print("IN ACTION!")
-        
+                
         Task {
             guard startField.text != nil, endField.text != nil else {
                 print("Missing parameters for route.")
@@ -57,6 +55,7 @@ class RunCreationViewController: UIViewController {
                 return
             }
             
+            // Create MKDirections Request
             let request = MKDirections.Request()
             request.source = MKMapItem(placemark: start)
             request.destination = MKMapItem(placemark: end)
@@ -69,6 +68,7 @@ class RunCreationViewController: UIViewController {
                 return
             }
             
+            // Create a RunData object for this route
             newRunData = RunData(route: directions!)
 
             routes.append(newRunData!)
@@ -139,6 +139,7 @@ extension RunCreationViewController: CLLocationManagerDelegate {
             return
         }
         
+        // set region on first location update, needed for search
         let commonDelta: CLLocationDegrees = 25 / 111 // 1/111 = 1 latitude km
         let span = MKCoordinateSpan(latitudeDelta: commonDelta, longitudeDelta: commonDelta)
         region = MKCoordinateRegion(center: locations.last!.coordinate, span: span)
