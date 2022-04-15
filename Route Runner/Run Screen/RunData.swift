@@ -73,6 +73,8 @@ class RunData: Codable {
             return
         }
         try container.encode(user.uid, forKey: .uid)
+    }
+    
     init(route directions: MKDirections) {
         route = directions
         name = "Untitled Run"
@@ -82,15 +84,6 @@ class RunData: Codable {
         points = 0
         distance = 0
         time = 0
-//        directions.calculate {response ,error in
-//            guard let directionsRoute = response?.routes[0] else {
-//                print("Error in RunData.init: \(error?.localizedDescription ?? "nil")")
-//                      return
-//            }
-//            self.distance = directionsRoute.distance
-//            self.time = Int(directionsRoute.expectedTravelTime)
-//            self.routeOverlay = directionsRoute
-//        }
     }
     
     // Return the run's date in the format 01/31/1999
