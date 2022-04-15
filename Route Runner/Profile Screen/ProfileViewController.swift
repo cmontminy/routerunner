@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Firebase
 
 public let dummyData = ["sample0", "sample1", "sample2", "sample3", "sample4", "sample5"]
 
@@ -16,6 +17,9 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource, UICol
     @IBOutlet weak var numRuns: UILabel!
     @IBOutlet weak var numMiles: UILabel!
     @IBOutlet weak var numSPs: UILabel!
+    @IBOutlet weak var runLabel: UILabel!
+    @IBOutlet weak var milesLabel: UILabel!
+    @IBOutlet weak var spLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,6 +27,24 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource, UICol
         collectionView.delegate = self
         profilePicture.image = UIImage(named: "profilepictureRR")
         startObserving(&UserInterfaceStyleManager.shared)
+        
+        //style profile picture
+        profilePicture.layer.borderWidth = 1
+        profilePicture.layer.masksToBounds = false
+        profilePicture.layer.borderColor = UIColor.white.cgColor
+        profilePicture.layer.cornerRadius = profilePicture.frame.height/1
+        profilePicture.clipsToBounds = true
+        profilePicture.sizeToFit()
+        //add shadow
+        profilePicture.layer.shadowColor = UIColor.gray.cgColor
+        profilePicture.layer.shadowOffset = CGSize.zero;
+        profilePicture.layer.shadowOpacity = 1;
+        profilePicture.layer.shadowRadius = 1.0;
+        
+        //customize fonts
+        //let fontArr = UIFont.familyNames
+        
+
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
