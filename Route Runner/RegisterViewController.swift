@@ -77,6 +77,11 @@ class RegisterViewController: UIViewController {
                 } else{
                     //store first and last name
                     let db = Firestore.firestore()
+                    let data = ["firstName": firstName,
+                                "lastName": lastName,
+                                "uid": res!.user.uid,
+                                "email": email,
+                                "experienceLevel": self.selectSkillButton.titleLabel?.text ?? "none"]
                     db.collection("users").addDocument(data: ["firstName": firstName, "lastName": lastName, "uid": res!.user.uid]) { (error) in
                         if (error != nil) {
                             self.showError("first and last name couldn't be stored")

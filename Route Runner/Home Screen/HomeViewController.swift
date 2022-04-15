@@ -24,18 +24,10 @@ class HomeViewController: UIViewController {
         let docRef = db.collection("runs").document("sample")
 
         docRef.getDocument(as: RunData.self) { result  in
-            // The Result type encapsulates deserialization errors or
-            // successful deserialization, and can be handled as follows:
-            //
-            //      Result
-            //        /\
-            //   Error  City
             switch result {
             case .success(let run):
-                // A `City` value was successfully initialized from the DocumentSnapshot.
                 print("Run: \(run.name)")
             case .failure(let error):
-                // A `City` value could not be initialized from the DocumentSnapshot.
                 print("Error decoding run: \(error)")
             }
         }

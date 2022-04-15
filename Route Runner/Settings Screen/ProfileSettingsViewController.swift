@@ -8,6 +8,9 @@
 //
 
 import UIKit
+import Firebase
+import FirebaseFirestoreSwift
+import FirebaseAuth
 
 class ProfileSettingsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
@@ -15,8 +18,11 @@ class ProfileSettingsViewController: UIViewController, UITableViewDelegate, UITa
     
     var models = [Section]() // array to store each section and its options for the table
     
+    var data: UserData?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        fetchUserData()
         configure() // call to set up models array
         tableView.delegate = self
         tableView.dataSource = self
@@ -26,6 +32,28 @@ class ProfileSettingsViewController: UIViewController, UITableViewDelegate, UITa
         tableView.register(UINib(nibName: "EditableTableViewCell", bundle: nil), forCellReuseIdentifier: "EditableTableViewCell")
         
         startObserving(&UserInterfaceStyleManager.shared) // observer for darkmode style change
+    }
+    
+    func fetchUserData() {
+        guard let user = Auth.auth().currentUser else {
+            return
+        }
+        
+        let db = Firestore.firestore()
+        db.collection("users").whereField("uid", isEqualTo: user.uid)
+            .getDocuments() { (querySnapshot, err) in
+                if let err = err {
+                    print("Error getting documents: \(err)")
+                } else {
+                    for document in querySnapshot!.documents {
+                        guard let fetchedUser = try? document.data(as: UserData.self) else {
+                            print("could not convert fetchedUser")
+                            return
+                        }
+                        print("Name: \(fetchedUser.firstName)")
+                    }
+                }
+        }
     }
     
     // function to set up option list - subtitles are dummy variables "test" for now
