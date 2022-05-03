@@ -58,7 +58,6 @@ class RunViewController: UIViewController {
                     return
                 }
                 let directionsRoute = response.routes[0]
-
                 self.mapView.addOverlay((directionsRoute.polyline), level: MKOverlayLevel.aboveRoads)
                 
                 // set title to name and route distance length
