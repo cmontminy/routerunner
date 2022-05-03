@@ -10,4 +10,10 @@ import UIKit
 class ProfileCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var runImage: UIImageView!
+    
+    @IBOutlet weak var runName: UILabel!
+    
+    @IBOutlet weak var runLocations: UILabel!
+    
+    @IBOutlet weak var runDate: UILabel!
 }

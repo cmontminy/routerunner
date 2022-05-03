@@ -10,6 +10,8 @@ import Firebase
 
 public let dummyData = ["sample0", "sample1", "sample2", "sample3", "sample4", "sample5"]
 
+var runList: [RunData] = []
+
 class ProfileViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
     
     @IBOutlet weak var profilePicture: UIImageView!
@@ -50,10 +52,23 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource, UICol
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "myCell", for: indexPath) as! ProfileCollectionViewCell
         let row = indexPath.row
-        cell.runImage?.image = UIImage(named: dummyData[row])
+//        cell.runImage?.image = UIImage(named: dummyData[row])
+//        cell.runImage?.layer.cornerRadius = 8.0
+//        cell.runImage?.layer.masksToBounds = true
+        let run = runList[row]
+        
+        // Display name, distance to 1 decimal place, and the correct distance unit
+        cell.runName.text = "\(run.name) - \(String(format: "%.1f", run.getDistance())) \(self.usingKilometers() ? "km" : "mi")"
+        
+        cell.runLocations.text = "\(run.locations.count) Locations"
+        cell.runDate.text = run.getDateString()
+
+        // Use placeholder image if none provided
+        cell.runImage?.image = run.image ?? UIImage(named: "dummy")
+        
+        // Give image rounded edges
         cell.runImage?.layer.cornerRadius = 8.0
         cell.runImage?.layer.masksToBounds = true
-        
         return cell
     }
     
