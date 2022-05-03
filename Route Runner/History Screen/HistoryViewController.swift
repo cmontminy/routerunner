@@ -50,7 +50,7 @@ class HistoryViewController: UIViewController, UITableViewDelegate, UITableViewD
         let run = runs[row]
         
         // Display name, distance to 1 decimal place, and the correct distance unit
-        cell.runName.text = "\(run.name) - \(String(format: "%.1f", run.getDistance())) \(usingKilometers() ? "km" : "mi")"
+        cell.runName.text = "\(run.name) - \(String(format: "%.1f", run.getDistance())) \(self.usingKilometers() ? "km" : "mi")"
         
         cell.runLocations.text = "\(run.locations.count) Locations"
         cell.runDate.text = run.getDateString()
@@ -90,12 +90,6 @@ class HistoryViewController: UIViewController, UITableViewDelegate, UITableViewD
            let runIndex = tableView.indexPathForSelectedRow?.row {
             destination.run = runs[runIndex]
         }
-    }
-    
-    // Helper function to return true if the kilo option is selected
-    // TODO: potentially create a util class
-    private func usingKilometers() -> Bool {
-        return UserDefaults.standard.bool(forKey:"RouteRunnerKilometerModeOn")
     }
     
     func loadRunData() {

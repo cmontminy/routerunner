@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		2C3C19A32820B65900F74A64 /* RouteCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C3C19A22820B65900F74A64 /* RouteCell.swift */; };
 		2C3C19A52820B8BD00F74A64 /* LoadingSpinner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C3C19A42820B8BD00F74A64 /* LoadingSpinner.swift */; };
+		2C3C19A82821791900F74A64 /* RouteInstancePage.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2C3C19A72821791900F74A64 /* RouteInstancePage.storyboard */; };
+		2C3C19AA2821792E00F74A64 /* RouteInstanceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C3C19A92821792E00F74A64 /* RouteInstanceViewController.swift */; };
 		2CC0B8A327E95EF60020FCAD /* Run.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2CC0B8A227E95EF60020FCAD /* Run.storyboard */; };
 		2CDEAAF727E9556A000DDA40 /* PaceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CDEAAF627E9556A000DDA40 /* PaceView.swift */; };
 		2CDEAAF927E9557C000DDA40 /* CancelButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CDEAAF827E9557C000DDA40 /* CancelButton.swift */; };
@@ -93,6 +95,8 @@
 /* Begin PBXFileReference section */
 		2C3C19A22820B65900F74A64 /* RouteCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteCell.swift; sourceTree = "<group>"; };
 		2C3C19A42820B8BD00F74A64 /* LoadingSpinner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingSpinner.swift; sourceTree = "<group>"; };
+		2C3C19A72821791900F74A64 /* RouteInstancePage.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = RouteInstancePage.storyboard; sourceTree = "<group>"; };
+		2C3C19A92821792E00F74A64 /* RouteInstanceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteInstanceViewController.swift; sourceTree = "<group>"; };
 		2CC0B8A227E95EF60020FCAD /* Run.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Run.storyboard; sourceTree = "<group>"; };
 		2CDEAAF627E9556A000DDA40 /* PaceView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaceView.swift; sourceTree = "<group>"; };
 		2CDEAAF827E9557C000DDA40 /* CancelButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CancelButton.swift; sourceTree = "<group>"; };
@@ -187,6 +191,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2C3C19A6282178C600F74A64 /* Route Instance Page */ = {
+			isa = PBXGroup;
+			children = (
+				2C3C19A72821791900F74A64 /* RouteInstancePage.storyboard */,
+				2C3C19A92821792E00F74A64 /* RouteInstanceViewController.swift */,
+			);
+			path = "Route Instance Page";
+			sourceTree = "<group>";
+		};
 		8CAB74A62807641B00D96993 /* Route Algo */ = {
 			isa = PBXGroup;
 			children = (
@@ -321,6 +334,7 @@
 				8DAF5A2327EA87B30011B580 /* TabBarViewController.swift */,
 				8CAB74BD2808E5F900D96993 /* Data Classes */,
 				8CAB74A62807641B00D96993 /* Route Algo */,
+				2C3C19A6282178C600F74A64 /* Route Instance Page */,
 				FB37D22F27EA3F7A0020715D /* Home Screen */,
 				FB37D23127EA3FB30020715D /* Run Screen */,
 				FB37D23327EA402D0020715D /* History Screen */,
@@ -435,6 +449,7 @@
 				8C035C3627E92E7E004E269B /* History.storyboard in Resources */,
 				8C035C3E27EA537F004E269B /* PastRun.storyboard in Resources */,
 				8DAF5A2827EA88BA0011B580 /* Profile.storyboard in Resources */,
+				2C3C19A82821791900F74A64 /* RouteInstancePage.storyboard in Resources */,
 				2CC0B8A327E95EF60020FCAD /* Run.storyboard in Resources */,
 				FBED8A1F27EAA3F200CCDBA5 /* EditableTableViewCell.xib in Resources */,
 				8CAB74AF2807641B00D96993 /* DirectionsViewController.storyboard in Resources */,
@@ -466,6 +481,7 @@
 				FB0EE88F27E96B28005AD4F7 /* UserInterfaceStyleManager.swift in Sources */,
 				8DAF5A2427EA87B30011B580 /* TabBarViewController.swift in Sources */,
 				8D19E5E627EABFC400477297 /* ProfileCollectionViewCell.swift in Sources */,
+				2C3C19AA2821792E00F74A64 /* RouteInstanceViewController.swift in Sources */,
 				8C035C3827E941CA004E269B /* HistoryTableViewCell.swift in Sources */,
 				8CAB74BA2807ECC900D96993 /* RouteTestingViewController.swift in Sources */,
 				8CAB74B828077E4300D96993 /* RunCreationViewController.swift in Sources */,
@@ -639,6 +655,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = "";
+				ENABLE_BITCODE = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Route Runner/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -668,6 +685,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = "";
+				ENABLE_BITCODE = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Route Runner/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;

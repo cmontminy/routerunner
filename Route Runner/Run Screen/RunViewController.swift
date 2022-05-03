@@ -266,12 +266,6 @@ class RunViewController: UIViewController {
         controller.addAction(UIAlertAction(title: "No", style: .default, handler: nil))
         present(controller, animated: true, completion: nil)
     }
-    
-    // Helper function to return true if the kilo option is selected
-    // TODO: potentially create a util class
-    private func usingKilometers() -> Bool {
-        return UserDefaults.standard.bool(forKey:"RouteRunnerKilometerModeOn")
-    }
 }
 
 extension RunViewController: CLLocationManagerDelegate {

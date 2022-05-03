@@ -31,4 +31,8 @@ extension UIViewController {
             vSpinner = nil
         }
     }
+    
+    func usingKilometers() -> Bool {
+        return UserDefaults.standard.bool(forKey:"RouteRunnerKilometerModeOn")
+    }
 }

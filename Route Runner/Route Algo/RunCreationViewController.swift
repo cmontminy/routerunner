@@ -73,19 +73,15 @@ class RunCreationViewController: UIViewController {
 
             routes.append(newRunData!)
             
-            // navigate to run screen
-            performSegue(withIdentifier:"RunScreenIdentifier", sender: nil) // navigate
-            //performSegue(withIdentifier:"ShowTesting", sender: nil)
+            // navigate to route instance screen
+            performSegue(withIdentifier:"RouteInstanceIdentifier", sender: nil) // navigate
         }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "ShowTesting" {
-            let nextVC = segue.destination as! RouteTestingViewController
-            nextVC.directions = directions
-        } else if segue.identifier == "RunScreenIdentifier" {
-            let nextVC = segue.destination as! RunViewController
-            nextVC.routeData = newRunData // add new route that was just appended
+        if segue.identifier == "RouteInstanceIdentifier" {
+            let nextVC = segue.destination as! RouteInstanceViewController
+            nextVC.routeData = newRunData // send generated run data to new page to display to user
         }
     }
     

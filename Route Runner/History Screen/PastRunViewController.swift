@@ -37,7 +37,7 @@ class PastRunViewController: UIViewController {
         runName.text = currentRun.name
         
         // Format distance to 1 decimal place, use correct units
-        runDistance.text = "\(String(format: "%.1f", currentRun.getDistance())) \(usingKilometers() ? "km" : "mi")"
+        runDistance.text = "\(String(format: "%.1f", currentRun.getDistance())) \(self.usingKilometers() ? "km" : "mi")"
         
         runPoints.text = "\(currentRun.points) points"
         
@@ -45,7 +45,7 @@ class PastRunViewController: UIViewController {
         runTime.text = "\(currentRun.time / 60):\(String(format: "%02d", currentRun.time % 60))"
         
         // Display km/mi based on user preference
-        paceLabel.text = usingKilometers() ? "Pace (km)" : "Pace (mi)"
+        paceLabel.text = self.usingKilometers() ? "Pace (km)" : "Pace (mi)"
         
         // Format seconds to always have 2 digits
         runPace.text = "\(currentRun.getPace() / 60):\(String(format: "%02d", currentRun.getPace() % 60))"
@@ -53,11 +53,5 @@ class PastRunViewController: UIViewController {
         // Round image corners
         runImage.layer.cornerRadius = 8.0
         runImage.layer.masksToBounds = true
-    }
-    
-    // Helper function to determine user unit preference
-    // TODO: potentially add util class
-    private func usingKilometers() -> Bool {
-        return UserDefaults.standard.bool(forKey:"RouteRunnerKilometerModeOn")
     }
 }
