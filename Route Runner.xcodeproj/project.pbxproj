@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2C3C19A32820B65900F74A64 /* RouteCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C3C19A22820B65900F74A64 /* RouteCell.swift */; };
+		2C3C19A52820B8BD00F74A64 /* LoadingSpinner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C3C19A42820B8BD00F74A64 /* LoadingSpinner.swift */; };
 		2CC0B8A327E95EF60020FCAD /* Run.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2CC0B8A227E95EF60020FCAD /* Run.storyboard */; };
 		2CDEAAF727E9556A000DDA40 /* PaceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CDEAAF627E9556A000DDA40 /* PaceView.swift */; };
 		2CDEAAF927E9557C000DDA40 /* CancelButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CDEAAF827E9557C000DDA40 /* CancelButton.swift */; };
@@ -17,7 +19,6 @@
 		8C035C3C27E94E66004E269B /* HistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C035C3B27E94E66004E269B /* HistoryViewController.swift */; };
 		8C035C3E27EA537F004E269B /* PastRun.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8C035C3D27EA537F004E269B /* PastRun.storyboard */; };
 		8C035C4027EA5939004E269B /* PastRunViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C035C3F27EA5939004E269B /* PastRunViewController.swift */; };
-		8CAB74BC2808E5E800D96993 /* UserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CAB74BB2808E5E800D96993 /* UserData.swift */; };
 		8CAB74AF2807641B00D96993 /* DirectionsViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8CAB74A72807641B00D96993 /* DirectionsViewController.storyboard */; };
 		8CAB74B02807641B00D96993 /* RouteAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CAB74A82807641B00D96993 /* RouteAnnotation.swift */; };
 		8CAB74B12807641B00D96993 /* RouteSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CAB74A92807641B00D96993 /* RouteSelectionViewController.swift */; };
@@ -28,6 +29,7 @@
 		8CAB74B62807641B00D96993 /* Route.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CAB74AE2807641B00D96993 /* Route.swift */; };
 		8CAB74B828077E4300D96993 /* RunCreationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CAB74B728077E4300D96993 /* RunCreationViewController.swift */; };
 		8CAB74BA2807ECC900D96993 /* RouteTestingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CAB74B92807ECC900D96993 /* RouteTestingViewController.swift */; };
+		8CAB74BC2808E5E800D96993 /* UserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CAB74BB2808E5E800D96993 /* UserData.swift */; };
 		8D0CE21D27EA18F0000362A2 /* TabBar.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8D0CE21C27EA18F0000362A2 /* TabBar.storyboard */; };
 		8D19E5E627EABFC400477297 /* ProfileCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D19E5E527EABFC400477297 /* ProfileCollectionViewCell.swift */; };
 		8D5B54F727E819A500BDB2AD /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8D5B54F627E819A500BDB2AD /* Home.storyboard */; };
@@ -89,6 +91,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2C3C19A22820B65900F74A64 /* RouteCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteCell.swift; sourceTree = "<group>"; };
+		2C3C19A42820B8BD00F74A64 /* LoadingSpinner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingSpinner.swift; sourceTree = "<group>"; };
 		2CC0B8A227E95EF60020FCAD /* Run.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Run.storyboard; sourceTree = "<group>"; };
 		2CDEAAF627E9556A000DDA40 /* PaceView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaceView.swift; sourceTree = "<group>"; };
 		2CDEAAF827E9557C000DDA40 /* CancelButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CancelButton.swift; sourceTree = "<group>"; };
@@ -99,7 +103,6 @@
 		8C035C3B27E94E66004E269B /* HistoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryViewController.swift; sourceTree = "<group>"; };
 		8C035C3D27EA537F004E269B /* PastRun.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PastRun.storyboard; sourceTree = "<group>"; };
 		8C035C3F27EA5939004E269B /* PastRunViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PastRunViewController.swift; sourceTree = "<group>"; };
-		8CAB74BB2808E5E800D96993 /* UserData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserData.swift; sourceTree = "<group>"; };
 		8CAB74A72807641B00D96993 /* DirectionsViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = DirectionsViewController.storyboard; sourceTree = "<group>"; };
 		8CAB74A82807641B00D96993 /* RouteAnnotation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RouteAnnotation.swift; sourceTree = "<group>"; };
 		8CAB74A92807641B00D96993 /* RouteSelectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RouteSelectionViewController.swift; sourceTree = "<group>"; };
@@ -110,6 +113,7 @@
 		8CAB74AE2807641B00D96993 /* Route.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Route.swift; sourceTree = "<group>"; };
 		8CAB74B728077E4300D96993 /* RunCreationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunCreationViewController.swift; sourceTree = "<group>"; };
 		8CAB74B92807ECC900D96993 /* RouteTestingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteTestingViewController.swift; sourceTree = "<group>"; };
+		8CAB74BB2808E5E800D96993 /* UserData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserData.swift; sourceTree = "<group>"; };
 		8D0CE21C27EA18F0000362A2 /* TabBar.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = TabBar.storyboard; sourceTree = "<group>"; };
 		8D19E5E527EABFC400477297 /* ProfileCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileCollectionViewCell.swift; sourceTree = "<group>"; };
 		8D5B54F627E819A500BDB2AD /* Home.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Home.storyboard; sourceTree = "<group>"; };
@@ -183,14 +187,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		8CAB74BD2808E5F900D96993 /* Data Classes */ = {
-			isa = PBXGroup;
-			children = (
-				8CAB74BB2808E5E800D96993 /* UserData.swift */,
-			);
-			path = "Data Classes";
-			sourceTree = "<group>";
-		};
 		8CAB74A62807641B00D96993 /* Route Algo */ = {
 			isa = PBXGroup;
 			children = (
@@ -206,6 +202,14 @@
 				8CAB74AE2807641B00D96993 /* Route.swift */,
 			);
 			path = "Route Algo";
+			sourceTree = "<group>";
+		};
+		8CAB74BD2808E5F900D96993 /* Data Classes */ = {
+			isa = PBXGroup;
+			children = (
+				8CAB74BB2808E5E800D96993 /* UserData.swift */,
+			);
+			path = "Data Classes";
 			sourceTree = "<group>";
 		};
 		8DAF5A2927EA8B490011B580 /* Profile Screen */ = {
@@ -242,6 +246,8 @@
 			children = (
 				8D5B54F627E819A500BDB2AD /* Home.storyboard */,
 				8D5B54F827E81B4400BDB2AD /* HomeViewController.swift */,
+				2C3C19A22820B65900F74A64 /* RouteCell.swift */,
+				2C3C19A42820B8BD00F74A64 /* LoadingSpinner.swift */,
 			);
 			path = "Home Screen";
 			sourceTree = "<group>";
@@ -468,6 +474,7 @@
 				8CAB74B02807641B00D96993 /* RouteAnnotation.swift in Sources */,
 				FBED8A1E27EAA3F200CCDBA5 /* EditableTableViewCell.swift in Sources */,
 				FB9405C027D7E7B0009DB256 /* Route_Runner.xcdatamodeld in Sources */,
+				2C3C19A52820B8BD00F74A64 /* LoadingSpinner.swift in Sources */,
 				8CAB74B22807641B00D96993 /* DirectionsViewController.swift in Sources */,
 				2CDEAAFB27E957D9000DDA40 /* RunViewController.swift in Sources */,
 				8D5F9F292800875D009C3D78 /* RegisterViewController.swift in Sources */,
@@ -482,6 +489,7 @@
 				FB9405B827D7E7B0009DB256 /* SceneDelegate.swift in Sources */,
 				FB27BE8D27E907DE0012AB17 /* SettingsViewController.swift in Sources */,
 				8CAB74B12807641B00D96993 /* RouteSelectionViewController.swift in Sources */,
+				2C3C19A32820B65900F74A64 /* RouteCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
