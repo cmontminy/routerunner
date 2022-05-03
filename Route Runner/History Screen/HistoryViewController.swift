@@ -6,6 +6,8 @@
 //
 
 import UIKit
+import Firebase
+import FirebaseFirestoreSwift
 
 var runs: [RunData] = []
 
@@ -24,6 +26,8 @@ func addDummyData() {
                             time: i * 45))
     }
 }
+
+
 
 class HistoryViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
@@ -71,7 +75,8 @@ class HistoryViewController: UIViewController, UITableViewDelegate, UITableViewD
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         if (runs.count == 0) {
-            addDummyData()
+//            addDummyData()
+            loadRunData()
         }
         
         // Reload to account for new runs / changed distance unit preference
@@ -91,5 +96,25 @@ class HistoryViewController: UIViewController, UITableViewDelegate, UITableViewD
     // TODO: potentially create a util class
     private func usingKilometers() -> Bool {
         return UserDefaults.standard.bool(forKey:"RouteRunnerKilometerModeOn")
+    }
+    
+    func loadRunData() {
+        let db = Firestore.firestore()
+        runs.removeAll()
+        Auth.auth().addStateDidChangeListener { auth, user in
+            if let user = user {
+                db.collection("runs").whereField("uid", isEqualTo: user.uid)
+                    .getDocuments() { (querySnapshot, err) in
+                        if let err = err {
+                            print("Error getting documents: \(err)")
+                        } else {
+                            for document in querySnapshot!.documents {
+                                try? runs.append(document.data(as: RunData.self))
+                            }
+                            self.tableView.reloadData()
+                        }
+                }
+            }
+        }
     }
 }
