@@ -32,6 +32,8 @@ class ProfileSettingsViewController: UIViewController, UITableViewDelegate, UITa
         tableView.register(UINib(nibName: "EditableTableViewCell", bundle: nil), forCellReuseIdentifier: "EditableTableViewCell")
         
         startObserving(&UserInterfaceStyleManager.shared) // observer for darkmode style change
+        
+        print("starting up")
     }
     
     func fetchUserData() {
@@ -57,16 +59,42 @@ class ProfileSettingsViewController: UIViewController, UITableViewDelegate, UITa
         }
     }
     
+    func updateUserData(updateField:String, updateText:String) {
+        guard let user = Auth.auth().currentUser else {
+            return
+        }
+        
+        let db = Firestore.firestore()
+        db.collection("users").whereField("uid", isEqualTo: user.uid)
+            .getDocuments() { (querySnapshot, err) in
+                if let err = err {
+                    print("Error getting documents: \(err)")
+                } else {
+                    for document in querySnapshot!.documents {
+                        document.reference.updateData([
+                            updateField: updateText
+                        ]) { err in
+                            if let err = err {
+                                print("Error updating document: \(err)")
+                            } else {
+                                print("Document successfully updated")
+                            }
+                        }
+                    }
+                }
+        }
+    }
+    
     // function to set up option list - subtitles are dummy variables "test" for now
     func configure() {
         models.append(Section(title: "User Information", options: [
-            .editableCell(model: SettingsEditOption(title: "Name", subtitle: "Test") {
+            .editableCell(model: SettingsEditOption(title: "First Name", subtitle: self.data?.firstName ?? "Could not load first name") {
                 let controller = UIAlertController(
-                    title: "Edit Name",
+                    title: "Edit First Name",
                     message: "",
                     preferredStyle: .alert)
                 controller.addTextField(configurationHandler: {
-                    (textField:UITextField!) in textField.placeholder = "Enter new name"
+                    (textField:UITextField!) in textField.placeholder = "Enter new first name"
                 })
                 controller.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
                 controller.addAction(UIAlertAction(
@@ -76,15 +104,44 @@ class ProfileSettingsViewController: UIViewController, UITableViewDelegate, UITa
                         (paramAction:UIAlertAction!) in
                         if let textFieldArray = controller.textFields {
                             let textFields = textFieldArray as [UITextField]
-                            let enteredText = textFields[0].text
-                            // do something with it to show it worked - will edit userdefaults later
-                            print(enteredText!)
+                            let enteredText = textFields[0].text!
+                            
+                            self.updateUserData(updateField: "firstName", updateText: enteredText)
+                            
+                            print(enteredText)
                         }
                     })
                 )
                 self.present(controller, animated: true, completion: nil)
             }),
             
+            .editableCell(model: SettingsEditOption(title: "Last Name", subtitle: self.data?.lastName ?? "Could not load last name") {
+                let controller = UIAlertController(
+                    title: "Edit Last Name",
+                    message: "",
+                    preferredStyle: .alert)
+                controller.addTextField(configurationHandler: {
+                    (textField:UITextField!) in textField.placeholder = "Enter new last name"
+                })
+                controller.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+                controller.addAction(UIAlertAction(
+                    title: "OK",
+                    style: .default,
+                    handler: {
+                        (paramAction:UIAlertAction!) in
+                        if let textFieldArray = controller.textFields {
+                            let textFields = textFieldArray as [UITextField]
+                            let enteredText = textFields[0].text!
+                            
+                            self.updateUserData(updateField: "lastName", updateText: enteredText)
+                            
+                            print(enteredText)
+                        }
+                    })
+                )
+                self.present(controller, animated: true, completion: nil)
+            }),
+            // self.data?.address ?? "Could not load address"
             .editableCell(model: SettingsEditOption(title: "Address", subtitle: "test") {
                 let controller = UIAlertController(
                     title: "Edit Address",
@@ -101,38 +158,47 @@ class ProfileSettingsViewController: UIViewController, UITableViewDelegate, UITa
                         (paramAction:UIAlertAction!) in
                         if let textFieldArray = controller.textFields {
                             let textFields = textFieldArray as [UITextField]
-                            let enteredText = textFields[0].text
-                            // do something with it to show it worked - will edit userdefaults later
-                            print(enteredText!)
+                            let enteredText = textFields[0].text!
+                            
+                            self.updateUserData(updateField: "address", updateText: enteredText)
+                            
+                            print(enteredText)
                         }
                     })
                 )
                 self.present(controller, animated: true, completion: nil)
             }),
             
-            .editableCell(model: SettingsEditOption(title: "Experience", subtitle: "test") {
+            .editableCell(model: SettingsEditOption(title: "Experience", subtitle: self.data?.experienceLevel ?? "Could not load experience level") {
                 let controller = UIAlertController(
                     title: "Choose a new experience level",
                     message: "",
                     preferredStyle: .actionSheet)
-                controller.addAction(UIAlertAction(title: "Beginner", style: .default, handler: nil))
-                controller.addAction(UIAlertAction(title: "Intermediate", style: .default, handler: nil))
-                controller.addAction(UIAlertAction(title: "Advanced", style: .default, handler: nil))
+                
+                controller.addAction(UIAlertAction(title: "Beginner", style: .default, handler: {_ in
+                    self.updateUserData(updateField: "experienceLevel", updateText: "Beginner")
+                }))
+                controller.addAction(UIAlertAction(title: "Intermediate", style: .default, handler: {_ in
+                    self.updateUserData(updateField: "experienceLevel", updateText: "Intermediate")
+                }))
+                controller.addAction(UIAlertAction(title: "Advanced", style: .default, handler: {_ in
+                    self.updateUserData(updateField: "experienceLevel", updateText: "Advanced")
+                }))
                 controller.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+                
                 self.present(controller, animated: true, completion: nil)
-                // will add in saving to userdefaults later
             })
         ]))
             
         models.append(Section(title: "Account Information", options: [
-            .editableCell(model: SettingsEditOption(title: "Email", subtitle: "test") {
+            .editableCell(model: SettingsEditOption(title: "Email", subtitle: self.data?.email ?? "Could not load email") {
                 let controller = UIAlertController(
-                    title: "Edit Username",
+                    title: "Edit Email",
                     message: "",
                     preferredStyle: .alert)
                 
                 controller.addTextField(configurationHandler: {
-                    (textField:UITextField!) in textField.placeholder = "Enter new username"
+                    (textField:UITextField!) in textField.placeholder = "Enter new email"
                 })
                 controller.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
                 controller.addAction(UIAlertAction(
@@ -142,16 +208,19 @@ class ProfileSettingsViewController: UIViewController, UITableViewDelegate, UITa
                         (paramAction:UIAlertAction!) in
                         if let textFieldArray = controller.textFields {
                             let textFields = textFieldArray as [UITextField]
-                            let enteredText = textFields[0].text
-                            // do something with it to show it worked - will edit userdefaults later
-                            print(enteredText!)
+                            let enteredText = textFields[0].text!
+                            
+                            Auth.auth().currentUser?.updateEmail(to: enteredText) { error in
+                              print("could not reset email")
+                            }
+                            print("email updated !")
                         }
                     })
                 )
                 self.present(controller, animated: true, completion: nil)
             }),
             
-            .editableCell(model: SettingsEditOption(title: "Password", subtitle: "test") {
+            .editableCell(model: SettingsEditOption(title: "Password", subtitle: "") {
                 let controller = UIAlertController(
                     title: "Edit Password",
                     message: "",
@@ -168,9 +237,13 @@ class ProfileSettingsViewController: UIViewController, UITableViewDelegate, UITa
                         (paramAction:UIAlertAction!) in
                         if let textFieldArray = controller.textFields {
                             let textFields = textFieldArray as [UITextField]
-                            let enteredText = textFields[0].text
-                            // do something with it to show it worked - will edit userdefaults later
-                            print(enteredText!)
+                            let enteredText = textFields[0].text!
+                            
+                            Auth.auth().currentUser?.updatePassword(to: enteredText) { error in
+                              print("password not accepted")
+                            }
+                            
+                            print("password updated !")
                         }
                     })
                 )
