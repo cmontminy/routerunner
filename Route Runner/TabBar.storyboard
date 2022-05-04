@@ -18,9 +18,10 @@
                     </tabBar>
                     <connections>
                         <segue destination="7gv-b1-W8Y" kind="relationship" relationship="viewControllers" id="b0t-lm-3eb"/>
-                        <segue destination="lp3-sW-ote" kind="relationship" relationship="viewControllers" id="kJi-7N-QLv"/>
+                        <segue destination="p90-eJ-iJO" kind="relationship" relationship="viewControllers" id="k1r-pq-bZv"/>
                         <segue destination="l8m-DS-ifa" kind="relationship" relationship="viewControllers" id="Bjh-3r-diP"/>
                         <segue destination="K2b-11-W6d" kind="relationship" relationship="viewControllers" id="TLr-DI-Qby"/>
+                        <segue destination="lp3-sW-ote" kind="relationship" relationship="viewControllers" id="kJi-7N-QLv"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EIo-3W-snD" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -59,6 +60,16 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Co0-wU-cjc" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-87" y="-49"/>
+        </scene>
+        <!--Friend-->
+        <scene sceneID="DCe-6l-M0n">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Friend" referencedIdentifier="Friend" id="p90-eJ-iJO" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" id="IeG-hE-sHn"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="7cJ-aY-Vet" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-170" y="7"/>
         </scene>
         <!--Profile-->
         <scene sceneID="dai-yY-87H">

@@ -21,6 +21,8 @@
 		8C035C3C27E94E66004E269B /* HistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C035C3B27E94E66004E269B /* HistoryViewController.swift */; };
 		8C035C3E27EA537F004E269B /* PastRun.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8C035C3D27EA537F004E269B /* PastRun.storyboard */; };
 		8C035C4027EA5939004E269B /* PastRunViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C035C3F27EA5939004E269B /* PastRunViewController.swift */; };
+		8C1AA56228221AD2000E9B2E /* FriendViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C1AA56128221AD2000E9B2E /* FriendViewController.swift */; };
+		8C1AA56428221AEF000E9B2E /* Friend.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8C1AA56328221AEF000E9B2E /* Friend.storyboard */; };
 		8CAB74AF2807641B00D96993 /* DirectionsViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8CAB74A72807641B00D96993 /* DirectionsViewController.storyboard */; };
 		8CAB74B02807641B00D96993 /* RouteAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CAB74A82807641B00D96993 /* RouteAnnotation.swift */; };
 		8CAB74B12807641B00D96993 /* RouteSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CAB74A92807641B00D96993 /* RouteSelectionViewController.swift */; };
@@ -107,6 +109,8 @@
 		8C035C3B27E94E66004E269B /* HistoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryViewController.swift; sourceTree = "<group>"; };
 		8C035C3D27EA537F004E269B /* PastRun.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PastRun.storyboard; sourceTree = "<group>"; };
 		8C035C3F27EA5939004E269B /* PastRunViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PastRunViewController.swift; sourceTree = "<group>"; };
+		8C1AA56128221AD2000E9B2E /* FriendViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendViewController.swift; sourceTree = "<group>"; };
+		8C1AA56328221AEF000E9B2E /* Friend.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Friend.storyboard; sourceTree = "<group>"; };
 		8CAB74A72807641B00D96993 /* DirectionsViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = DirectionsViewController.storyboard; sourceTree = "<group>"; };
 		8CAB74A82807641B00D96993 /* RouteAnnotation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RouteAnnotation.swift; sourceTree = "<group>"; };
 		8CAB74A92807641B00D96993 /* RouteSelectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RouteSelectionViewController.swift; sourceTree = "<group>"; };
@@ -198,6 +202,15 @@
 				2C3C19A92821792E00F74A64 /* RouteInstanceViewController.swift */,
 			);
 			path = "Route Instance Page";
+			sourceTree = "<group>";
+		};
+		8C1AA56028221A86000E9B2E /* Friend Screen */ = {
+			isa = PBXGroup;
+			children = (
+				8C1AA56128221AD2000E9B2E /* FriendViewController.swift */,
+				8C1AA56328221AEF000E9B2E /* Friend.storyboard */,
+			);
+			path = "Friend Screen";
 			sourceTree = "<group>";
 		};
 		8CAB74A62807641B00D96993 /* Route Algo */ = {
@@ -324,6 +337,7 @@
 		FB9405B427D7E7B0009DB256 /* Route Runner */ = {
 			isa = PBXGroup;
 			children = (
+				8C1AA56028221A86000E9B2E /* Friend Screen */,
 				FB9405B527D7E7B0009DB256 /* AppDelegate.swift */,
 				FB9405B727D7E7B0009DB256 /* SceneDelegate.swift */,
 				FB9405B927D7E7B0009DB256 /* ViewController.swift */,
@@ -451,6 +465,7 @@
 				8DAF5A2827EA88BA0011B580 /* Profile.storyboard in Resources */,
 				2C3C19A82821791900F74A64 /* RouteInstancePage.storyboard in Resources */,
 				2CC0B8A327E95EF60020FCAD /* Run.storyboard in Resources */,
+				8C1AA56428221AEF000E9B2E /* Friend.storyboard in Resources */,
 				FBED8A1F27EAA3F200CCDBA5 /* EditableTableViewCell.xib in Resources */,
 				8CAB74AF2807641B00D96993 /* DirectionsViewController.storyboard in Resources */,
 				FB9405C227D7E7B1009DB256 /* Assets.xcassets in Resources */,
@@ -491,6 +506,7 @@
 				FBED8A1E27EAA3F200CCDBA5 /* EditableTableViewCell.swift in Sources */,
 				FB9405C027D7E7B0009DB256 /* Route_Runner.xcdatamodeld in Sources */,
 				2C3C19A52820B8BD00F74A64 /* LoadingSpinner.swift in Sources */,
+				8C1AA56228221AD2000E9B2E /* FriendViewController.swift in Sources */,
 				8CAB74B22807641B00D96993 /* DirectionsViewController.swift in Sources */,
 				2CDEAAFB27E957D9000DDA40 /* RunViewController.swift in Sources */,
 				8D5F9F292800875D009C3D78 /* RegisterViewController.swift in Sources */,
