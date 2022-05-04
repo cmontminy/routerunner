@@ -135,7 +135,7 @@
                                 </prototypes>
                             </tableView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Neaby Routes" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g48-zO-WB3">
-                                <rect key="frame" x="20" y="117" width="209" height="34"/>
+                                <rect key="frame" x="23" y="117" width="209" height="34"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="34" id="tdU-9w-5WU"/>
                                 </constraints>
@@ -147,7 +147,7 @@
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="g48-zO-WB3" firstAttribute="leading" secondItem="WYB-1Z-L9v" secondAttribute="leading" id="2kK-4h-7bM"/>
+                            <constraint firstItem="g48-zO-WB3" firstAttribute="leading" secondItem="WYB-1Z-L9v" secondAttribute="leading" constant="3" id="2kK-4h-7bM"/>
                             <constraint firstItem="nrk-2m-5IG" firstAttribute="bottom" secondItem="vDu-zF-Fre" secondAttribute="bottom" id="3Zd-f0-5VH"/>
                             <constraint firstItem="nrk-2m-5IG" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="5go-C0-ea2"/>
                             <constraint firstItem="WYB-1Z-L9v" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="20" id="BSW-Jz-kYd"/>
@@ -156,8 +156,8 @@
                             <constraint firstItem="g48-zO-WB3" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="73" id="b17-bK-odX"/>
                             <constraint firstItem="WYB-1Z-L9v" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="15" id="dir-ye-yeZ"/>
                             <constraint firstItem="XJj-Sh-5va" firstAttribute="leading" secondItem="WYB-1Z-L9v" secondAttribute="trailing" constant="125" id="fnl-ab-KHk"/>
-                            <constraint firstItem="g48-zO-WB3" firstAttribute="centerX" secondItem="WYB-1Z-L9v" secondAttribute="centerX" id="fxe-YN-YiN"/>
-                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="g48-zO-WB3" secondAttribute="trailing" constant="199" id="sif-ct-Pe7"/>
+                            <constraint firstItem="g48-zO-WB3" firstAttribute="centerX" secondItem="WYB-1Z-L9v" secondAttribute="centerX" constant="3" id="fxe-YN-YiN"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="g48-zO-WB3" secondAttribute="trailing" constant="196" id="sif-ct-Pe7"/>
                             <constraint firstItem="nrk-2m-5IG" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="wdX-3O-HjO"/>
                         </constraints>
                     </view>

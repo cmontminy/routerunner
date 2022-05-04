@@ -15,12 +15,23 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     let cellIdentifier = "RouteCell";
     var routes:[RunData] = [];
+    let locationManager = CLLocationManager()
+    private var curLocation: CLLocationCoordinate2D?
     
     @IBOutlet weak var tableView: UITableView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        // get user's current location
+        // For use in foreground
+        self.locationManager.requestWhenInUseAuthorization()
+
+        if CLLocationManager.locationServicesEnabled() {
+            locationManager.delegate = self
+            locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
+            locationManager.startUpdatingLocation()
+        }
+        
         startObserving(&UserInterfaceStyleManager.shared)
         tableView.delegate = self
         tableView.dataSource = self
@@ -74,7 +85,16 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
                     curRoute.startCoordLong = startCoordLong
                     curRoute.endCoordLat = endCoordLat
                     curRoute.endCoordLong = endCoordLong
-                    self.routes.append(curRoute)
+                    
+                    if self.curLocation != nil {
+                        let distanceToStart = CLLocation(latitude: self.curLocation!.latitude, longitude: self.curLocation!.longitude).distance(from: CLLocation(latitude: startCoordLat, longitude: startCoordLong))
+                        print(distanceToStart)
+                        // anything 5km from here
+                        if (distanceToStart < 5000) {
+                            // only append nearyby routes
+                            self.routes.append(curRoute)
+                        }
+                    }
                 }
                 self.tableView.reloadData() // after loading routes, rebuild table
                 self.removeSpinner() // remove spinner from screen
@@ -134,5 +154,12 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
             nextVC.routeData = nextRoute // send generated run data to new page to display to user
             nextVC.generateData = false
         }
+    }
+}
+
+extension HomeViewController: CLLocationManagerDelegate {
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        guard let locValue: CLLocationCoordinate2D = manager.location?.coordinate else { return }
+        self.curLocation = locValue
     }
 }

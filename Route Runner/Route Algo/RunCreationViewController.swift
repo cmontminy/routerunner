@@ -19,6 +19,7 @@ class RunCreationViewController: UIViewController {
     var region: MKCoordinateRegion?
     var directions: MKDirections?
     var newRunData: RunData?
+    var curLocation: CLLocationCoordinate2D?
     
     // Fill startField with current location
     @IBAction func currentLocationButtonPressed() {
@@ -45,7 +46,7 @@ class RunCreationViewController: UIViewController {
                 return
             }
             
-            guard let start = await getPlace(startField.text!) else {
+            guard var start = await getPlace(startField.text!) else {
                 print("Failed to create start")
                 return
             }
@@ -53,6 +54,10 @@ class RunCreationViewController: UIViewController {
             guard let end = await getPlace(endField.text!) else {
                 print("Failed to create end")
                 return
+            }
+            
+            if (curLocation != nil) {
+                start = MKPlacemark(coordinate: CLLocationCoordinate2D(latitude: curLocation!.latitude, longitude: curLocation!.longitude))
             }
             
             // get lat long coords to store
@@ -136,11 +141,12 @@ class RunCreationViewController: UIViewController {
 
 extension RunCreationViewController: CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        print("Location updated, locations: \(locations)")
         
         guard locations.last != nil else {
             return
         }
+        
+        self.curLocation = locations.last!.coordinate
         
         // set region on first location update, needed for search
         let commonDelta: CLLocationDegrees = 25 / 111 // 1/111 = 1 latitude km
