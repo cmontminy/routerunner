@@ -52,8 +52,8 @@
                                 </attributedString>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="NumRuns" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VKI-CR-Lye">
-                                <rect key="frame" x="45" y="528" width="51" height="17"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="NumRuns" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VKI-CR-Lye">
+                                <rect key="frame" x="51" y="528" width="51" height="17"/>
                                 <fontDescription key="fontDescription" name="DINCondensed-Bold" family="DIN Condensed" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -115,7 +115,7 @@
                                 </cells>
                             </collectionView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="NumSPs" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EJg-3d-Pnr">
-                                <rect key="frame" x="342.5" y="527" width="44.5" height="17"/>
+                                <rect key="frame" x="345.5" y="527" width="44.5" height="17"/>
                                 <fontDescription key="fontDescription" name="DINCondensed-Bold" family="DIN Condensed" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -127,6 +127,7 @@
                         <viewLayoutGuide key="safeArea" id="tSJ-w7-Jby"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="EJg-3d-Pnr" firstAttribute="centerX" secondItem="k2p-jX-tVx" secondAttribute="centerX" id="4TF-Wm-0Qb"/>
                             <constraint firstItem="nMr-IC-dKd" firstAttribute="top" secondItem="ICB-3A-lmQ" secondAttribute="bottom" constant="230" id="AX5-Mt-XP8"/>
                             <constraint firstItem="nMr-IC-dKd" firstAttribute="top" secondItem="wc8-GJ-Poz" secondAttribute="bottom" constant="66" id="DO5-q6-Y2S"/>
                             <constraint firstItem="nMr-IC-dKd" firstAttribute="centerX" secondItem="LGv-MV-9Ig" secondAttribute="centerX" id="DUf-FB-qOs"/>
@@ -134,6 +135,7 @@
                             <constraint firstItem="nMr-IC-dKd" firstAttribute="top" secondItem="8ca-Cg-v2p" secondAttribute="bottom" constant="67" id="IG6-H9-Fv0"/>
                             <constraint firstItem="ICB-3A-lmQ" firstAttribute="top" secondItem="tSJ-w7-Jby" secondAttribute="top" constant="206" id="JOk-xr-oUA"/>
                             <constraint firstItem="wc8-GJ-Poz" firstAttribute="leading" secondItem="tSJ-w7-Jby" secondAttribute="leading" constant="63" id="KTl-mO-GmT"/>
+                            <constraint firstItem="VKI-CR-Lye" firstAttribute="centerX" secondItem="wc8-GJ-Poz" secondAttribute="centerX" id="Mx5-ih-MK7"/>
                             <constraint firstItem="nMr-IC-dKd" firstAttribute="top" secondItem="q7c-bB-UlD" secondAttribute="bottom" constant="22" id="N9n-M0-Cr4"/>
                             <constraint firstItem="nMr-IC-dKd" firstAttribute="leading" secondItem="LGv-MV-9Ig" secondAttribute="leadingMargin" id="O4M-IK-VP6"/>
                             <constraint firstItem="Qde-M5-cuO" firstAttribute="top" secondItem="ICB-3A-lmQ" secondAttribute="bottom" constant="20" id="QnW-aq-a8G"/>
@@ -142,7 +144,6 @@
                             <constraint firstItem="i2S-WC-EcG" firstAttribute="centerX" secondItem="LGv-MV-9Ig" secondAttribute="centerX" id="XgF-Jh-kPC"/>
                             <constraint firstItem="nMr-IC-dKd" firstAttribute="centerY" secondItem="LGv-MV-9Ig" secondAttribute="centerY" constant="267" id="YBW-CE-mJA"/>
                             <constraint firstItem="nMr-IC-dKd" firstAttribute="top" secondItem="EJg-3d-Pnr" secondAttribute="bottom" constant="24" id="aeH-vx-OlC"/>
-                            <constraint firstItem="tSJ-w7-Jby" firstAttribute="trailing" secondItem="EJg-3d-Pnr" secondAttribute="trailing" constant="27" id="c1V-39-cWB"/>
                             <constraint firstItem="nMr-IC-dKd" firstAttribute="centerX" secondItem="LGv-MV-9Ig" secondAttribute="centerX" id="fI3-oP-kRo"/>
                             <constraint firstItem="nMr-IC-dKd" firstAttribute="top" secondItem="VKI-CR-Lye" secondAttribute="bottom" constant="23" id="fKE-VU-llk"/>
                             <constraint firstItem="tSJ-w7-Jby" firstAttribute="trailing" secondItem="k2p-jX-tVx" secondAttribute="trailing" constant="18" id="kBK-QQ-Upf"/>
@@ -151,18 +152,19 @@
                             <constraint firstItem="q7c-bB-UlD" firstAttribute="centerX" secondItem="LGv-MV-9Ig" secondAttribute="centerX" id="nBG-Jg-WgY"/>
                             <constraint firstItem="i2S-WC-EcG" firstAttribute="top" secondItem="Qde-M5-cuO" secondAttribute="bottom" constant="19" id="odm-5c-CUv"/>
                             <constraint firstItem="tSJ-w7-Jby" firstAttribute="bottom" secondItem="nMr-IC-dKd" secondAttribute="bottom" id="tjg-73-eZa"/>
-                            <constraint firstItem="VKI-CR-Lye" firstAttribute="leading" secondItem="tSJ-w7-Jby" secondAttribute="leading" constant="45" id="w2j-Xl-b55"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Profile" image="person.fill" catalog="system" selectedImage="person.fill" id="7Ji-S8-uXu"/>
                     <connections>
                         <outlet property="collectionView" destination="nMr-IC-dKd" id="3IA-7e-LiD"/>
+                        <outlet property="difficultyLevel" destination="i2S-WC-EcG" id="MaO-zU-1XX"/>
                         <outlet property="milesLabel" destination="8ca-Cg-v2p" id="she-hf-fYF"/>
                         <outlet property="numMiles" destination="q7c-bB-UlD" id="SrM-rM-Zw2"/>
                         <outlet property="numRuns" destination="VKI-CR-Lye" id="zTM-AD-ef2"/>
                         <outlet property="numSPs" destination="EJg-3d-Pnr" id="cgP-gL-70b"/>
                         <outlet property="profilePicture" destination="ICB-3A-lmQ" id="ceM-aD-jXv"/>
                         <outlet property="runLabel" destination="wc8-GJ-Poz" id="sz7-s9-L1x"/>
+                        <outlet property="runnerName" destination="Qde-M5-cuO" id="ZN9-BU-azT"/>
                         <outlet property="spLabel" destination="k2p-jX-tVx" id="TBy-qp-DmC"/>
                     </connections>
                 </viewController>

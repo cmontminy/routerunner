@@ -23,11 +23,15 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource, UICol
     @IBOutlet weak var runLabel: UILabel!
     @IBOutlet weak var milesLabel: UILabel!
     @IBOutlet weak var spLabel: UILabel!
+    @IBOutlet weak var runnerName: UILabel!
+    @IBOutlet weak var difficultyLevel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         collectionView.dataSource = self
         collectionView.delegate = self
+        
+    //profile picture
         profilePicture.image = UIImage(named: "profilepictureRR")
         startObserving(&UserInterfaceStyleManager.shared)
         
@@ -47,7 +51,37 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource, UICol
         //customize fonts
         //let fontArr = UIFont.familyNames
         
+        //Get current user
+        let db = Firestore.firestore()
+        Auth.auth().addStateDidChangeListener { auth, user in
+            let currentUser = Auth.auth().currentUser
+            //Set runner name
+            
+            self.runnerName.text = currentUser?.displayName
+            
 
+        }
+        
+        //total number of runs
+        calcNumRuns()
+        
+        //total number of miles
+        calcNumMiles()
+    }
+    
+    func calcNumMiles(){
+        var count = 0
+        var numberMiles = 0.0
+        while(count < runList.count){
+            numberMiles += runList[count].distance
+            count += 1
+        }
+        numMiles.text = "\(numberMiles)"
+    }
+    
+    func calcNumRuns(){
+        let numberRuns = runList.count
+        numRuns.text = "\(numberRuns)"
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -58,6 +92,8 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource, UICol
         
         // Reload to account for new runs / changed distance unit preference
         collectionView.reloadData()
+        calcNumMiles()
+        calcNumRuns()
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -68,11 +104,6 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource, UICol
 //        cell.runImage?.layer.masksToBounds = true
         let run = runList[row]
         
-        // Display name, distance to 1 decimal place, and the correct distance unit
-        cell.runName.text = "\(run.name) - \(String(format: "%.1f", run.getDistance())) \(self.usingKilometers() ? "km" : "mi")"
-        
-        cell.runLocations.text = "\(run.locations.count) Locations"
-        cell.runDate.text = run.getDateString()
 
         // Use placeholder image if none provided
         cell.runImage?.image = run.image ?? UIImage(named: "dummy")
@@ -118,7 +149,7 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource, UICol
                             print("Error getting documents: \(err)")
                         } else {
                             for document in querySnapshot!.documents {
-                                try? runs.append(document.data(as: RunData.self))
+                                try? runList.append(document.data(as: RunData.self))
                             }
                             self.collectionView.reloadData()
                         }
