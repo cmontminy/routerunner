@@ -55,6 +55,12 @@ class RunCreationViewController: UIViewController {
                 return
             }
             
+            // get lat long coords to store
+            let startCoordLat = start.coordinate.latitude
+            let startCoordLong = start.coordinate.longitude
+            let endCoordLat = end.coordinate.latitude
+            let endCoordLong = end.coordinate.longitude
+            
             // Create MKDirections Request
             let request = MKDirections.Request()
             request.source = MKMapItem(placemark: start)
@@ -70,7 +76,11 @@ class RunCreationViewController: UIViewController {
             
             // Create a RunData object for this route
             newRunData = RunData(route: directions!)
-
+            newRunData?.startCoordLat = startCoordLat
+            newRunData?.endCoordLat = endCoordLat
+            newRunData?.startCoordLong = startCoordLong
+            newRunData?.endCoordLong = endCoordLong
+            
             routes.append(newRunData!)
             
             // navigate to route instance screen

@@ -24,6 +24,10 @@ class RunData: Codable {
     var time: Int // in seconds
     var route: MKDirections?
     var routeOverlay: MKRoute?
+    var startCoordLat: Double?
+    var endCoordLat: Double?
+    var startCoordLong: Double?
+    var endCoordLong: Double?
     
     init(name: String, image: UIImage?, date: Date, distance: Double, points: Int, time: Int) {
         self.name = name
@@ -61,6 +65,10 @@ class RunData: Codable {
             case points
             case time
             case uid
+            case startCoordLat
+            case endCoordLat
+            case startCoordLong
+            case endCoordLong
     }
     
     // Instructions on how to create JSON document
@@ -77,6 +85,10 @@ class RunData: Codable {
             return
         }
         try container.encode(user.uid, forKey: .uid)
+        try container.encode(startCoordLat, forKey: .startCoordLat)
+        try container.encode(endCoordLat, forKey: .endCoordLat)
+        try container.encode(startCoordLong, forKey: .startCoordLong)
+        try container.encode(endCoordLong, forKey: .endCoordLong)
     }
     
     init(route directions: MKDirections) {
