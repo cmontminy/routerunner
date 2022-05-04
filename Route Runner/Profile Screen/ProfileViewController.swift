@@ -14,6 +14,7 @@ var runList: [RunData] = []
 
 class ProfileViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
     
+    //outlets
     @IBOutlet weak var profilePicture: UIImageView!
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var numRuns: UILabel!
@@ -49,6 +50,16 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource, UICol
 
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        if (runs.count == 0) {
+            loadRunData()
+        }
+        
+        // Reload to account for new runs / changed distance unit preference
+        collectionView.reloadData()
+    }
+    
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "myCell", for: indexPath) as! ProfileCollectionViewCell
         let row = indexPath.row
@@ -73,7 +84,7 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource, UICol
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return dummyData.count
+        return runList.count
     }
     
     func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
@@ -94,5 +105,25 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource, UICol
         layout.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
         collectionView.collectionViewLayout = layout
         
+    }
+    
+    func loadRunData() {
+        let db = Firestore.firestore()
+        runs.removeAll()
+        Auth.auth().addStateDidChangeListener { auth, user in
+            if let user = user {
+                db.collection("runs").whereField("uid", isEqualTo: user.uid)
+                    .getDocuments() { (querySnapshot, err) in
+                        if let err = err {
+                            print("Error getting documents: \(err)")
+                        } else {
+                            for document in querySnapshot!.documents {
+                                try? runs.append(document.data(as: RunData.self))
+                            }
+                            self.collectionView.reloadData()
+                        }
+                }
+            }
+        }
     }
 }
