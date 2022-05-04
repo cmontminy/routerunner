@@ -11,6 +11,7 @@
 		2C3C19A52820B8BD00F74A64 /* LoadingSpinner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C3C19A42820B8BD00F74A64 /* LoadingSpinner.swift */; };
 		2C3C19A82821791900F74A64 /* RouteInstancePage.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2C3C19A72821791900F74A64 /* RouteInstancePage.storyboard */; };
 		2C3C19AA2821792E00F74A64 /* RouteInstanceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C3C19A92821792E00F74A64 /* RouteInstanceViewController.swift */; };
+		2C59A9C12822D66500F1E703 /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C59A9C02822D66500F1E703 /* Card.swift */; };
 		2CC0B8A327E95EF60020FCAD /* Run.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2CC0B8A227E95EF60020FCAD /* Run.storyboard */; };
 		2CDEAAF727E9556A000DDA40 /* PaceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CDEAAF627E9556A000DDA40 /* PaceView.swift */; };
 		2CDEAAF927E9557C000DDA40 /* CancelButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CDEAAF827E9557C000DDA40 /* CancelButton.swift */; };
@@ -100,6 +101,7 @@
 		2C3C19A42820B8BD00F74A64 /* LoadingSpinner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingSpinner.swift; sourceTree = "<group>"; };
 		2C3C19A72821791900F74A64 /* RouteInstancePage.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = RouteInstancePage.storyboard; sourceTree = "<group>"; };
 		2C3C19A92821792E00F74A64 /* RouteInstanceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteInstanceViewController.swift; sourceTree = "<group>"; };
+		2C59A9C02822D66500F1E703 /* Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
 		2CC0B8A227E95EF60020FCAD /* Run.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Run.storyboard; sourceTree = "<group>"; };
 		2CDEAAF627E9556A000DDA40 /* PaceView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaceView.swift; sourceTree = "<group>"; };
 		2CDEAAF827E9557C000DDA40 /* CancelButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CancelButton.swift; sourceTree = "<group>"; };
@@ -277,6 +279,7 @@
 				8D5B54F827E81B4400BDB2AD /* HomeViewController.swift */,
 				2C3C19A22820B65900F74A64 /* RouteCell.swift */,
 				2C3C19A42820B8BD00F74A64 /* LoadingSpinner.swift */,
+				2C59A9C02822D66500F1E703 /* Card.swift */,
 			);
 			path = "Home Screen";
 			sourceTree = "<group>";
@@ -494,6 +497,7 @@
 				8CAB74B62807641B00D96993 /* Route.swift in Sources */,
 				8C035C3A27E945BF004E269B /* RunData.swift in Sources */,
 				FB37D23727EA59800020715D /* SwitchTableViewCell.swift in Sources */,
+				2C59A9C12822D66500F1E703 /* Card.swift in Sources */,
 				8C035C3C27E94E66004E269B /* HistoryViewController.swift in Sources */,
 				FBED8A1B27EAA37500CCDBA5 /* ProfileSettingsViewController.swift in Sources */,
 				FB0EE88F27E96B28005AD4F7 /* UserInterfaceStyleManager.swift in Sources */,

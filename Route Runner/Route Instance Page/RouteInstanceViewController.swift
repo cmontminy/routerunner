@@ -25,45 +25,58 @@ class RouteInstanceViewController: UIViewController {
     public let metersToKm = 0.001 // constant conversion from meters to kilometers
     
     public var routeData: RunData! = nil
+    public var generateData = false // used to indicate whether we need to generate data for this route
     
     override func viewDidLoad() {
+        self.showSpinner(onView: self.view) // show spinner
         super.viewDidLoad()
-        
-        mapView.delegate = self
+        self.navigationController?.navigationBar.tintColor = hexStringToUIColor(hex: "#FF7500")
         startButton.tintColor = hexStringToUIColor(hex: "#FF7500")
+
+        mapView.delegate = self
         
         if(routeData != nil && routeData.route != nil) {
             routeData.route!.calculate {response ,error in
                 guard let response = response else {
                     if let error = error {
                         print("Error: \(error)")
+                        self.removeSpinner()
                     }
                     return
                 }
                 let directionsRoute = response.routes[0] // route data
-                
                 // set title to name and route distance length
                 let unit = self.usingKilometers() ? " km" : " mi"
-                // detemrmine unit to convert to
-                let conversion = self.usingKilometers() ? self.metersToKm : self.metersToMiles
                 
-                // round distance to tenth
-                let rDistance = round((directionsRoute.distance * conversion) * 10) / 10.0
-                // get time
-                let rTime: Int = Int(round(directionsRoute.expectedTravelTime / 60))
-                
-                // set labels to values
-                self.distanceLabel.text = String(rDistance) + unit
-                self.timeLabel.text = String(rTime) + " min"
-                self.pointsLabel.text = "0"
-                self.paceLabel.text = "0"
-                self.titleLabel.text = directionsRoute.name
-                                
-                // add properties to routeData
-                self.routeData.name = directionsRoute.name
-                self.routeData.distance = rDistance
-                self.routeData.time = rTime
-                self.routeData.points = 0
+                if (self.generateData) {
+                    // detemrmine unit to convert to
+                    let conversion = self.usingKilometers() ? self.metersToKm : self.metersToMiles
+                    
+                    // round distance to tenth
+                    let rDistance = round((directionsRoute.distance * conversion) * 10) / 10.0
+                    // get time
+                    let rTime: Int = Int(round(directionsRoute.expectedTravelTime / 60))
+                    
+                    // set labels to values
+                    self.distanceLabel.text = String(rDistance) + unit
+                    self.timeLabel.text = String(rTime) + " min"
+                    self.pointsLabel.text = "(No points)"
+                    self.paceLabel.text = "0"
+                    self.titleLabel.text = directionsRoute.name
+                                    
+                    // add properties to routeData
+                    self.routeData.name = directionsRoute.name
+                    self.routeData.distance = rDistance
+                    self.routeData.time = rTime
+                    self.routeData.points = 0
+                } else {
+                    // set labels using routeData props
+                    self.distanceLabel.text = String(self.routeData.distance) + unit
+                    self.timeLabel.text = String(self.routeData.time) + " min"
+                    self.pointsLabel.text = String(self.routeData.points)
+                    self.paceLabel.text = "0"
+                    self.titleLabel.text = self.routeData.name
+                }
                 
                 // display route on map
                 self.mapView.addOverlay((directionsRoute.polyline), level: MKOverlayLevel.aboveRoads)
@@ -85,17 +98,20 @@ class RouteInstanceViewController: UIViewController {
                 self.mapView.setRegion(region, animated: false)
             }
         }
+        self.removeSpinner()
     }
     
     @IBAction func onStartButtonPressed(_ sender: Any) {
-        // save route to firebase
-        let db = Firestore.firestore()
-        
-        do {
-            try db.collection("runs").addDocument(from: routeData)
-            print("here")
-        } catch {
-            print("Error in RouteInstanceViewController: uploading route to Firestore DB")
+        // if route was already generated, no need to save
+        if (self.generateData) {
+            // save route to firebase
+            let db = Firestore.firestore()
+            
+            do {
+                try db.collection("runs").addDocument(from: routeData)
+            } catch {
+                print("Error in RouteInstanceViewController: uploading route to Firestore DB")
+            }
         }
         
         // navigate

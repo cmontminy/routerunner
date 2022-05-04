@@ -4,7 +4,6 @@
 //
 //  Created by Sriram Alagappan on 3/21/22.
 //
-
 import UIKit
 import MapKit
 
@@ -83,7 +82,6 @@ class RunViewController: UIViewController {
                 
             }
         }
-        
         configureLocationServices() // start location services
         scheduledTimerWithTimeInterval() // start timer
         startObserving(&UserInterfaceStyleManager.shared)

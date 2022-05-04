@@ -6,6 +6,8 @@
 //
 
 import UIKit
+import MapKit
+import CoreLocation
 import Firebase
 import FirebaseFirestoreSwift
 
@@ -33,11 +35,12 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
         cell.distanceLabel.text = String(routes[row].distance) + " mi"
         cell.timeLabel.text = String(routes[row].time) + " min"
         cell.routeImage.image = routes[row].image
+        cell.routeImage.layer.cornerRadius = 5
         return cell
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 150.0
+        return 185.0
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -60,11 +63,17 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
                     let distance: Double = data["distance"] as? Double ?? 0.0
                     let time: Int = data["time"] as? Int ?? 0
                     let points: Int = data["points"] as? Int ?? 0
-                    
-                    print(name, distance, time)
-                    
+                    let startCoordLat: Double = data["startCoordLat"] as? Double ?? 0.0
+                    let startCoordLong: Double = data["startCoordLong"] as? Double ?? 0.0
+                    let endCoordLat: Double = data["endCoordLat"] as? Double ?? 0.0
+                    let endCoordLong: Double = data["endCoordLong"] as? Double ?? 0.0
+                                        
                     // create route and append to list of all routes
                     let curRoute = RunData(name: name, image: UIImage(named: "sample3"), date: Date(), distance: distance, points: points, time: time)
+                    curRoute.startCoordLat = startCoordLat
+                    curRoute.startCoordLong = startCoordLong
+                    curRoute.endCoordLat = endCoordLat
+                    curRoute.endCoordLong = endCoordLong
                     self.routes.append(curRoute)
                 }
                 self.tableView.reloadData() // after loading routes, rebuild table
@@ -72,22 +81,6 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
             }
         }
     }
-    
-    // Create a dummy run document on page load for firebase testing
-//    func createDummyRunFirebase() {
-//        let db = Firestore.firestore()
-//        let docRef = db.collection("runs").document("sample")
-//
-//        docRef.getDocument(as: RunData.self) { result  in
-//            switch result {
-//            case .success(let run):
-//                print("Run: \(run.name)")
-//            case .failure(let error):
-//                print("Error decoding run: \(error)")
-//            }
-//        }
-//        try? db.collection("runs").addDocument(from: RunData(name: "testing", image: nil, date: Date(), distance: 123.4, points: 5, time: 8))
-//    }
     
     // to run anytime the view appears on the screen
     override func viewWillAppear(_ animated: Bool) {
@@ -111,15 +104,35 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
         navigationController?.setNavigationBarHidden(false, animated: animated)
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
+        if segue.identifier == "RouteInstanceIdentifier" {
+            let nextVC = segue.destination as! RouteInstanceViewController
+            
+            let nextRoute = routes[tableView.indexPathForSelectedRow!.row]
+            
+            // generate route from coords
+            let startLat = nextRoute.startCoordLat ?? 0.0
+            let startLong = nextRoute.startCoordLong ?? 0.0
+            let endLat = nextRoute.endCoordLat ?? 0.0
+            let endLong = nextRoute.endCoordLong ?? 0.0
+            
+            // Create MKDirections Request
+            let request = MKDirections.Request()
+            request.source = MKMapItem(placemark: MKPlacemark(coordinate: CLLocationCoordinate2D(latitude: startLat, longitude: startLong)))
+            request.destination = MKMapItem(placemark: MKPlacemark(coordinate: CLLocationCoordinate2D(latitude: endLat, longitude: endLong)))
+            request.requestsAlternateRoutes = true
+            request.transportType = .walking
 
+            let directions: MKDirections? = MKDirections(request: request)
+            
+            guard directions != nil else {
+                return
+            }
+            
+            nextRoute.route = directions
+            
+            nextVC.routeData = nextRoute // send generated run data to new page to display to user
+            nextVC.generateData = false
+        }
+    }
 }

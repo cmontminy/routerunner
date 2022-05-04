@@ -91,7 +91,8 @@ class RunCreationViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "RouteInstanceIdentifier" {
             let nextVC = segue.destination as! RouteInstanceViewController
-            nextVC.routeData = newRunData // send generated run data to new page to display to user
+            nextVC.routeData = newRunData // send initial route data
+            nextVC.generateData = true // since this is the first instance of this route, need to generate data
         }
     }
     
@@ -106,8 +107,6 @@ class RunCreationViewController: UIViewController {
         request.region = region!
         
         var returnVal: MKPlacemark? = nil
-        
-        
         
         let response = try? await MKLocalSearch(request: request).start()
         
@@ -128,11 +127,9 @@ class RunCreationViewController: UIViewController {
         
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        self.navigationController?.navigationBar.tintColor = hexStringToUIColor(hex: "#FF7500")
         locationManager.delegate = self
-        
         locationManager.requestWhenInUseAuthorization()
-        
         locationManager.requestLocation()
     }
 }
