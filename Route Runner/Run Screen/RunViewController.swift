@@ -44,6 +44,7 @@ class RunViewController: UIViewController {
     private var distanceFormatter = MKDistanceFormatter()
     private var steps: [MKRoute.Step] = []
     private var stepIndex: Int = 0
+    private var nextCheckpoint: CLLocationCoordinate2D?
     
     // -- Functions --
     override func viewDidLoad() {
@@ -68,10 +69,6 @@ class RunViewController: UIViewController {
                 self.routeLabel.text = self.routeData.name + "-" + String(self.routeData.distance) + unit
                 
                 self.steps = directionsRoute.steps
-                print("----------------------------------")
-                for step in directionsRoute.steps {
-                    print(step.polyline.coordinate)
-                }
                 self.displayNextStepInRoute()
             }
         }
@@ -186,6 +183,10 @@ class RunViewController: UIViewController {
             displayNextStepInRoute()
         }
         
+//        print (latestLocation.distance(from: CLLocation(latitude: nextCheckpoint!.latitude, longitude: nextCheckpoint!.longitude)))
+//        if (latestLocation.distance(from: CLLocation(latitude: nextCheckpoint!.latitude, longitude: nextCheckpoint!.longitude)) < 25) {
+//        }
+        
         // identify nearby points of interest around a 75 meter radius
         let nearbyPointsReq = MKLocalPointsOfInterestRequest(center: latestLocation.coordinate, radius: 75.0)
         // filter requests
@@ -234,6 +235,10 @@ class RunViewController: UIViewController {
               )
             self.directionLabel.text = nextStepText + "-" + nextStepDistance
             
+            // speak instructions
+            let speaker = TTS()
+            speaker.speak(utterance: nextStep.instructions)
+            
             // set direction icon
             if nextStepText.contains("left") {
                 self.directionIcon.image = UIImage(systemName: "arrow.left")
@@ -246,6 +251,7 @@ class RunViewController: UIViewController {
             // update distance variables
             distanceForCurStep = 0.0
             distanceToNextStep = nextStep.distance
+            nextCheckpoint = nextStep.polyline.coordinate
         }
     }
     

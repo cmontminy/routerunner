@@ -10,9 +10,11 @@ import MapKit
 import CoreLocation
 
 class RunCreationViewController: UIViewController {
-    @IBOutlet weak var distanceField: UITextField!
     @IBOutlet weak var startField: UITextField!
     @IBOutlet weak var endField: UITextField!
+    @IBOutlet weak var distanceLabel: UILabel!
+    @IBOutlet weak var slider: UISlider!
+    @IBOutlet weak var createButton: UIButton!
     
     var locationManager = CLLocationManager()
     var startPoint: CLPlacemark?
@@ -39,37 +41,36 @@ class RunCreationViewController: UIViewController {
     
     // Get directions for a route based on start/endpoints
     @IBAction func createRoute() {
-                
         Task {
-            guard startField.text != nil, endField.text != nil else {
-                print("Missing parameters for route.")
-                return
-            }
+            var start: MKPlacemark?
+            var end: MKPlacemark?
             
-            guard var start = await getPlace(startField.text!) else {
-                print("Failed to create start")
-                return
-            }
-            
-            guard let end = await getPlace(endField.text!) else {
-                print("Failed to create end")
-                return
-            }
-            
-            if (curLocation != nil) {
+            if startField.text != "" {
+                start = await getPlace(startField.text!)
+            } else {
                 start = MKPlacemark(coordinate: CLLocationCoordinate2D(latitude: curLocation!.latitude, longitude: curLocation!.longitude))
             }
             
+            if endField.text != "" {
+                end = await getPlace(endField.text!)
+            } else {
+                end = await searchNearby()
+                if (end == nil) {
+                    print("Error finding a nearby place")
+                    return
+                }
+            }
+            
             // get lat long coords to store
-            let startCoordLat = start.coordinate.latitude
-            let startCoordLong = start.coordinate.longitude
-            let endCoordLat = end.coordinate.latitude
-            let endCoordLong = end.coordinate.longitude
+            let startCoordLat = start!.coordinate.latitude
+            let startCoordLong = start!.coordinate.longitude
+            let endCoordLat = end!.coordinate.latitude
+            let endCoordLong = end!.coordinate.longitude
             
             // Create MKDirections Request
             let request = MKDirections.Request()
-            request.source = MKMapItem(placemark: start)
-            request.destination = MKMapItem(placemark: end)
+            request.source = MKMapItem(placemark: start!)
+            request.destination = MKMapItem(placemark: end!)
             request.requestsAlternateRoutes = true
             request.transportType = .walking
 
@@ -133,9 +134,64 @@ class RunCreationViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.navigationBar.tintColor = hexStringToUIColor(hex: "#FF7500")
+        createButton.tintColor = hexStringToUIColor(hex: "#FF7500")
+        initializeSlider()
         locationManager.delegate = self
         locationManager.requestWhenInUseAuthorization()
         locationManager.requestLocation()
+    }
+    
+    func initializeSlider() {
+        slider.layer.cornerRadius = 10
+        let unit = self.usingKilometers() ? " km" : " mi"
+        let initVal = slider.value
+        distanceLabel.text = String((round(initVal * 10) / 10.0)) + unit
+        
+        slider.addTarget(self, action: #selector(onValueChanged(_:)), for: UIControl.Event.valueChanged)
+    }
+    
+    @IBAction func onValueChanged(_ sender: Any) {
+        let val = slider.value
+        let unit = self.usingKilometers() ? " km" : " mi"
+        distanceLabel.text = String((round(val * 10) / 10.0)) + unit
+    }
+    
+    private func searchNearby() async -> MKPlacemark? {
+        var result: MKPlacemark? = nil
+        
+        let conversion = usingKilometers() ? 1000 : 1609
+        let maxDistance = CLLocationDistance(slider.value * Float(conversion))
+        print(maxDistance)
+        let region = MKCoordinateRegion(center: curLocation!, latitudinalMeters: 10000, longitudinalMeters: 10000)
+        let nearbyPointsReq = MKLocalPointsOfInterestRequest(coordinateRegion: region)
+        // filter requests
+        nearbyPointsReq.pointOfInterestFilter = MKPointOfInterestFilter(including: [.amusementPark, .beach, .nationalPark, .zoo, .campground, .park, .library])
+        // search using request
+        let search = MKLocalSearch(request: nearbyPointsReq)
+        
+        let response = try? await search.start()
+        
+        // check if there are items
+        let empty = response?.mapItems.isEmpty ?? true
+        if (empty) {
+            return nil
+        }
+            
+        var farthestInRange: Double = 0.0
+        for item in response!.mapItems {
+            let name = item.name!
+
+            let distanceFromOrigin = CLLocation(latitude: self.curLocation!.latitude, longitude: self.curLocation!.longitude).distance(from: CLLocation(latitude: item.placemark.coordinate.latitude, longitude: item.placemark.coordinate.longitude))
+            
+            if (distanceFromOrigin < maxDistance && distanceFromOrigin > farthestInRange) {
+                farthestInRange = distanceFromOrigin
+                result = MKPlacemark(coordinate: CLLocationCoordinate2D(latitude: item.placemark.coordinate.latitude, longitude: item.placemark.coordinate.longitude))
+            }
+
+            print(name, distanceFromOrigin)
+        }
+        
+        return result
     }
 }
 
