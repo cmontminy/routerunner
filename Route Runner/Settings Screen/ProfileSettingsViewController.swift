@@ -22,18 +22,22 @@ class ProfileSettingsViewController: UIViewController, UITableViewDelegate, UITa
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        fetchUserData()
-        configure() // call to set up models array
-        tableView.delegate = self
-        tableView.dataSource = self
-        // register all types of table cells
-        tableView.register(UINib(nibName: "SettingsTableViewCell", bundle: nil), forCellReuseIdentifier: "SettingsTableViewCell")
-        tableView.register(UINib(nibName: "SwitchTableViewCell", bundle: nil), forCellReuseIdentifier: "SwitchTableViewCell")
-        tableView.register(UINib(nibName: "EditableTableViewCell", bundle: nil), forCellReuseIdentifier: "EditableTableViewCell")
         
-        startObserving(&UserInterfaceStyleManager.shared) // observer for darkmode style change
-        
-        print("starting up")
+        fetchUserData() { userData in
+            self.data = userData
+            print("finished gathering user data")
+            self.configure()
+            
+            self.tableView.delegate = self
+            self.tableView.dataSource = self
+            
+            // register all types of table cells
+            self.tableView.register(UINib(nibName: "SettingsTableViewCell", bundle: nil), forCellReuseIdentifier: "SettingsTableViewCell")
+            self.tableView.register(UINib(nibName: "SwitchTableViewCell", bundle: nil), forCellReuseIdentifier: "SwitchTableViewCell")
+            self.tableView.register(UINib(nibName: "EditableTableViewCell", bundle: nil), forCellReuseIdentifier: "EditableTableViewCell")
+            
+            self.startObserving(&UserInterfaceStyleManager.shared) // observer for darkmode style change
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -44,57 +48,64 @@ class ProfileSettingsViewController: UIViewController, UITableViewDelegate, UITa
         navigationController?.setNavigationBarHidden(true, animated: false)
     }
     
-    func fetchUserData() {
+    func fetchUserData(completionHandler: @escaping (UserData) -> Void) {
+        print("here")
+        var userData = UserData(firstName: "err", lastName: "err", email: "err", experienceLevel: "err", uid: "err")
+        
+        guard let user = Auth.auth().currentUser else {
+            print("rip")
+            return
+        }
+        let db = Firestore.firestore()
+        db.collection("users").whereField("uid", isEqualTo: user.uid).getDocuments() { querySnapshot, err in
+            if let err = err {
+                print("Error in query \(err.localizedDescription)")
+                completionHandler(userData)
+                return
+            }
+            if querySnapshot!.isEmpty {
+                print("No users with this uid")
+                completionHandler(userData)
+                return
+            }
+            userData = try! querySnapshot!.documents.first!.data(as: UserData.self)
+            print("loaded user \(userData.firstName)")
+            completionHandler(userData)
+        }
+    }
+    
+    func updateUserData(updateField:String, updateText:String, completionHandler: @escaping () -> Void) {
         guard let user = Auth.auth().currentUser else {
             return
         }
-        
+
         let db = Firestore.firestore()
         db.collection("users").whereField("uid", isEqualTo: user.uid)
             .getDocuments() { (querySnapshot, err) in
                 if let err = err {
                     print("Error getting documents: \(err)")
-                } else {
-                    for document in querySnapshot!.documents {
-                        guard let fetchedUser = try? document.data(as: UserData.self) else {
-                            print("could not convert fetchedUser")
-                            return
+                    completionHandler()
+                    return
+                }
+                for document in querySnapshot!.documents {
+                    document.reference.updateData([
+                        updateField: updateText
+                    ]) { err in
+                        if let err = err {
+                            print("Error updating document: \(err)")
+                        } else {
+                            print("Document successfully updated")
                         }
-                        print("Name: \(fetchedUser.firstName)")
-                        self.data = fetchedUser
+                        completionHandler()
                     }
                 }
         }
     }
     
-    func updateUserData(updateField:String, updateText:String) {
-        guard let user = Auth.auth().currentUser else {
-            return
-        }
-        
-        let db = Firestore.firestore()
-        db.collection("users").whereField("uid", isEqualTo: user.uid)
-            .getDocuments() { (querySnapshot, err) in
-                if let err = err {
-                    print("Error getting documents: \(err)")
-                } else {
-                    for document in querySnapshot!.documents {
-                        document.reference.updateData([
-                            updateField: updateText
-                        ]) { err in
-                            if let err = err {
-                                print("Error updating document: \(err)")
-                            } else {
-                                print("Document successfully updated")
-                            }
-                        }
-                    }
-                }
-        }
-    }
-    
-    // function to set up option list - subtitles are dummy variables "test" for now
+    // function to set up option list
     func configure() {
+        models.removeAll()
+        print("\(self.data?.firstName)")
         models.append(Section(title: "User Information", options: [
             .editableCell(model: SettingsEditOption(title: "First Name", subtitle: self.data?.firstName ?? "Could not load first name") {
                 let controller = UIAlertController(
@@ -114,9 +125,13 @@ class ProfileSettingsViewController: UIViewController, UITableViewDelegate, UITa
                             let textFields = textFieldArray as [UITextField]
                             let enteredText = textFields[0].text!
                             
-                            self.updateUserData(updateField: "firstName", updateText: enteredText)
-                            
-                            print(enteredText)
+                            self.updateUserData(updateField: "firstName", updateText: enteredText) {
+                                self.fetchUserData() { userData in
+                                    self.data = userData
+                                    self.configure()
+                                    self.tableView.reloadData()
+                                }
+                            }
                         }
                     })
                 )
@@ -141,7 +156,13 @@ class ProfileSettingsViewController: UIViewController, UITableViewDelegate, UITa
                             let textFields = textFieldArray as [UITextField]
                             let enteredText = textFields[0].text!
                             
-                            self.updateUserData(updateField: "lastName", updateText: enteredText)
+                            self.updateUserData(updateField: "lastName", updateText: enteredText) {
+                                self.fetchUserData() { userData in
+                                    self.data = userData
+                                    self.configure()
+                                    self.tableView.reloadData()
+                                }
+                            }
                             
                             print(enteredText)
                         }
@@ -149,33 +170,33 @@ class ProfileSettingsViewController: UIViewController, UITableViewDelegate, UITa
                 )
                 self.present(controller, animated: true, completion: nil)
             }),
-            // self.data?.address ?? "Could not load address"
-            .editableCell(model: SettingsEditOption(title: "Address", subtitle: "test") {
-                let controller = UIAlertController(
-                    title: "Edit Address",
-                    message: "",
-                    preferredStyle: .alert)
-                controller.addTextField(configurationHandler: {
-                    (textField:UITextField!) in textField.placeholder = "Enter new address"
-                })
-                controller.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
-                controller.addAction(UIAlertAction(
-                    title: "OK",
-                    style: .default,
-                    handler: {
-                        (paramAction:UIAlertAction!) in
-                        if let textFieldArray = controller.textFields {
-                            let textFields = textFieldArray as [UITextField]
-                            let enteredText = textFields[0].text!
-                            
-                            self.updateUserData(updateField: "address", updateText: enteredText)
-                            
-                            print(enteredText)
-                        }
-                    })
-                )
-                self.present(controller, animated: true, completion: nil)
-            }),
+//            // self.data?.address ?? "Could not load address"
+//            .editableCell(model: SettingsEditOption(title: "Address", subtitle: self.data?.address ?? "Could not load address") {
+//                let controller = UIAlertController(
+//                    title: "Edit Address",
+//                    message: "",
+//                    preferredStyle: .alert)
+//                controller.addTextField(configurationHandler: {
+//                    (textField:UITextField!) in textField.placeholder = "Enter new address"
+//                })
+//                controller.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+//                controller.addAction(UIAlertAction(
+//                    title: "OK",
+//                    style: .default,
+//                    handler: {
+//                        (paramAction:UIAlertAction!) in
+//                        if let textFieldArray = controller.textFields {
+//                            let textFields = textFieldArray as [UITextField]
+//                            let enteredText = textFields[0].text!
+//
+//                            self.updateUserData(updateField: "address", updateText: enteredText)
+//
+//                            print(enteredText)
+//                        }
+//                    })
+//                )
+//                self.present(controller, animated: true, completion: nil)
+//            }),
             
             .editableCell(model: SettingsEditOption(title: "Experience", subtitle: self.data?.experienceLevel ?? "Could not load experience level") {
                 let controller = UIAlertController(
@@ -184,13 +205,31 @@ class ProfileSettingsViewController: UIViewController, UITableViewDelegate, UITa
                     preferredStyle: .actionSheet)
                 
                 controller.addAction(UIAlertAction(title: "Beginner", style: .default, handler: {_ in
-                    self.updateUserData(updateField: "experienceLevel", updateText: "Beginner")
+                    self.updateUserData(updateField: "experienceLevel", updateText: "Beginner") {
+                        self.fetchUserData() { userData in
+                            self.data = userData
+                            self.configure()
+                            self.tableView.reloadData()
+                        }
+                    }
                 }))
                 controller.addAction(UIAlertAction(title: "Intermediate", style: .default, handler: {_ in
-                    self.updateUserData(updateField: "experienceLevel", updateText: "Intermediate")
+                    self.updateUserData(updateField: "experienceLevel", updateText: "Intermediate") {
+                        self.fetchUserData() { userData in
+                            self.data = userData
+                            self.configure()
+                            self.tableView.reloadData()
+                        }
+                    }
                 }))
                 controller.addAction(UIAlertAction(title: "Advanced", style: .default, handler: {_ in
-                    self.updateUserData(updateField: "experienceLevel", updateText: "Advanced")
+                    self.updateUserData(updateField: "experienceLevel", updateText: "Advanced") {
+                        self.fetchUserData() { userData in
+                            self.data = userData
+                            self.configure()
+                            self.tableView.reloadData()
+                        }
+                    }
                 }))
                 controller.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
                 
@@ -221,14 +260,20 @@ class ProfileSettingsViewController: UIViewController, UITableViewDelegate, UITa
                             Auth.auth().currentUser?.updateEmail(to: enteredText) { error in
                               print("could not reset email")
                             }
-                            print("email updated !")
+                            self.updateUserData(updateField: "email", updateText: enteredText) {
+                                self.fetchUserData() { userData in
+                                    self.data = userData
+                                    self.configure()
+                                    self.tableView.reloadData()
+                                }
+                            }
                         }
                     })
                 )
                 self.present(controller, animated: true, completion: nil)
             }),
             
-            .editableCell(model: SettingsEditOption(title: "Password", subtitle: "") {
+                .editableCell(model: SettingsEditOption(title: "Password", subtitle: "******") {
                 let controller = UIAlertController(
                     title: "Edit Password",
                     message: "",
