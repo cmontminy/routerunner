@@ -14,6 +14,7 @@ var friends: [UserData] = []
 class FriendViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     let textCellIdentifier = "FriendCell"
+    let segueIdentifier = "AddFriend"
     
     @IBOutlet weak var tableView: UITableView!
     
@@ -39,12 +40,25 @@ class FriendViewController: UIViewController, UITableViewDelegate, UITableViewDa
           }
         
         cell.removeAction  = { (cell) in
+            guard let user = Auth.auth().currentUser else {
+                return
+            }
+            let db = Firestore.firestore()
+            db.collection("users").document(user.uid).updateData([
+                "friends": FieldValue.arrayRemove([friend.uid])
+            ])
+            db.collection("users").document(friend.uid).updateData([
+                "friends": FieldValue.arrayRemove([user.uid])
+            ])
             friends.remove(at: indexPath.row)
             tableView.reloadData()
           }
         
         // Use placeholder image if none provided
-        cell.profilePic?.image = friend.picture
+//        cell.profilePic?.image = friend.picture
+        friend.getImage { image in
+            cell.profilePic?.image = image
+        }
         
         // Give image rounded edges
         cell.profilePic?.layer.cornerRadius = 8.0
@@ -56,6 +70,14 @@ class FriendViewController: UIViewController, UITableViewDelegate, UITableViewDa
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         navigationController?.setNavigationBarHidden(true, animated: false)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        if (friends.count == 0) {
+            fetchFriends()
+        }
     }
     
     override func viewDidLoad() {
@@ -71,15 +93,14 @@ class FriendViewController: UIViewController, UITableViewDelegate, UITableViewDa
 //        
 //        friends.append(UserData(firstName: "e", lastName: "t", email: "w", experienceLevel: "advanced", uid: "54trbfdsr"))
         
-        if (friends.count == 0) {
-            fetchFriends()
-        }
+        
     }
     
     func fetchFriends() {
         guard let user = Auth.auth().currentUser else {
             return
         }
+        friends.removeAll()
         let db = Firestore.firestore()
         db.collection("users").whereField("friends", arrayContains: user.uid)
             .getDocuments() { (querySnapshot, err) in
@@ -91,6 +112,14 @@ class FriendViewController: UIViewController, UITableViewDelegate, UITableViewDa
                     }
                     self.tableView.reloadData()
                 }
+        }
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == segueIdentifier {
+            let nextVC = segue.destination as! AddFriendViewController
+            nextVC.tableView = self.tableView
+            nextVC.reloadFriends = fetchFriends
         }
     }
     

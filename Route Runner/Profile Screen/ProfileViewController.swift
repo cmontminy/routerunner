@@ -7,6 +7,7 @@
 
 import UIKit
 import Firebase
+import MobileCoreServices
 
 public let dummyData = ["sample0", "sample1", "sample2", "sample3", "sample4", "sample5"]
 
@@ -39,7 +40,7 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource, UICol
         profilePicture.layer.borderWidth = 1
         profilePicture.layer.masksToBounds = false
         profilePicture.layer.borderColor = UIColor.white.cgColor
-        profilePicture.layer.cornerRadius = profilePicture.frame.height/1
+        profilePicture.layer.cornerRadius = 25
         profilePicture.clipsToBounds = true
         profilePicture.sizeToFit()
         //add shadow
@@ -59,6 +60,7 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource, UICol
             
             self.runnerName.text = currentUser?.displayName
             
+            
 
         }
         
@@ -68,6 +70,20 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource, UICol
         //total number of miles
         calcNumMiles()
     }
+    
+    // Referenced https://medium.com/firebase-developers/how-to-upload-image-from-uiimagepickercontroller-to-cloud-storage-for-firebase-bad90f80d6a7
+    @IBAction func onEditProfileButtonPressed(_ sender: Any) {
+            // Must import `MobileCoreServices`
+            let imageMediaType = kUTTypeImage as String
+
+            // Define and present the `UIImagePickerController`
+            let pickerController = UIImagePickerController()
+            pickerController.sourceType = .photoLibrary
+            pickerController.mediaTypes = [imageMediaType]
+            pickerController.delegate = self
+            present(pickerController, animated: true, completion: nil)
+    }
+    
     
     func calcNumMiles(){
         var count = 0
@@ -157,4 +173,44 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource, UICol
             }
         }
     }
+}
+
+extension ProfileViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    func uploadImage(url: URL) {
+        guard let user = Auth.auth().currentUser else {
+            return
+        }
+        
+        let filepath = "images/\(user.uid)profile.jpg"
+        
+        let storageRef = Storage.storage().reference().child(filepath)
+        
+        let db = Firestore.firestore()
+        
+        let currentUploadTask = storageRef.putFile(from: url, metadata: nil) { (storageMetaData, error) in
+            if let error = error {
+                print("Upload error: \(error.localizedDescription)")
+                return
+            }
+
+            storageRef.downloadURL { (url, error) in
+                if let error = error  {
+                    print("Error on getting download url: \(error.localizedDescription)")
+                    return
+                }
+                print("Download url of \(filepath) is \(url!.absoluteString)")
+                db.collection("users").document(user.uid).updateData(["profilePic": url!.absoluteString])
+            }
+        }
+    }
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        let mediaType = info[UIImagePickerController.InfoKey.mediaType] as! CFString
+        if mediaType == kUTTypeImage {
+          let imageURL = info[UIImagePickerController.InfoKey.imageURL] as! URL
+            uploadImage(url: imageURL)
+        }
+
+        picker.dismiss(animated: true, completion: nil)
+      }
 }

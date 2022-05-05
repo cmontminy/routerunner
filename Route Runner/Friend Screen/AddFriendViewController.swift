@@ -20,6 +20,8 @@ class AddFriendViewController: UIViewController {
     @IBOutlet weak var friendSkillLevel: UILabel!
     
     var friendData: UserData?
+    var tableView: UITableView!
+    var reloadFriends: (() -> Void)!
     
     @IBAction func onAddFriendButtonPressed(_ sender: Any) {
         addFriend()
@@ -33,6 +35,12 @@ class AddFriendViewController: UIViewController {
         
         resultBox.isHidden = true
         profilePic.layer.cornerRadius = 20
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        tableView.reloadData()
     }
     
     @IBAction func onSearchButtonPressed(_ sender: Any) {
@@ -61,6 +69,9 @@ class AddFriendViewController: UIViewController {
         resultBox.isHidden = false
         friendName.text = "\(friend.firstName) \(friend.lastName)"
         friendSkillLevel.text = friend.experienceLevel
+        friend.getImage { image in
+            self.profilePic.image = image
+        }
     }
     
     func addFriend() {
@@ -78,6 +89,7 @@ class AddFriendViewController: UIViewController {
                 ])
                 print("Added \(friend.firstName) \(friend.lastName) uid: \(friend.uid)")
                 self.resultBox.isHidden = false
+                self.reloadFriends()
             }
         }
 
