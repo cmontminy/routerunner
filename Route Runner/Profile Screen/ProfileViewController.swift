@@ -51,40 +51,6 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource, UICol
         profilePicture.layer.shadowOffset = CGSize.zero;
         profilePicture.layer.shadowOpacity = 1;
         profilePicture.layer.shadowRadius = 1.0;
-        
-        //customize fonts
-        //let fontArr = UIFont.familyNames
-        
-        
-        guard let user = Auth.auth().currentUser else {
-            return
-        }
-        
-        let db = Firestore.firestore()
-        
-        db.collection("users").document(user.uid).getDocument { document, error in
-            if let error = error {
-                print("Error loading user \(error.localizedDescription)")
-            } else {
-                guard let document = document else {
-                    return
-                }
-                self.currentUser = try! document.data(as: UserData.self)
-                self.currentUser.getImage { image in
-                    self.profilePicture.image = image
-                }
-                self.runnerName.text = "\(self.currentUser.firstName) \(self.currentUser.lastName)"
-                self.difficultyLevel.text = self.currentUser.experienceLevel
-            }
-        }
-        
-        loadProfilePic()
-        
-        //total number of runs
-        calcNumRuns()
-        
-        //total number of miles
-        calcNumMiles()
     }
     
     // Referenced https://medium.com/firebase-developers/how-to-upload-image-from-uiimagepickercontroller-to-cloud-storage-for-firebase-bad90f80d6a7
@@ -124,6 +90,35 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource, UICol
         collectionView.reloadData()
         calcNumMiles()
         calcNumRuns()
+        guard let user = Auth.auth().currentUser else {
+            return
+        }
+        
+        let db = Firestore.firestore()
+        
+        db.collection("users").document(user.uid).getDocument { document, error in
+            if let error = error {
+                print("Error loading user \(error.localizedDescription)")
+            } else {
+                guard let document = document else {
+                    return
+                }
+                self.currentUser = try! document.data(as: UserData.self)
+                self.currentUser.getImage { image in
+                    self.profilePicture.image = image
+                }
+                self.runnerName.text = "\(self.currentUser.firstName) \(self.currentUser.lastName)"
+                self.difficultyLevel.text = self.currentUser.experienceLevel
+            }
+        }
+        
+        loadProfilePic()
+        
+        //total number of runs
+        calcNumRuns()
+        
+        //total number of miles
+        calcNumMiles()
     }
     
     override func viewDidAppear(_ animated: Bool) {
