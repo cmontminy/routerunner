@@ -27,7 +27,7 @@ struct SettingsOption { // settings option that segues to another screen
 
 struct SettingsEditOption { // settings option that opens up a menu to edit values
     let title: String
-    let subtitle: String
+    var subtitle: String
     let handler: (() -> Void)
 }
 
@@ -65,18 +65,18 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
         ]))
         models.append(Section(title: "General", options: [
             .switchCell(model: SettingsSwitchOption(title: "Dark Mode", isOn: UserInterfaceStyleManager.shared.currentStyle == .dark)),
-            .switchCell(model: SettingsSwitchOption(title: "Distance", isOn: UserDefaults.standard.bool(forKey:"RouteRunnerKilometerModeOn"))),
+            .switchCell(model: SettingsSwitchOption(title: "Distance Units", isOn: UserDefaults.standard.bool(forKey:"RouteRunnerKilometerModeOn"))),
             .switchCell(model: SettingsSwitchOption(title: "TTS Directions", isOn: UserDefaults.standard.bool(forKey:"RouteRunnerTTSModeOn")))
         ]))
             
-        models.append(Section(title: "Notifications", options: [
-            .staticCell(model: SettingsOption(title: "Mute while Running") {
-                print("tapped mute while running") // dummy action
-            }),
-            .staticCell(model: SettingsOption(title: "Vibration") {
-                print("tapped vibration") // dummy action
-            })
-        ]))
+//        models.append(Section(title: "Notifications", options: [
+//            .staticCell(model: SettingsOption(title: "Mute while Running") {
+//                print("tapped mute while running") // dummy action
+//            }),
+//            .staticCell(model: SettingsOption(title: "Vibration") {
+//                print("tapped vibration") // dummy action
+//            })
+//        ]))
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
