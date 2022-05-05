@@ -143,7 +143,7 @@ extension SettingsViewController: SwitchCellDelegate {
             UserDefaults.standard.set(darkModeOn, forKey: UserInterfaceStyleManager.userInterfaceStyleDarkModeOn)
             // Update interface style
             UserInterfaceStyleManager.shared.updateUserInterfaceStyle(darkModeOn)
-        } else if option == "Distance" { // action when distance mode switch is flipped
+        } else if option == "Distance Units" { // action when distance mode switch is flipped
             let kmOn = isOn // isOn: true = kilometer mode on
             UserDefaults.standard.set(kmOn, forKey: "RouteRunnerKilometerModeOn")
         } else if option == "TTS Directions" { // action when TTS  mode switch is flipped
