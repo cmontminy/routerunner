@@ -29,11 +29,14 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource, UICol
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        loadProfilePic()
+        
         collectionView.dataSource = self
         collectionView.delegate = self
         
     //profile picture
-        profilePicture.image = UIImage(named: "profilepictureRR")
+//        profilePicture.image = UIImage(named: "defaultProfile")
         startObserving(&UserInterfaceStyleManager.shared)
         
         //style profile picture
@@ -154,6 +157,27 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource, UICol
         
     }
     
+    func loadProfilePic() {
+        guard let user = Auth.auth().currentUser else {
+            return
+        }
+        
+        let db = Firestore.firestore()
+        
+        db.collection("users").document(user.uid).getDocument { document, error in
+            if let error = error {
+                print("Error loading user \(error.localizedDescription)")
+            } else {
+                guard let document = document else {
+                    return
+                }
+                try! document.data(as: UserData.self).getImage { image in
+                    self.profilePicture.image = image
+                }
+            }
+        }
+    }
+    
     func loadRunData() {
         let db = Firestore.firestore()
         runs.removeAll()
@@ -200,6 +224,7 @@ extension ProfileViewController: UIImagePickerControllerDelegate, UINavigationCo
                 }
                 print("Download url of \(filepath) is \(url!.absoluteString)")
                 db.collection("users").document(user.uid).updateData(["profilePic": url!.absoluteString])
+                self.loadProfilePic()
             }
         }
     }
