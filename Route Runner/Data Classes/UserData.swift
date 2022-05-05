@@ -31,6 +31,10 @@ class UserData: Codable {
     }
     
     static func downloadImage(_ gsurl: String, completionHandler: @escaping (_ result: UIImage?, _ error: Error?) -> Void) {
+        guard gsurl.count > 0 else {
+            completionHandler(UIImage(named: "defaultProfile"), nil)
+            return
+        }
         let gsReference = Storage.storage().reference(forURL: gsurl)
         // 4 MB max image size
         gsReference.getData(maxSize: 4 * 1024 * 1024) { data, error in
@@ -48,10 +52,10 @@ class UserData: Codable {
         let values = try decoder.container(keyedBy: CodingKeys.self)
         firstName = try values.decode(String.self, forKey: .firstName)
         lastName = try values.decode(String.self, forKey: .lastName)
-        email = try values.decode(String.self, forKey: .email)
-        experienceLevel = try values.decode(String.self, forKey: .experienceLevel)
+        email = (try? values.decode(String.self, forKey: .email)) ?? ""
+        experienceLevel = (try? values.decode(String.self, forKey: .experienceLevel)) ?? ""
         uid = try values.decode(String.self, forKey: .uid)
-        pictureURL = try values.decode(String.self, forKey: .profilePic)
+        pictureURL = (try? values.decode(String.self, forKey: .profilePic)) ?? ""
 //        UserData.downloadImage(profilePicURL) { image, err in
 //            if let err = err {
 //                print("Could not download image at URL \(profilePicURL), err: \(err.localizedDescription)")
