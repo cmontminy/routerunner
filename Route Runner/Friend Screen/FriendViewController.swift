@@ -6,6 +6,8 @@
 //
 
 import UIKit
+import Firebase
+import FirebaseFirestoreSwift
 
 var friends: [UserData] = []
 
@@ -42,7 +44,7 @@ class FriendViewController: UIViewController, UITableViewDelegate, UITableViewDa
           }
         
         // Use placeholder image if none provided
-        cell.profilePic?.image = UIImage(named: "dummy")
+        cell.profilePic?.image = friend.picture
         
         // Give image rounded edges
         cell.profilePic?.layer.cornerRadius = 8.0
@@ -65,9 +67,31 @@ class FriendViewController: UIViewController, UITableViewDelegate, UITableViewDa
         
         tableView.rowHeight = 180
         
-        friends.append(UserData(firstName: "w", lastName: "q", email: "w", experienceLevel: "new", uid: "54trbfdsr"))
+//        friends.append(UserData(firstName: "w", lastName: "q", email: "w", experienceLevel: "new", uid: "54trbfdsr"))
+//        
+//        friends.append(UserData(firstName: "e", lastName: "t", email: "w", experienceLevel: "advanced", uid: "54trbfdsr"))
         
-        friends.append(UserData(firstName: "e", lastName: "t", email: "w", experienceLevel: "advanced", uid: "54trbfdsr"))
+        if (friends.count == 0) {
+            fetchFriends()
+        }
+    }
+    
+    func fetchFriends() {
+        guard let user = Auth.auth().currentUser else {
+            return
+        }
+        let db = Firestore.firestore()
+        db.collection("users").whereField("friends", arrayContains: user.uid)
+            .getDocuments() { (querySnapshot, err) in
+                if let err = err {
+                    print("Error getting documents: \(err)")
+                } else {
+                    for document in querySnapshot!.documents {
+                        try? friends.append(document.data(as: UserData.self))
+                    }
+                    self.tableView.reloadData()
+                }
+        }
     }
     
 }
