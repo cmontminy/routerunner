@@ -53,5 +53,10 @@ class PastRunViewController: UIViewController {
         // Round image corners
         runImage.layer.cornerRadius = 8.0
         runImage.layer.masksToBounds = true
+        navigationController?.setNavigationBarHidden(false, animated: false)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        navigationController?.setNavigationBarHidden(true, animated: false)
     }
 }

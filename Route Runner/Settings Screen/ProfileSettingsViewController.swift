@@ -36,6 +36,14 @@ class ProfileSettingsViewController: UIViewController, UITableViewDelegate, UITa
         print("starting up")
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        navigationController?.setNavigationBarHidden(false, animated: false)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        navigationController?.setNavigationBarHidden(true, animated: false)
+    }
+    
     func fetchUserData() {
         guard let user = Auth.auth().currentUser else {
             return
