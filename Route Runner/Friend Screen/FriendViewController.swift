@@ -15,6 +15,7 @@ class FriendViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
     let textCellIdentifier = "FriendCell"
     let segueIdentifier = "AddFriend"
+    let profileSegueIdentifier = "OtherProfile"
     
     @IBOutlet weak var tableView: UITableView!
     
@@ -37,6 +38,7 @@ class FriendViewController: UIViewController, UITableViewDelegate, UITableViewDa
         
         cell.profileAction  = { (cell) in
             print("Viewing profile of \(friend.firstName) \(friend.lastName)")
+            self.performSegue(withIdentifier: self.profileSegueIdentifier, sender: friend.uid)
           }
         
         cell.removeAction  = { (cell) in
@@ -83,16 +85,11 @@ class FriendViewController: UIViewController, UITableViewDelegate, UITableViewDa
     override func viewDidLoad() {
         super.viewDidLoad()
         
-                tableView.delegate = self
+        tableView.delegate = self
         tableView.dataSource = self
         startObserving(&UserInterfaceStyleManager.shared)
         
-        tableView.rowHeight = 180
-        
-//        friends.append(UserData(firstName: "w", lastName: "q", email: "w", experienceLevel: "new", uid: "54trbfdsr"))
-//        
-//        friends.append(UserData(firstName: "e", lastName: "t", email: "w", experienceLevel: "advanced", uid: "54trbfdsr"))
-        
+        tableView.rowHeight = 150
         
     }
     
@@ -120,6 +117,10 @@ class FriendViewController: UIViewController, UITableViewDelegate, UITableViewDa
             let nextVC = segue.destination as! AddFriendViewController
             nextVC.tableView = self.tableView
             nextVC.reloadFriends = fetchFriends
+        } else if segue.identifier == profileSegueIdentifier {
+            let nextVC = segue.destination as! OtherProfileViewController
+            nextVC.currentUID = sender as? String
+            navigationController?.setNavigationBarHidden(false, animated: false)
         }
     }
     

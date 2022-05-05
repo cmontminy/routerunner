@@ -1,20 +1,17 @@
 //
-//  ProfileViewController.swift
+//  OtherProfile.swift
 //  Route Runner
 //
-//  Created by Paige Gibson on 3/22/22.
+//  Created by Truman Byrd on 5/5/22.
 //
 
 import UIKit
 import Firebase
 import MobileCoreServices
 
-public let dummyData = ["sample0", "sample1", "sample2", "sample3", "sample4", "sample5"]
+var otherUseRunList: [RunData] = []
 
-var runList: [RunData] = []
-
-class ProfileViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
-    
+class OtherProfileViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
     //outlets
     @IBOutlet weak var profilePicture: UIImageView!
     @IBOutlet weak var collectionView: UICollectionView!
@@ -27,6 +24,7 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource, UICol
     @IBOutlet weak var runnerName: UILabel!
     @IBOutlet weak var difficultyLevel: UILabel!
     
+    var currentUID: String!
     var currentUser: UserData!
     
     override func viewDidLoad() {
@@ -55,14 +53,9 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource, UICol
         //customize fonts
         //let fontArr = UIFont.familyNames
         
-        
-        guard let user = Auth.auth().currentUser else {
-            return
-        }
-        
         let db = Firestore.firestore()
         
-        db.collection("users").document(user.uid).getDocument { document, error in
+        db.collection("users").document(currentUID).getDocument { document, error in
             if let error = error {
                 print("Error loading user \(error.localizedDescription)")
             } else {
@@ -87,20 +80,6 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource, UICol
         calcNumMiles()
     }
     
-    // Referenced https://medium.com/firebase-developers/how-to-upload-image-from-uiimagepickercontroller-to-cloud-storage-for-firebase-bad90f80d6a7
-    @IBAction func onEditProfileButtonPressed(_ sender: Any) {
-            // Must import `MobileCoreServices`
-            let imageMediaType = kUTTypeImage as String
-
-            // Define and present the `UIImagePickerController`
-            let pickerController = UIImagePickerController()
-            pickerController.sourceType = .photoLibrary
-            pickerController.mediaTypes = [imageMediaType]
-            pickerController.delegate = self
-            present(pickerController, animated: true, completion: nil)
-    }
-    
-    
     func calcNumMiles(){
         var count = 0
         var numberMiles = 0.0
@@ -122,13 +101,6 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource, UICol
         
         // Reload to account for new runs / changed distance unit preference
         collectionView.reloadData()
-        calcNumMiles()
-        calcNumRuns()
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        navigationController?.setNavigationBarHidden(true, animated: false)
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -174,13 +146,9 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource, UICol
     }
     
     func loadProfilePic() {
-        guard let user = Auth.auth().currentUser else {
-            return
-        }
-        
         let db = Firestore.firestore()
         
-        db.collection("users").document(user.uid).getDocument { document, error in
+        db.collection("users").document(currentUID).getDocument { document, error in
             if let error = error {
                 print("Error loading user \(error.localizedDescription)")
             } else {
@@ -197,10 +165,7 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource, UICol
     func loadRunData() {
         let db = Firestore.firestore()
         runList.removeAll()
-        guard let user = Auth.auth().currentUser else {
-            return
-        }
-        db.collection("runs").whereField("uid", isEqualTo: user.uid)
+        db.collection("runs").whereField("uid", isEqualTo: currentUID)
             .getDocuments() { (querySnapshot, err) in
                 if let err = err {
                     print("Error getting documents: \(err)")
@@ -215,45 +180,4 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource, UICol
                 }
         }
     }
-}
-
-extension ProfileViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
-    func uploadImage(url: URL) {
-        guard let user = Auth.auth().currentUser else {
-            return
-        }
-        
-        let filepath = "images/\(user.uid)profile.jpg"
-        
-        let storageRef = Storage.storage().reference().child(filepath)
-        
-        let db = Firestore.firestore()
-        
-        let currentUploadTask = storageRef.putFile(from: url, metadata: nil) { (storageMetaData, error) in
-            if let error = error {
-                print("Upload error: \(error.localizedDescription)")
-                return
-            }
-
-            storageRef.downloadURL { (url, error) in
-                if let error = error  {
-                    print("Error on getting download url: \(error.localizedDescription)")
-                    return
-                }
-                print("Download url of \(filepath) is \(url!.absoluteString)")
-                db.collection("users").document(user.uid).updateData(["profilePic": url!.absoluteString])
-                self.loadProfilePic()
-            }
-        }
-    }
-    
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-        let mediaType = info[UIImagePickerController.InfoKey.mediaType] as! CFString
-        if mediaType == kUTTypeImage {
-          let imageURL = info[UIImagePickerController.InfoKey.imageURL] as! URL
-            uploadImage(url: imageURL)
-        }
-
-        picker.dismiss(animated: true, completion: nil)
-      }
 }

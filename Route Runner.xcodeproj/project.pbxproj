@@ -26,6 +26,8 @@
 		8C1AA56428221AEF000E9B2E /* Friend.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8C1AA56328221AEF000E9B2E /* Friend.storyboard */; };
 		8C1AA56628222D86000E9B2E /* FriendTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C1AA56528222D86000E9B2E /* FriendTableViewCell.swift */; };
 		8C26D67828233E050091A56B /* AddFriendViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C26D67728233E050091A56B /* AddFriendViewController.swift */; };
+		8C26D67B2823D0690091A56B /* OtherProfile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8C26D67A2823D0690091A56B /* OtherProfile.storyboard */; };
+		8C26D67D2823D0840091A56B /* OtherProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C26D67C2823D0840091A56B /* OtherProfileViewController.swift */; };
 		8CAB74AF2807641B00D96993 /* DirectionsViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8CAB74A72807641B00D96993 /* DirectionsViewController.storyboard */; };
 		8CAB74B02807641B00D96993 /* RouteAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CAB74A82807641B00D96993 /* RouteAnnotation.swift */; };
 		8CAB74B12807641B00D96993 /* RouteSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CAB74A92807641B00D96993 /* RouteSelectionViewController.swift */; };
@@ -117,6 +119,8 @@
 		8C1AA56328221AEF000E9B2E /* Friend.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Friend.storyboard; sourceTree = "<group>"; };
 		8C1AA56528222D86000E9B2E /* FriendTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendTableViewCell.swift; sourceTree = "<group>"; };
 		8C26D67728233E050091A56B /* AddFriendViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddFriendViewController.swift; sourceTree = "<group>"; };
+		8C26D67A2823D0690091A56B /* OtherProfile.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = OtherProfile.storyboard; sourceTree = "<group>"; };
+		8C26D67C2823D0840091A56B /* OtherProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OtherProfileViewController.swift; sourceTree = "<group>"; };
 		8CAB74A72807641B00D96993 /* DirectionsViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = DirectionsViewController.storyboard; sourceTree = "<group>"; };
 		8CAB74A82807641B00D96993 /* RouteAnnotation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RouteAnnotation.swift; sourceTree = "<group>"; };
 		8CAB74A92807641B00D96993 /* RouteSelectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RouteSelectionViewController.swift; sourceTree = "<group>"; };
@@ -252,6 +256,8 @@
 				8DAF5A2527EA88720011B580 /* ProfileViewController.swift */,
 				8DAF5A2727EA88BA0011B580 /* Profile.storyboard */,
 				8D19E5E527EABFC400477297 /* ProfileCollectionViewCell.swift */,
+				8C26D67A2823D0690091A56B /* OtherProfile.storyboard */,
+				8C26D67C2823D0840091A56B /* OtherProfileViewController.swift */,
 			);
 			path = "Profile Screen";
 			sourceTree = "<group>";
@@ -477,6 +483,7 @@
 				8C1AA56428221AEF000E9B2E /* Friend.storyboard in Resources */,
 				FBED8A1F27EAA3F200CCDBA5 /* EditableTableViewCell.xib in Resources */,
 				8CAB74AF2807641B00D96993 /* DirectionsViewController.storyboard in Resources */,
+				8C26D67B2823D0690091A56B /* OtherProfile.storyboard in Resources */,
 				FB9405C227D7E7B1009DB256 /* Assets.xcassets in Resources */,
 				FB9405BD27D7E7B0009DB256 /* Main.storyboard in Resources */,
 				8D5B54F727E819A500BDB2AD /* Home.storyboard in Resources */,
@@ -525,6 +532,7 @@
 				FB27BE9227E90D010012AB17 /* SettingsTableViewCell.swift in Sources */,
 				2CDEAAF727E9556A000DDA40 /* PaceView.swift in Sources */,
 				8CAB74BC2808E5E800D96993 /* UserData.swift in Sources */,
+				8C26D67D2823D0840091A56B /* OtherProfileViewController.swift in Sources */,
 				8C26D67828233E050091A56B /* AddFriendViewController.swift in Sources */,
 				8C035C4027EA5939004E269B /* PastRunViewController.swift in Sources */,
 				FB0EE89627E97A81005AD4F7 /* StyledNavigationController.swift in Sources */,

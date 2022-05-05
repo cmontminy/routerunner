@@ -75,9 +75,19 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="History" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rRe-CO-k3e" userLabel="Title Label">
+                                <rect key="frame" x="20" y="59" width="114" height="59"/>
+                                <fontDescription key="fontDescription" name="MuktaMahee-Bold" family="Mukta Mahee" pointSize="35"/>
+                                <color key="textColor" red="1" green="0.45953981570000002" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="rRe-CO-k3e" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="20" id="4MF-gw-tID"/>
+                            <constraint firstItem="rRe-CO-k3e" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="15" id="XlP-z0-WlW"/>
+                        </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="History" image="book.fill" catalog="system" id="ubl-Hl-6Rz"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
