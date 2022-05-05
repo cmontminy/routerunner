@@ -100,8 +100,9 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
     // to run anytime the view leaves the screen
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        // return back button in nav bar
-        navigationController?.setNavigationBarHidden(false, animated: animated)
+//        // return back button in nav bar
+//        navigationController?.setNavigationBarHidden(false, animated: animated)
+        print("this should go first")
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -109,7 +110,8 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
             let nextVC = segue.destination as! RouteInstanceViewController
             
             let nextRoute = routes[tableView.indexPathForSelectedRow!.row]
-            
+            // return back button in nav bar
+            navigationController?.setNavigationBarHidden(false, animated: false)
             // generate route from coords
             let startLat = nextRoute.startCoordLat ?? 0.0
             let startLong = nextRoute.startCoordLong ?? 0.0

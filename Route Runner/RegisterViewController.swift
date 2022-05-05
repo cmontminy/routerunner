@@ -18,6 +18,8 @@ class RegisterViewController: UIViewController {
     @IBOutlet weak var confirmPasswordField: UITextField!
     @IBOutlet weak var selectSkillButton: UIButton!
     
+    var skill = ""
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
@@ -37,18 +39,21 @@ class RegisterViewController: UIViewController {
         let beginnerAction = UIAlertAction(title: "Beginner", style: .default, handler: {
             (action) in print("Beginner selected")
             self.selectSkillButton.titleLabel?.text = "Beginner"
+            self.skill = "Beginner"
         })
         controller.addAction(beginnerAction)
         
         let intermediateAction = UIAlertAction(title: "Intermediate", style: .default, handler: {
             (action) in print("Intermediate selected")
             self.selectSkillButton.titleLabel?.text = "Intermediate"
+            self.skill = "Intermediate"
         })
         controller.addAction(intermediateAction)
         
         let expertAction = UIAlertAction(title: "Expert", style: .default, handler: {
             (action) in print("Expert selected")
             self.selectSkillButton.titleLabel?.text = "Expert"
+            self.skill = "Expert"
         })
         controller.addAction(expertAction)
         
@@ -73,7 +78,7 @@ class RegisterViewController: UIViewController {
                 //check for errors
                 if let err = err {
                     //there was an error
-                    self.showError("Error creating user")
+                    self.showError("Error creating user \(err.localizedDescription)")
                 } else{
                     //store first and last name
                     let db = Firestore.firestore()
@@ -81,12 +86,13 @@ class RegisterViewController: UIViewController {
                                 "lastName": lastName,
                                 "uid": res!.user.uid,
                                 "email": email,
-                                "experienceLevel": self.selectSkillButton.titleLabel?.text ?? "none"]
-                    db.collection("users").addDocument(data: ["firstName": firstName, "lastName": lastName, "uid": res!.user.uid]) { (error) in
-                        if (error != nil) {
-                            self.showError("first and last name couldn't be stored")
-                        }
-                    }
+                                "experienceLevel": self.skill]
+//                    db.collection("users").addDocument(data: data) { (error) in
+//                        if (error != nil) {
+//                            self.showError("first and last name couldn't be stored")
+//                        }
+//                    }
+                    db.collection("users").document(res!.user.uid).setData(data)
                     //store running skill level
                     
                 }

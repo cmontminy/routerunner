@@ -51,10 +51,17 @@ class FriendViewController: UIViewController, UITableViewDelegate, UITableViewDa
         return cell
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        navigationController?.setNavigationBarHidden(true, animated: false)
+        print("running?")
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        tableView.delegate = self
+                tableView.delegate = self
         tableView.dataSource = self
         startObserving(&UserInterfaceStyleManager.shared)
         
