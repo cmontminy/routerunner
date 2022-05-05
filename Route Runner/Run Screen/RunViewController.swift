@@ -32,6 +32,8 @@ class RunViewController: UIViewController {
     
     // -- Other Variables --
     private var totalDistanceTravelled: Double = 0 // used to store total distance user had travelled
+    private var distanceForCurStep: Double = 0.0
+    private var distanceToNextStep: Double = 0.0
     private var startTime = NSDate().timeIntervalSince1970 // start time stamp
     private var prevTime: Double = 0.0 // used to keep track of time since last updated for pace
     private var totalTime: Int = 0 // total time since this page loaded in minutes
@@ -40,6 +42,9 @@ class RunViewController: UIViewController {
     public var routeData: RunData! = nil
     private var newPlaces: [(String,String)] = []
     private var distanceFormatter = MKDistanceFormatter()
+    private var steps: [MKRoute.Step] = []
+    private var stepIndex: Int = 0
+    private var nextCheckpoint: CLLocationCoordinate2D?
     
     // -- Functions --
     override func viewDidLoad() {
@@ -61,25 +66,10 @@ class RunViewController: UIViewController {
                 
                 // set title to name and route distance length
                 let unit = self.usingKilometers() ? "km" : "mi"
-                // round distance to tenth and add everything to route label
-                self.routeLabel.text = self.routeData.name + "-" + String(round((directionsRoute.distance / 1000.0) * 10) / 10.0 ) + unit
+                self.routeLabel.text = self.routeData.name + "-" + String(self.routeData.distance) + unit
                 
-                let nextStep = directionsRoute.steps[1] // first step is starting position, want the next step
-                let nextStepText = nextStep.notice ?? nextStep.instructions
-                let nextStepDistance = self.distanceFormatter.string(
-                    fromDistance: nextStep.distance
-                  )
-                self.directionLabel.text = nextStepText + "-" + nextStepDistance
-                
-                // set direction icon
-                if nextStepText.contains("left") {
-                    self.directionIcon.image = UIImage(systemName: "arrow.left")
-                } else if nextStepText.contains("right") {
-                    self.directionIcon.image = UIImage(systemName: "arrow.right")
-                } else {
-                    self.directionIcon.image = UIImage(systemName: "arrow.up")
-                }
-                
+                self.steps = directionsRoute.steps
+                self.displayNextStepInRoute()
             }
         }
         configureLocationServices() // start location services
@@ -162,6 +152,7 @@ class RunViewController: UIViewController {
         // calculate distance
         let distance = latestLocation.distance(from: currentLocation!)
         totalDistanceTravelled += distance
+        distanceForCurStep += distance
         
         // calculate time
         let endTime = NSDate().timeIntervalSince1970
@@ -185,6 +176,16 @@ class RunViewController: UIViewController {
         elapsedMeter.text = String(roundedMiles)
         timeMeter.text = String(totalTime)
         paceMeter.text = String(pace)
+        
+        // check if we need to display next direction
+        // add 10 meters to account for any miscalculations
+        if (distanceForCurStep + 10 >= distanceToNextStep) {
+            displayNextStepInRoute()
+        }
+        
+//        print (latestLocation.distance(from: CLLocation(latitude: nextCheckpoint!.latitude, longitude: nextCheckpoint!.longitude)))
+//        if (latestLocation.distance(from: CLLocation(latitude: nextCheckpoint!.latitude, longitude: nextCheckpoint!.longitude)) < 25) {
+//        }
         
         // identify nearby points of interest around a 75 meter radius
         let nearbyPointsReq = MKLocalPointsOfInterestRequest(center: latestLocation.coordinate, radius: 75.0)
@@ -220,6 +221,40 @@ class RunViewController: UIViewController {
         }
     }
     
+    // helper func to display next step in route
+    private func displayNextStepInRoute() {
+        // get next step
+        self.stepIndex += 1
+        if (self.stepIndex < steps.count) {
+            let nextStep = self.steps[self.stepIndex]
+
+            // display instructions
+            let nextStepText = nextStep.notice ?? nextStep.instructions
+            let nextStepDistance = self.distanceFormatter.string(
+                fromDistance: nextStep.distance
+              )
+            self.directionLabel.text = nextStepText + "-" + nextStepDistance
+            
+            // speak instructions
+            let speaker = TTS()
+            speaker.speak(utterance: nextStep.instructions)
+            
+            // set direction icon
+            if nextStepText.contains("left") {
+                self.directionIcon.image = UIImage(systemName: "arrow.left")
+            } else if nextStepText.contains("right") {
+                self.directionIcon.image = UIImage(systemName: "arrow.right")
+            } else {
+                self.directionIcon.image = UIImage(systemName: "arrow.up")
+            }
+            
+            // update distance variables
+            distanceForCurStep = 0.0
+            distanceToNextStep = nextStep.distance
+            nextCheckpoint = nextStep.polyline.coordinate
+        }
+    }
+    
     // helper func to close/reveal views
     private func setView(view: UIView, hidden: Bool) {
         UIView.transition(with: view, duration: 0.5, options: .transitionCrossDissolve, animations: {
@@ -229,9 +264,9 @@ class RunViewController: UIViewController {
     
     // helper func to compare tuples
     func contains(arr:[(String, String)], t:(String,String)) -> Bool {
-      let (c1, c2) = t
-      for (v1, v2) in arr { if v1 == c1 && v2 == c2 { return true } }
-      return false
+        let (c1, c2) = t
+        for (v1, v2) in arr { if v1 == c1 && v2 == c2 { return true } }
+        return false
     }
     
     // update time variable and label
