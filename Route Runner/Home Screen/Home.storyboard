@@ -125,6 +125,7 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
+                                            <outlet property="card" destination="3nX-pX-lKj" id="GCW-dH-89P"/>
                                             <outlet property="distanceLabel" destination="J2o-Gd-ZAh" id="wqk-M0-i2t"/>
                                             <outlet property="routeImage" destination="tmS-Kh-qrt" id="DIn-vq-Sye"/>
                                             <outlet property="timeLabel" destination="oq1-cB-G7P" id="DWk-af-MoB"/>

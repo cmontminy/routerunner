@@ -36,6 +36,10 @@ class FriendViewController: UIViewController, UITableViewDelegate, UITableViewDa
         
         cell.runsCompleted.text = "3 Runs"
         
+        if UserInterfaceStyleManager.shared.currentStyle == .dark {
+            cell.card.backgroundColor = .darkGray
+        }
+        
         cell.profileAction  = { (cell) in
             print("Viewing profile of \(friend.firstName) \(friend.lastName)")
             self.performSegue(withIdentifier: self.profileSegueIdentifier, sender: friend.uid)
@@ -79,6 +83,10 @@ class FriendViewController: UIViewController, UITableViewDelegate, UITableViewDa
         
         if (friends.count == 0) {
             fetchFriends()
+        }
+        
+        if let tableIndices = tableView.indexPathsForVisibleRows {
+            tableView.reloadRows(at: tableIndices, with: .none)
         }
     }
     

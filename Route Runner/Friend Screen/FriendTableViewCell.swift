@@ -12,6 +12,7 @@ class FriendTableViewCell: UITableViewCell {
     @IBOutlet weak var name: UILabel!
     @IBOutlet weak var skillLevel: UILabel!
     @IBOutlet weak var runsCompleted: UILabel!
+    @IBOutlet weak var card: Card!
     
     var profileAction: ((UITableViewCell) -> Void)?
     var removeAction: ((UITableViewCell) -> Void)?

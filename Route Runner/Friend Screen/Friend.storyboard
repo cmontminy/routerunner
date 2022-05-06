@@ -113,6 +113,7 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
+                                            <outlet property="card" destination="TKy-v8-ZPa" id="fvt-OA-sTJ"/>
                                             <outlet property="name" destination="g2M-GD-ivE" id="nee-Cn-hBx"/>
                                             <outlet property="profilePic" destination="g9c-OD-ZB6" id="dKc-lf-4og"/>
                                             <outlet property="runsCompleted" destination="qxk-KK-MKZ" id="6qc-Ri-FPZ"/>

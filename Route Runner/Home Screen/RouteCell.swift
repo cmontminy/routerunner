@@ -14,4 +14,5 @@ class RouteCell: UITableViewCell {
     @IBOutlet weak var timeLabel: UILabel!
     @IBOutlet weak var distanceLabel: UILabel!
     @IBOutlet weak var routeImage: UIImageView!
+    @IBOutlet weak var card: Card!
 }

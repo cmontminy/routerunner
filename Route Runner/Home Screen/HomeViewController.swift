@@ -50,6 +50,10 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
             currDistance *= milesToKilo
         }
         
+        if UserInterfaceStyleManager.shared.currentStyle == .dark {
+            cell.card.backgroundColor = .darkGray
+        }
+        
         cell.titleLabel.text = (routes[row].name)
         cell.distanceLabel.text = String(format: "%.1f", currDistance) + (self.usingKilometers() ? " km" : " mi")
         cell.timeLabel.text = String(routes[row].time) + " min"
@@ -123,6 +127,10 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
         navigationArray.removeAll()
         navigationArray.append(temp!) //To remove all previous UIViewController except the last one
         self.navigationController?.viewControllers = navigationArray
+        
+        if let tableIndices = tableView.indexPathsForVisibleRows {
+            tableView.reloadRows(at: tableIndices, with: .none)
+        }
         
         // Reload to account for new runs / changed distance unit preference
         tableView.reloadData()

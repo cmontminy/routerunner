@@ -30,6 +30,8 @@ class AddFriendViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        startObserving(&UserInterfaceStyleManager.shared)
+        
         backgroundBox.layer.cornerRadius = 20
         resultBox.layer.cornerRadius = 20
         
