@@ -18,6 +18,7 @@ class PastRunViewController: UIViewController {
     @IBOutlet weak var runTime: UILabel!
     @IBOutlet weak var paceLabel: UILabel!
     @IBOutlet weak var runPace: UILabel!
+    @IBOutlet weak var dateLabel: UILabel!
     
     // Selected run's data
     var run: RunData? = nil
@@ -44,11 +45,14 @@ class PastRunViewController: UIViewController {
         // Format seconds to always have 2 digits
         runTime.text = "\(currentRun.time / 60):\(String(format: "%02d", currentRun.time % 60))"
         
+        dateLabel.text = run?.getDateString()
+        
         // Display km/mi based on user preference
         paceLabel.text = self.usingKilometers() ? "Pace (km)" : "Pace (mi)"
         
         // Format seconds to always have 2 digits
         runPace.text = "\(currentRun.getPace() / 60):\(String(format: "%02d", currentRun.getPace() % 60))"
+        
         
         // Round image corners
         runImage.layer.cornerRadius = 8.0

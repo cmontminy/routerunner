@@ -53,6 +53,9 @@ class HistoryViewController: UIViewController, UITableViewDelegate, UITableViewD
         cell.runName.text = "\(run.name) - \(String(format: "%.1f", run.getDistance())) \(self.usingKilometers() ? "km" : "mi")"
         
         cell.runLocations.text = "\(run.locations.count) Locations"
+        
+        cell.runLocations.isHidden = true
+        
         cell.runDate.text = run.getDateString()
 
         // Use placeholder image if none provided

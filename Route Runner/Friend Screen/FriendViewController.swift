@@ -34,7 +34,7 @@ class FriendViewController: UIViewController, UITableViewDelegate, UITableViewDa
         
         cell.skillLevel.text = friend.experienceLevel
         
-        cell.runsCompleted.text = "30"
+        cell.runsCompleted.text = "3 Runs"
         
         cell.profileAction  = { (cell) in
             print("Viewing profile of \(friend.firstName) \(friend.lastName)")

@@ -42,37 +42,25 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wc8-GJ-Poz">
-                                <rect key="frame" x="62.999999999999993" y="485" width="26.666666666666664" height="17"/>
+                                <rect key="frame" x="132" y="466" width="43" height="34"/>
                                 <attributedString key="attributedText">
                                     <fragment content="Runs">
                                         <attributes>
-                                            <font key="NSFont" size="17" name="DINCondensed-Bold"/>
+                                            <font key="NSFont" size="20" name="MuktaMahee-Bold"/>
                                         </attributes>
                                     </fragment>
                                 </attributedString>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="NumRuns" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VKI-CR-Lye">
-                                <rect key="frame" x="51" y="528" width="51" height="17"/>
-                                <fontDescription key="fontDescription" name="DINCondensed-Bold" family="DIN Condensed" pointSize="17"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="NumRuns" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VKI-CR-Lye">
+                                <rect key="frame" x="120" y="509" width="64" height="17"/>
+                                <fontDescription key="fontDescription" name="MuktaMahee-Bold" family="Mukta Mahee" pointSize="20"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Miles" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8ca-Cg-v2p">
-                                <rect key="frame" x="199.66666666666666" y="484" width="28.666666666666657" height="17"/>
-                                <fontDescription key="fontDescription" name="DINCondensed-Bold" family="DIN Condensed" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="NumMiles" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="q7c-bB-UlD">
-                                <rect key="frame" x="187.66666666666666" y="529" width="52.666666666666657" height="17"/>
-                                <fontDescription key="fontDescription" name="DINCondensed-Bold" family="DIN Condensed" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Star Points" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="k2p-jX-tVx">
-                                <rect key="frame" x="353" y="485" width="57" height="17"/>
-                                <fontDescription key="fontDescription" name="DINCondensed-Bold" family="DIN Condensed" pointSize="17"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="NumMiles" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="q7c-bB-UlD">
+                                <rect key="frame" x="257" y="510" width="66" height="17"/>
+                                <fontDescription key="fontDescription" name="MuktaMahee-Bold" family="Mukta Mahee" pointSize="20"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -114,12 +102,6 @@
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="NumSPs" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EJg-3d-Pnr">
-                                <rect key="frame" x="359.33333333333331" y="527" width="44.333333333333314" height="17"/>
-                                <fontDescription key="fontDescription" name="DINCondensed-Bold" family="DIN Condensed" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ICB-3A-lmQ">
                                 <rect key="frame" x="111" y="124" width="206" height="206"/>
                                 <constraints>
@@ -147,35 +129,37 @@
                                     <action selector="onEditProfileButtonPressed:" destination="187-i4-tZJ" eventType="touchUpInside" id="f1I-hE-2AG"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Miles" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8ca-Cg-v2p">
+                                <rect key="frame" x="259" y="475" width="48" height="17"/>
+                                <fontDescription key="fontDescription" name="MuktaMahee-Bold" family="Mukta Mahee" pointSize="20"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="tSJ-w7-Jby"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="EJg-3d-Pnr" firstAttribute="centerX" secondItem="k2p-jX-tVx" secondAttribute="centerX" id="4TF-Wm-0Qb"/>
+                            <constraint firstItem="wc8-GJ-Poz" firstAttribute="leading" secondItem="tSJ-w7-Jby" secondAttribute="leading" constant="132" id="067-eq-jVA"/>
                             <constraint firstItem="i2S-WC-EcG" firstAttribute="centerX" secondItem="Qde-M5-cuO" secondAttribute="centerX" id="63E-HE-8ao"/>
-                            <constraint firstItem="nMr-IC-dKd" firstAttribute="top" secondItem="wc8-GJ-Poz" secondAttribute="bottom" constant="66" id="DO5-q6-Y2S"/>
+                            <constraint firstItem="wc8-GJ-Poz" firstAttribute="centerY" secondItem="8ca-Cg-v2p" secondAttribute="centerY" id="B4g-gm-CK4"/>
                             <constraint firstItem="nMr-IC-dKd" firstAttribute="centerX" secondItem="LGv-MV-9Ig" secondAttribute="centerX" id="DUf-FB-qOs"/>
-                            <constraint firstItem="8ca-Cg-v2p" firstAttribute="centerX" secondItem="LGv-MV-9Ig" secondAttribute="centerX" id="E9a-l3-Vv8"/>
                             <constraint firstItem="sTI-4Q-ZQn" firstAttribute="leading" secondItem="ICB-3A-lmQ" secondAttribute="trailing" constant="-48" id="Hey-PA-iu8"/>
-                            <constraint firstItem="nMr-IC-dKd" firstAttribute="top" secondItem="8ca-Cg-v2p" secondAttribute="bottom" constant="67" id="IG6-H9-Fv0"/>
-                            <constraint firstItem="wc8-GJ-Poz" firstAttribute="leading" secondItem="tSJ-w7-Jby" secondAttribute="leading" constant="63" id="KTl-mO-GmT"/>
-                            <constraint firstItem="VKI-CR-Lye" firstAttribute="centerX" secondItem="wc8-GJ-Poz" secondAttribute="centerX" id="Mx5-ih-MK7"/>
-                            <constraint firstItem="nMr-IC-dKd" firstAttribute="top" secondItem="q7c-bB-UlD" secondAttribute="bottom" constant="22" id="N9n-M0-Cr4"/>
                             <constraint firstItem="nMr-IC-dKd" firstAttribute="leading" secondItem="LGv-MV-9Ig" secondAttribute="leadingMargin" id="O4M-IK-VP6"/>
                             <constraint firstItem="i2S-WC-EcG" firstAttribute="top" secondItem="Qde-M5-cuO" secondAttribute="bottom" constant="19" id="PKg-gl-t4x"/>
-                            <constraint firstItem="nMr-IC-dKd" firstAttribute="top" secondItem="k2p-jX-tVx" secondAttribute="bottom" constant="66" id="Ru7-Li-8Ay"/>
+                            <constraint firstItem="VKI-CR-Lye" firstAttribute="top" secondItem="wc8-GJ-Poz" secondAttribute="bottom" constant="9" id="S4j-wf-1B7"/>
                             <constraint firstItem="nMr-IC-dKd" firstAttribute="centerY" secondItem="LGv-MV-9Ig" secondAttribute="centerY" constant="267" id="YBW-CE-mJA"/>
-                            <constraint firstItem="nMr-IC-dKd" firstAttribute="top" secondItem="EJg-3d-Pnr" secondAttribute="bottom" constant="24" id="aeH-vx-OlC"/>
                             <constraint firstItem="ICB-3A-lmQ" firstAttribute="centerX" secondItem="tSJ-w7-Jby" secondAttribute="centerX" id="cVh-aB-vF5"/>
                             <constraint firstItem="sTI-4Q-ZQn" firstAttribute="top" secondItem="ICB-3A-lmQ" secondAttribute="bottom" constant="-48" id="cyy-ph-ecW"/>
                             <constraint firstItem="nMr-IC-dKd" firstAttribute="centerX" secondItem="LGv-MV-9Ig" secondAttribute="centerX" id="fI3-oP-kRo"/>
-                            <constraint firstItem="nMr-IC-dKd" firstAttribute="top" secondItem="VKI-CR-Lye" secondAttribute="bottom" constant="23" id="fKE-VU-llk"/>
-                            <constraint firstItem="tSJ-w7-Jby" firstAttribute="trailing" secondItem="k2p-jX-tVx" secondAttribute="trailing" constant="18" id="kBK-QQ-Upf"/>
                             <constraint firstItem="tSJ-w7-Jby" firstAttribute="bottom" secondItem="nMr-IC-dKd" secondAttribute="bottom" id="kwN-35-Bot"/>
-                            <constraint firstItem="q7c-bB-UlD" firstAttribute="centerX" secondItem="LGv-MV-9Ig" secondAttribute="centerX" id="nBG-Jg-WgY"/>
+                            <constraint firstItem="wc8-GJ-Poz" firstAttribute="top" secondItem="tSJ-w7-Jby" secondAttribute="top" constant="422" id="pCk-vg-FQ2"/>
                             <constraint firstItem="ymr-po-ycL" firstAttribute="leading" secondItem="tSJ-w7-Jby" secondAttribute="leading" constant="20" id="rS2-cA-F3z"/>
                             <constraint firstItem="tSJ-w7-Jby" firstAttribute="bottom" secondItem="nMr-IC-dKd" secondAttribute="bottom" id="tjg-73-eZa"/>
+                            <constraint firstItem="VKI-CR-Lye" firstAttribute="centerX" secondItem="wc8-GJ-Poz" secondAttribute="centerX" id="twd-p6-xzq"/>
                             <constraint firstItem="Qde-M5-cuO" firstAttribute="centerX" secondItem="ICB-3A-lmQ" secondAttribute="centerX" id="vGG-t3-cbd"/>
+                            <constraint firstItem="q7c-bB-UlD" firstAttribute="centerX" secondItem="8ca-Cg-v2p" secondAttribute="centerX" id="xva-bn-gKr"/>
+                            <constraint firstItem="q7c-bB-UlD" firstAttribute="top" secondItem="8ca-Cg-v2p" secondAttribute="bottom" constant="9" id="y6o-5d-b80"/>
+                            <constraint firstItem="8ca-Cg-v2p" firstAttribute="leading" secondItem="wc8-GJ-Poz" secondAttribute="trailing" constant="84" id="yB1-KC-SFJ"/>
                             <constraint firstItem="Qde-M5-cuO" firstAttribute="top" secondItem="ICB-3A-lmQ" secondAttribute="bottom" constant="8" symbolic="YES" id="yZE-XU-Wof"/>
                             <constraint firstItem="ymr-po-ycL" firstAttribute="top" secondItem="tSJ-w7-Jby" secondAttribute="top" constant="15" id="yf1-HE-U6h"/>
                             <constraint firstItem="ICB-3A-lmQ" firstAttribute="top" secondItem="tSJ-w7-Jby" secondAttribute="top" constant="80" id="zPM-C3-KUN"/>
@@ -188,16 +172,14 @@
                         <outlet property="milesLabel" destination="8ca-Cg-v2p" id="she-hf-fYF"/>
                         <outlet property="numMiles" destination="q7c-bB-UlD" id="SrM-rM-Zw2"/>
                         <outlet property="numRuns" destination="VKI-CR-Lye" id="zTM-AD-ef2"/>
-                        <outlet property="numSPs" destination="EJg-3d-Pnr" id="cgP-gL-70b"/>
                         <outlet property="profilePicture" destination="ICB-3A-lmQ" id="ceM-aD-jXv"/>
                         <outlet property="runLabel" destination="wc8-GJ-Poz" id="sz7-s9-L1x"/>
                         <outlet property="runnerName" destination="Qde-M5-cuO" id="ZN9-BU-azT"/>
-                        <outlet property="spLabel" destination="k2p-jX-tVx" id="TBy-qp-DmC"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RT1-qy-E3O" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="140.57971014492756" y="-709.15178571428567"/>
+            <point key="canvasLocation" x="140.18691588785046" y="-709.50323974082073"/>
         </scene>
     </scenes>
     <resources>
