@@ -9,6 +9,7 @@
 //  https://www.youtube.com/watch?v=2FigkAlz1Bg - Referenced for creating and using SettingsTableViewCell and model setup
 
 import UIKit
+import FirebaseAuth
 
 struct Section { // keeps track of table view sections, includes header and included options
     let title: String

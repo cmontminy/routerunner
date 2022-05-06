@@ -273,7 +273,7 @@ class ProfileSettingsViewController: UIViewController, UITableViewDelegate, UITa
                 self.present(controller, animated: true, completion: nil)
             }),
             
-                .editableCell(model: SettingsEditOption(title: "Password", subtitle: "******") {
+            .editableCell(model: SettingsEditOption(title: "Password", subtitle: "******") {
                 let controller = UIAlertController(
                     title: "Edit Password",
                     message: "",
@@ -301,6 +301,35 @@ class ProfileSettingsViewController: UIViewController, UITableViewDelegate, UITa
                     })
                 )
                 self.present(controller, animated: true, completion: nil)
+            }),
+            
+            .staticCell(model: SettingsOption(title: "Log out") {
+                let controller = UIAlertController(
+                    title: "Log Out",
+                    message: "Are you sure you want to log out?",
+                    preferredStyle: .alert)
+                
+                controller.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+                controller.addAction(UIAlertAction(
+                    title: "Log out",
+                    style: .default,
+                    handler: { _ in
+                        do {
+                            try Auth.auth().signOut()
+                            self.performSegue(withIdentifier: "LogOutSegue", sender: self)
+                            print("successfully logged out")
+                        } catch {
+                            let errorController = UIAlertController(
+                                title: "Error",
+                                message: "Could not log out at this time. Please try again later.",
+                                preferredStyle: .alert)
+                            let OKAction = UIAlertAction(title: "Ok", style: .default, handler: nil)
+                            errorController.addAction(OKAction)
+                            self.present(errorController, animated: true, completion: nil)
+                        }
+                    })
+                )
+                self.present(controller, animated: true, completion: nil)
             })
         ]))
     }
@@ -317,9 +346,18 @@ class ProfileSettingsViewController: UIViewController, UITableViewDelegate, UITa
         return models[section].options.count
     }
     
-    // set custom value for cell heights - all of them should be uniform
+    // set custom value for cell heights
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 74.0;
+        let model = models[indexPath.section].options[indexPath.row]
+        
+        switch model.self { // switch based on the type of cell
+        case .staticCell( _):
+            return 44.0
+        case .switchCell( _):
+            return 74.0
+        case .editableCell( _):
+            return 74.0
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -353,6 +391,7 @@ class ProfileSettingsViewController: UIViewController, UITableViewDelegate, UITa
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        print(indexPath.row)
         tableView.deselectRow(at: indexPath, animated: true)
         let type = models[indexPath.section].options[indexPath.row]
         switch type.self { // switch based on type of cell
