@@ -42,8 +42,16 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as! RouteCell
         let row = indexPath.row
+        
+        // convert distance if necessary
+        var currDistance = routes[row].distance
+        let milesToKilo = 1.609344
+        if (UserDefaults.standard.bool(forKey:"RouteRunnerKilometerModeOn")) {
+            currDistance *= milesToKilo
+        }
+        
         cell.titleLabel.text = (routes[row].name)
-        cell.distanceLabel.text = String(routes[row].distance) + (self.usingKilometers() ? " km" : " mi")
+        cell.distanceLabel.text = String(format: "%.1f", currDistance) + (self.usingKilometers() ? " km" : " mi")
         cell.timeLabel.text = String(routes[row].time) + " min"
         cell.routeImage.image = routes[row].image
         cell.routeImage.layer.cornerRadius = 5
@@ -115,6 +123,9 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
         navigationArray.removeAll()
         navigationArray.append(temp!) //To remove all previous UIViewController except the last one
         self.navigationController?.viewControllers = navigationArray
+        
+        // Reload to account for new runs / changed distance unit preference
+        tableView.reloadData()
     }
     
     // to run anytime the view leaves the screen
