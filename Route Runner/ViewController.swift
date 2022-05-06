@@ -29,9 +29,12 @@ class ViewController: UIViewController {
         Auth.auth().signIn(withEmail: email, password: password) { (result, error) in
             if(error != nil){
                 //couldn't sign in
-                self.showError("Error signing in")
+//                self.showError("Incorrect email and/or password")
+                self.showError(error!.localizedDescription)
+                return
             } else {
                 //transition to home screen
+                self.performSegue(withIdentifier: "LoginToHomeSegue", sender: self)
             }
         }
     }

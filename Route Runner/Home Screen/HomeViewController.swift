@@ -43,7 +43,7 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
         let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as! RouteCell
         let row = indexPath.row
         cell.titleLabel.text = (routes[row].name)
-        cell.distanceLabel.text = String(routes[row].distance) + " mi"
+        cell.distanceLabel.text = String(routes[row].distance) + (self.usingKilometers() ? " km" : " mi")
         cell.timeLabel.text = String(routes[row].time) + " min"
         cell.routeImage.image = routes[row].image
         cell.routeImage.layer.cornerRadius = 5
