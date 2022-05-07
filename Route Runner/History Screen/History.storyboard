@@ -91,6 +91,7 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
+                                            <outlet property="card" destination="cR2-H6-S9d" id="J5u-i9-WKd"/>
                                             <outlet property="runDate" destination="7aa-iK-TWO" id="VQh-O7-kch"/>
                                             <outlet property="runImage" destination="HGy-ES-7Sy" id="DQf-Hv-Lvz"/>
                                             <outlet property="runLocations" destination="eWL-2a-vCE" id="3me-wZ-bxC"/>

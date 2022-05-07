@@ -63,6 +63,12 @@ class HistoryViewController: UIViewController, UITableViewDelegate, UITableViewD
         // Give image rounded edges
         cell.runImage?.layer.cornerRadius = 8.0
         cell.runImage?.layer.masksToBounds = true
+        
+        if UserInterfaceStyleManager.shared.currentStyle == .dark {
+            cell.card.backgroundColor = .darkGray
+        } else {
+            cell.card.backgroundColor = UIColor(red: 0.94, green: 0.94, blue: 0.94, alpha: 1.00)
+        }
 
         return cell
     }
@@ -117,6 +123,9 @@ class HistoryViewController: UIViewController, UITableViewDelegate, UITableViewD
                                 runs.append(run)
                             }
                             self.tableView.reloadData()
+                            if let tableIndices = self.tableView.indexPathsForVisibleRows {
+                                self.tableView.reloadRows(at: tableIndices, with: .none)
+                            }
                         }
                 }
             }

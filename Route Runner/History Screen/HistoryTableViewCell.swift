@@ -16,4 +16,6 @@ class HistoryTableViewCell: UITableViewCell {
     @IBOutlet weak var runLocations: UILabel!
     
     @IBOutlet weak var runDate: UILabel!
+    
+    @IBOutlet weak var card: Card!
 }
