@@ -52,12 +52,17 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
         
         if UserInterfaceStyleManager.shared.currentStyle == .dark {
             cell.card.backgroundColor = .darkGray
+        } else {
+            cell.card.backgroundColor = UIColor(red: 0.94, green: 0.94, blue: 0.94, alpha: 1.00)
         }
         
         cell.titleLabel.text = (routes[row].name)
         cell.distanceLabel.text = String(format: "%.1f", currDistance) + (self.usingKilometers() ? " km" : " mi")
         cell.timeLabel.text = String(routes[row].time) + " min"
         cell.routeImage.image = routes[row].image
+        routes[row].getImage { image in
+            cell.routeImage.image = image
+        }
         cell.routeImage.layer.cornerRadius = 5
         return cell
     }
@@ -97,10 +102,11 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
                     curRoute.startCoordLong = startCoordLong
                     curRoute.endCoordLat = endCoordLat
                     curRoute.endCoordLong = endCoordLong
+                    curRoute.pictureURL = (data["pictureURL"] ?? "") as? String ?? ""
                     
                     if self.curLocation != nil {
                         let distanceToStart = CLLocation(latitude: self.curLocation!.latitude, longitude: self.curLocation!.longitude).distance(from: CLLocation(latitude: startCoordLat, longitude: startCoordLong))
-                        print(distanceToStart)
+//                        print(distanceToStart)
                         // anything 5km from here
                         if (distanceToStart < 5000) {
                             // only append nearyby routes

@@ -8,6 +8,8 @@
 import UIKit
 import MapKit
 import CoreLocation
+import MobileCoreServices
+import Firebase
 
 class RunCreationViewController: UIViewController {
     @IBOutlet weak var startField: UITextField!
@@ -22,6 +24,7 @@ class RunCreationViewController: UIViewController {
     var directions: MKDirections?
     var newRunData: RunData?
     var curLocation: CLLocationCoordinate2D?
+    var imageURL: String?
     
     // Fill startField with current location
     @IBAction func currentLocationButtonPressed() {
@@ -86,6 +89,7 @@ class RunCreationViewController: UIViewController {
             newRunData?.endCoordLat = endCoordLat
             newRunData?.startCoordLong = startCoordLong
             newRunData?.endCoordLong = endCoordLong
+            newRunData?.pictureURL = imageURL ?? ""
             
             routes.append(newRunData!)
             
@@ -93,6 +97,19 @@ class RunCreationViewController: UIViewController {
             performSegue(withIdentifier:"RouteInstanceIdentifier", sender: nil) // navigate
         }
     }
+    
+    @IBAction func addImageButtonPressed(_ sender: Any) {
+        // Must import `MobileCoreServices`
+        let imageMediaType = kUTTypeImage as String
+
+        // Define and present the `UIImagePickerController`
+        let pickerController = UIImagePickerController()
+        pickerController.sourceType = .photoLibrary
+        pickerController.mediaTypes = [imageMediaType]
+        pickerController.delegate = self
+        present(pickerController, animated: true, completion: nil)
+    }
+    
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "RouteInstanceIdentifier" {
@@ -214,3 +231,49 @@ extension RunCreationViewController: CLLocationManagerDelegate {
         print("Failed with error: \(error.localizedDescription)")
     }
 }
+
+extension RunCreationViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    func uploadImage(url: URL) {
+//        guard let user = Auth.auth().currentUser else {
+//            return
+//        }
+        
+        let filepath = "images/\(randomString(length: 20))run.jpg"
+        
+        let storageRef = Storage.storage().reference().child(filepath)
+        
+//        let db = Firestore.firestore()
+        
+        let currentUploadTask = storageRef.putFile(from: url, metadata: nil) { (storageMetaData, error) in
+            if let error = error {
+                print("Upload error: \(error.localizedDescription)")
+                return
+            }
+
+            storageRef.downloadURL { (url, error) in
+                if let error = error  {
+                    print("Error on getting download url: \(error.localizedDescription)")
+                    return
+                }
+                print("Download url of \(filepath) is \(url!.absoluteString)")
+                self.imageURL = url!.absoluteString
+            }
+        }
+    }
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        let mediaType = info[UIImagePickerController.InfoKey.mediaType] as! CFString
+        if mediaType == kUTTypeImage {
+          let imageURL = info[UIImagePickerController.InfoKey.imageURL] as! URL
+            uploadImage(url: imageURL)
+        }
+
+        picker.dismiss(animated: true, completion: nil)
+      }
+    
+    func randomString(length: Int) -> String {
+      let letters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
+      return String((0..<length).map{ _ in letters.randomElement()! })
+    }
+}
+

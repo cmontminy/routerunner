@@ -180,12 +180,33 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hjr-VI-4aG">
+                                <rect key="frame" x="56.5" y="749" width="301" height="48"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="301" id="Avc-2x-3wX"/>
+                                    <constraint firstAttribute="height" constant="48" id="WAr-r4-r7w"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="filled">
+                                    <attributedString key="attributedTitle">
+                                        <fragment content="Add Image (Optional)">
+                                            <attributes>
+                                                <font key="NSFont" size="20" name="MuktaMahee-Bold"/>
+                                            </attributes>
+                                        </fragment>
+                                    </attributedString>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="addImageButtonPressed:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="dcq-UP-cOD"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="pKt-99-HeI" secondAttribute="bottom" constant="144" id="3iv-1C-qSC"/>
                             <constraint firstItem="zMh-T3-lNM" firstAttribute="top" secondItem="BXo-dq-lfA" secondAttribute="bottom" constant="8" id="91Q-V4-1uu"/>
+                            <constraint firstItem="hjr-VI-4aG" firstAttribute="centerX" secondItem="pKt-99-HeI" secondAttribute="centerX" id="9FP-2Q-5ie"/>
                             <constraint firstItem="fQG-dQ-8Iz" firstAttribute="leading" secondItem="BXo-dq-lfA" secondAttribute="leading" id="DRg-e4-WBJ"/>
                             <constraint firstItem="fQG-dQ-8Iz" firstAttribute="trailing" secondItem="BXo-dq-lfA" secondAttribute="trailing" id="E1D-Ju-Pqk"/>
                             <constraint firstItem="V8t-96-oGC" firstAttribute="top" secondItem="041-FE-j5K" secondAttribute="bottom" constant="32" id="LHb-JW-pWT"/>
@@ -197,6 +218,7 @@
                             <constraint firstItem="041-FE-j5K" firstAttribute="centerX" secondItem="V8t-96-oGC" secondAttribute="centerX" id="cOa-uG-9bm"/>
                             <constraint firstItem="V8t-96-oGC" firstAttribute="leading" secondItem="fQG-dQ-8Iz" secondAttribute="leading" id="fYb-E6-PwZ"/>
                             <constraint firstItem="BXo-dq-lfA" firstAttribute="trailing" secondItem="zMh-T3-lNM" secondAttribute="trailing" id="fwN-0b-OWf"/>
+                            <constraint firstItem="hjr-VI-4aG" firstAttribute="top" secondItem="pKt-99-HeI" secondAttribute="bottom" constant="31" id="gfu-XR-hs2"/>
                             <constraint firstItem="V8t-96-oGC" firstAttribute="leading" secondItem="5EZ-qb-Rvc" secondAttribute="leadingMargin" id="haM-Tz-Qhj"/>
                             <constraint firstItem="pKt-99-HeI" firstAttribute="top" secondItem="zMh-T3-lNM" secondAttribute="bottom" constant="73" id="lJk-ML-ghe"/>
                             <constraint firstItem="pKt-99-HeI" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="57" id="rlc-qL-c4v"/>

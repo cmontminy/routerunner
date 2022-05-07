@@ -36,8 +36,8 @@ class UserData: Codable {
             return
         }
         let gsReference = Storage.storage().reference(forURL: gsurl)
-        // 4 MB max image size
-        gsReference.getData(maxSize: 4 * 1024 * 1024) { data, error in
+        // 8 MB max image size
+        gsReference.getData(maxSize: 8 * 1024 * 1024) { data, error in
             if let data = data {
                 completionHandler(UIImage(data: data), error)
             } else {
@@ -56,18 +56,6 @@ class UserData: Codable {
         experienceLevel = (try? values.decode(String.self, forKey: .experienceLevel)) ?? ""
         uid = try values.decode(String.self, forKey: .uid)
         pictureURL = (try? values.decode(String.self, forKey: .profilePic)) ?? ""
-//        UserData.downloadImage(profilePicURL) { image, err in
-//            if let err = err {
-//                print("Could not download image at URL \(profilePicURL), err: \(err.localizedDescription)")
-//            } else {
-//                guard let image = image else {
-//                    print("Image returned was nil")
-//                    return
-//                }
-//
-//                self.picture = image
-//            }
-//        }
     }
     
     // keys for use with decoding/encoding

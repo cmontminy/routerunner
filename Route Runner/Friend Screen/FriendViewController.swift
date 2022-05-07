@@ -38,6 +38,8 @@ class FriendViewController: UIViewController, UITableViewDelegate, UITableViewDa
         
         if UserInterfaceStyleManager.shared.currentStyle == .dark {
             cell.card.backgroundColor = .darkGray
+        } else {
+            cell.card.backgroundColor = UIColor(red: 0.94, green: 0.94, blue: 0.94, alpha: 1.00)
         }
         
         cell.profileAction  = { (cell) in
@@ -85,8 +87,12 @@ class FriendViewController: UIViewController, UITableViewDelegate, UITableViewDa
             fetchFriends()
         }
         
+        
         if let tableIndices = tableView.indexPathsForVisibleRows {
+            print("reloading")
             tableView.reloadRows(at: tableIndices, with: .none)
+        } else {
+            print("not reloading")
         }
     }
     
