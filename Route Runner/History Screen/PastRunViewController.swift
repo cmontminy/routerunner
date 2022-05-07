@@ -34,7 +34,10 @@ class PastRunViewController: UIViewController {
         let currentRun = run!
         
         // Use placeholder if no image
-        runImage.image = currentRun.image ?? UIImage(named: "dummy")
+//        runImage.image = currentRun.image ?? UIImage(named: "dummy")
+        currentRun.getImage { image in
+            self.runImage.image = image
+        }
         runName.text = currentRun.name
         
         // Format distance to 1 decimal place, use correct units

@@ -58,8 +58,9 @@ class HistoryViewController: UIViewController, UITableViewDelegate, UITableViewD
         
         cell.runDate.text = run.getDateString()
 
-        // Use placeholder image if none provided
-        cell.runImage?.image = run.image ?? UIImage(named: "dummy")
+        run.getImage { image in
+            cell.runImage?.image = image
+        }
         
         // Give image rounded edges
         cell.runImage?.layer.cornerRadius = 8.0
@@ -103,7 +104,10 @@ class HistoryViewController: UIViewController, UITableViewDelegate, UITableViewD
                             print("Error getting documents: \(err)")
                         } else {
                             for document in querySnapshot!.documents {
-                                try? runs.append(document.data(as: RunData.self))
+                                let run = try! document.data(as:RunData.self)
+                                run.pictureURL = (document.data()["pictureURL"] ?? "") as? String ?? ""
+                                runs.append(run)
+                                
                             }
                             self.tableView.reloadData()
                         }

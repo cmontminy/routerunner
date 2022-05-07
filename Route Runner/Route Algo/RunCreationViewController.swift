@@ -17,6 +17,7 @@ class RunCreationViewController: UIViewController {
     @IBOutlet weak var distanceLabel: UILabel!
     @IBOutlet weak var slider: UISlider!
     @IBOutlet weak var createButton: UIButton!
+    @IBOutlet weak var imageButton: UIButton!
     
     var locationManager = CLLocationManager()
     var startPoint: CLPlacemark?
@@ -152,6 +153,7 @@ class RunCreationViewController: UIViewController {
         super.viewDidLoad()
         self.navigationController?.navigationBar.tintColor = hexStringToUIColor(hex: "#FF7500")
         createButton.tintColor = hexStringToUIColor(hex: "#FF7500")
+        imageButton.tintColor = createButton.tintColor
         initializeSlider()
         locationManager.delegate = self
         locationManager.requestWhenInUseAuthorization()

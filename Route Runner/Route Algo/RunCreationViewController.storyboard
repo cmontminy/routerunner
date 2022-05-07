@@ -230,6 +230,7 @@
                         <outlet property="createButton" destination="pKt-99-HeI" id="jCU-wc-0Xa"/>
                         <outlet property="distanceLabel" destination="Y29-Jv-EXx" id="raD-YQ-UCj"/>
                         <outlet property="endField" destination="ca4-Kx-v8E" id="8Ce-dJ-Y5W"/>
+                        <outlet property="imageButton" destination="hjr-VI-4aG" id="lOk-Za-I1D"/>
                         <outlet property="slider" destination="A9D-EF-DcY" id="l7R-1r-z1c"/>
                         <outlet property="startField" destination="blE-SH-FWx" id="3IQ-uD-Y9g"/>
                         <segue destination="HSs-mJ-evO" kind="show" identifier="RouteInstanceIdentifier" id="ykU-vj-qbH"/>

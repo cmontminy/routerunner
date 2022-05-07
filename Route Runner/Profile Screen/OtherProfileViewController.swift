@@ -113,7 +113,9 @@ class OtherProfileViewController: UIViewController, UICollectionViewDataSource, 
         
 
         // Use placeholder image if none provided
-        cell.runImage?.image = run.image ?? UIImage(named: "dummy")
+        run.getImage{ image in
+            cell.runImage.image = image
+        }
         
         // Give image rounded edges
         cell.runImage?.layer.cornerRadius = 8.0
@@ -171,8 +173,9 @@ class OtherProfileViewController: UIViewController, UICollectionViewDataSource, 
                     print("Error getting documents: \(err)")
                 } else {
                     for document in querySnapshot!.documents {
-                        try? runList.append(document.data(as: RunData.self))
-                        print("runlist is now \(runList)")
+                        let run = try! document.data(as:RunData.self)
+                        run.pictureURL = (document.data()["pictureURL"] ?? "") as? String ?? ""
+                        runList.append(run)
                     }
                     self.collectionView.reloadData()
                     self.calcNumMiles()
