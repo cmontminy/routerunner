@@ -57,6 +57,16 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
         startObserving(&UserInterfaceStyleManager.shared) // observer for darkmode style change
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        navigationController?.setNavigationBarHidden(true, animated: false)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        navigationController?.setNavigationBarHidden(true, animated: false)
+    }
+    
     // function to set up option list
     func configure() {
         models.append(Section(title: "", options:[ // blank section name since there's only one option to display

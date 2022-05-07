@@ -58,12 +58,6 @@
                                                                 <action selector="onRemoveButtonPressed:" destination="mFO-r4-X1b" eventType="touchUpInside" id="l4G-18-3bT"/>
                                                             </connections>
                                                         </button>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Runs completed" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qxk-KK-MKZ">
-                                                            <rect key="frame" x="137" y="74" width="124" height="21"/>
-                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                            <nil key="textColor"/>
-                                                            <nil key="highlightedColor"/>
-                                                        </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Skill Level" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YtF-af-rKx">
                                                             <rect key="frame" x="137" y="46" width="75" height="21"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -87,7 +81,6 @@
                                                         <constraint firstItem="g2M-GD-ivE" firstAttribute="leading" secondItem="g9c-OD-ZB6" secondAttribute="trailing" constant="23" id="7oQ-88-kwi"/>
                                                         <constraint firstItem="g2M-GD-ivE" firstAttribute="top" secondItem="TKy-v8-ZPa" secondAttribute="top" constant="14" id="7wG-KW-JSP"/>
                                                         <constraint firstItem="N6O-A4-zOt" firstAttribute="top" secondItem="TKy-v8-ZPa" secondAttribute="top" constant="25" id="HFa-0r-pBc"/>
-                                                        <constraint firstItem="qxk-KK-MKZ" firstAttribute="leading" secondItem="g9c-OD-ZB6" secondAttribute="trailing" constant="23" id="NC7-xY-WOS"/>
                                                         <constraint firstItem="g9c-OD-ZB6" firstAttribute="top" secondItem="TKy-v8-ZPa" secondAttribute="top" constant="14" id="STN-gi-KKT"/>
                                                         <constraint firstItem="Dix-EQ-QhQ" firstAttribute="centerX" secondItem="N6O-A4-zOt" secondAttribute="centerX" id="WKI-SU-tCR"/>
                                                         <constraint firstAttribute="trailing" secondItem="N6O-A4-zOt" secondAttribute="trailing" constant="18" id="WZQ-db-R5c"/>
@@ -96,7 +89,6 @@
                                                         <constraint firstItem="g9c-OD-ZB6" firstAttribute="leading" secondItem="TKy-v8-ZPa" secondAttribute="leading" constant="14" id="g1h-MK-Ijo"/>
                                                         <constraint firstItem="Dix-EQ-QhQ" firstAttribute="top" secondItem="N6O-A4-zOt" secondAttribute="bottom" constant="8" symbolic="YES" id="gfG-8n-L0f"/>
                                                         <constraint firstItem="N6O-A4-zOt" firstAttribute="width" secondItem="Dix-EQ-QhQ" secondAttribute="width" id="gw3-Au-H5a"/>
-                                                        <constraint firstItem="qxk-KK-MKZ" firstAttribute="top" secondItem="YtF-af-rKx" secondAttribute="bottom" constant="7" id="t2y-9l-ITW"/>
                                                     </constraints>
                                                     <userDefinedRuntimeAttributes>
                                                         <userDefinedRuntimeAttribute type="color" keyPath="shadowColor">
@@ -116,7 +108,6 @@
                                             <outlet property="card" destination="TKy-v8-ZPa" id="fvt-OA-sTJ"/>
                                             <outlet property="name" destination="g2M-GD-ivE" id="nee-Cn-hBx"/>
                                             <outlet property="profilePic" destination="g9c-OD-ZB6" id="dKc-lf-4og"/>
-                                            <outlet property="runsCompleted" destination="qxk-KK-MKZ" id="6qc-Ri-FPZ"/>
                                             <outlet property="skillLevel" destination="YtF-af-rKx" id="ufu-cM-UUP"/>
                                         </connections>
                                     </tableViewCell>

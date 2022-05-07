@@ -33,9 +33,7 @@ class FriendViewController: UIViewController, UITableViewDelegate, UITableViewDa
         cell.name.text = "\(friend.firstName) \(friend.lastName)"
         
         cell.skillLevel.text = friend.experienceLevel
-        
-        cell.runsCompleted.text = "3 Runs"
-        
+                
         if UserInterfaceStyleManager.shared.currentStyle == .dark {
             cell.card.backgroundColor = .darkGray
         } else {
