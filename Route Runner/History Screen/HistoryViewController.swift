@@ -27,8 +27,6 @@ func addDummyData() {
     }
 }
 
-
-
 class HistoryViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     // Identifiers
@@ -117,7 +115,6 @@ class HistoryViewController: UIViewController, UITableViewDelegate, UITableViewD
                                 let run = try! document.data(as:RunData.self)
                                 run.pictureURL = (document.data()["pictureURL"] ?? "") as? String ?? ""
                                 runs.append(run)
-                                
                             }
                             self.tableView.reloadData()
                         }

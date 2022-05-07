@@ -25,6 +25,7 @@ class ProfileSettingsViewController: UIViewController, UITableViewDelegate, UITa
         
         fetchUserData() { userData in
             self.data = userData
+
             self.configure()
             
             self.tableView.delegate = self
@@ -49,11 +50,11 @@ class ProfileSettingsViewController: UIViewController, UITableViewDelegate, UITa
     
     func fetchUserData(completionHandler: @escaping (UserData) -> Void) {
         var userData = UserData(firstName: "err", lastName: "err", email: "err", experienceLevel: "err", uid: "err")
-        
         guard let user = Auth.auth().currentUser else {
             return
         }
         let db = Firestore.firestore()
+        // completion handler to help deal with async call to firebase
         db.collection("users").whereField("uid", isEqualTo: user.uid).getDocuments() { querySnapshot, err in
             if let err = err {
                 print("Error in query \(err.localizedDescription)")
@@ -70,6 +71,8 @@ class ProfileSettingsViewController: UIViewController, UITableViewDelegate, UITa
         }
     }
     
+    // pulls data from firebase again
+    // uses completion handlers to help deal with async calls
     func updateUserData(updateField:String, updateText:String, completionHandler: @escaping () -> Void) {
         guard let user = Auth.auth().currentUser else {
             return
@@ -100,7 +103,7 @@ class ProfileSettingsViewController: UIViewController, UITableViewDelegate, UITa
     
     // function to set up option list
     func configure() {
-        models.removeAll()
+        models.removeAll() // remove old data before repopulating
         models.append(Section(title: "User Information", options: [
             .editableCell(model: SettingsEditOption(title: "First Name", subtitle: self.data?.firstName ?? "Could not load first name") {
                 let controller = UIAlertController(
@@ -119,12 +122,12 @@ class ProfileSettingsViewController: UIViewController, UITableViewDelegate, UITa
                         if let textFieldArray = controller.textFields {
                             let textFields = textFieldArray as [UITextField]
                             let enteredText = textFields[0].text!
-                            
+                            // async call, waits for it to finish before doing completion handler
                             self.updateUserData(updateField: "firstName", updateText: enteredText) {
                                 self.fetchUserData() { userData in
                                     self.data = userData
-                                    self.configure()
-                                    self.tableView.reloadData()
+                                    self.configure() // call configure again to remake the cells with the new data
+                                    self.tableView.reloadData() // reload table to show new cells
                                 }
                             }
                         }
@@ -150,12 +153,12 @@ class ProfileSettingsViewController: UIViewController, UITableViewDelegate, UITa
                         if let textFieldArray = controller.textFields {
                             let textFields = textFieldArray as [UITextField]
                             let enteredText = textFields[0].text!
-                            
+                            // async call, waits for it to finish before doing completion handler
                             self.updateUserData(updateField: "lastName", updateText: enteredText) {
                                 self.fetchUserData() { userData in
                                     self.data = userData
-                                    self.configure()
-                                    self.tableView.reloadData()
+                                    self.configure() // call configure again to remake the cells with the new data
+                                    self.tableView.reloadData() // reload table to show new cells
                                 }
                             }
                         }
@@ -224,13 +227,22 @@ class ProfileSettingsViewController: UIViewController, UITableViewDelegate, UITa
                             let enteredText = textFields[0].text!
                             
                             Auth.auth().currentUser?.updateEmail(to: enteredText) { error in
-                              print("could not reset email")
-                            }
-                            self.updateUserData(updateField: "email", updateText: enteredText) {
-                                self.fetchUserData() { userData in
-                                    self.data = userData
-                                    self.configure()
-                                    self.tableView.reloadData()
+                                if error != nil {
+                                    let errorController = UIAlertController(
+                                        title: "Error updating email",
+                                        message: "\(error!.localizedDescription)",
+                                        preferredStyle: .alert)
+                                    let OKAction = UIAlertAction(title: "Ok", style: .default, handler: nil)
+                                    errorController.addAction(OKAction)
+                                    self.present(errorController, animated: true, completion: nil)
+                                } else {
+                                    self.updateUserData(updateField: "email", updateText: enteredText) {
+                                        self.fetchUserData() { userData in
+                                            self.data = userData
+                                            self.configure()
+                                            self.tableView.reloadData()
+                                        }
+                                    }
                                 }
                             }
                         }
@@ -259,7 +271,15 @@ class ProfileSettingsViewController: UIViewController, UITableViewDelegate, UITa
                             let enteredText = textFields[0].text!
                             
                             Auth.auth().currentUser?.updatePassword(to: enteredText) { error in
-                              print("password not accepted")
+                                if error != nil {
+                                    let errorController = UIAlertController(
+                                        title: "Error updating password",
+                                        message: "\(error!.localizedDescription)",
+                                        preferredStyle: .alert)
+                                    let OKAction = UIAlertAction(title: "Ok", style: .default, handler: nil)
+                                    errorController.addAction(OKAction)
+                                    self.present(errorController, animated: true, completion: nil)
+                                }
                             }
                         }
                     })
@@ -313,9 +333,8 @@ class ProfileSettingsViewController: UIViewController, UITableViewDelegate, UITa
     // set custom value for cell heights
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         let model = models[indexPath.section].options[indexPath.row]
-        
         switch model.self { // switch based on the type of cell
-        case .staticCell( _):
+        case .staticCell( _): // make static cells shorter since they dont have a message field
             return 44.0
         case .switchCell( _):
             return 74.0

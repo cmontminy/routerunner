@@ -34,7 +34,7 @@ class PastRunViewController: UIViewController {
         let currentRun = run!
         
         // Use placeholder if no image
-//        runImage.image = currentRun.image ?? UIImage(named: "dummy")
+        // runImage.image = currentRun.image ?? UIImage(named: "dummy")
         currentRun.getImage { image in
             self.runImage.image = image
         }
@@ -55,7 +55,6 @@ class PastRunViewController: UIViewController {
         
         // Format seconds to always have 2 digits
         runPace.text = "\(currentRun.getPace() / 60):\(String(format: "%02d", currentRun.getPace() % 60))"
-        
         
         // Round image corners
         runImage.layer.cornerRadius = 8.0
