@@ -182,6 +182,28 @@ class RunViewController: UIViewController {
         if (distanceForCurStep + 10 >= distanceToNextStep) {
             displayNextStepInRoute()
         }
+        
+        // check if we reached end
+        let distToEnd = latestLocation.distance(from: CLLocation(latitude: routeData.endCoordLat!, longitude: routeData.endCoordLong!))
+        
+        if (distToEnd < 25) {
+            // we reached end, display alert
+            let controller = UIAlertController(
+                title: "Destination Reached!",
+                message: "You completed this run!",
+                preferredStyle: .alert)
+            controller.addAction(UIAlertAction(title: "Back Home", style: .default, handler: {
+                (action) in
+                // cancel location updates
+                self.cancelLocationUpdates(locationManager: self.locationManager)
+                
+                // navigate to home page
+                let storyBoard : UIStoryboard = UIStoryboard(name: "TabBar", bundle:nil)
+                let nextViewController = storyBoard.instantiateViewController(withIdentifier: "TabBarStoryboard") as! UITabBarController
+                self.show(nextViewController, sender:self)
+            }))
+            present(controller, animated: true, completion: nil)
+        }
                 
         // identify nearby points of interest around a 75 meter radius
         let nearbyPointsReq = MKLocalPointsOfInterestRequest(center: latestLocation.coordinate, radius: 75.0)
