@@ -25,7 +25,6 @@ class ProfileSettingsViewController: UIViewController, UITableViewDelegate, UITa
         
         fetchUserData() { userData in
             self.data = userData
-            print("finished gathering user data")
             self.configure()
             
             self.tableView.delegate = self
@@ -49,11 +48,9 @@ class ProfileSettingsViewController: UIViewController, UITableViewDelegate, UITa
     }
     
     func fetchUserData(completionHandler: @escaping (UserData) -> Void) {
-        print("here")
         var userData = UserData(firstName: "err", lastName: "err", email: "err", experienceLevel: "err", uid: "err")
         
         guard let user = Auth.auth().currentUser else {
-            print("rip")
             return
         }
         let db = Firestore.firestore()
@@ -69,7 +66,6 @@ class ProfileSettingsViewController: UIViewController, UITableViewDelegate, UITa
                 return
             }
             userData = try! querySnapshot!.documents.first!.data(as: UserData.self)
-            print("loaded user \(userData.firstName)")
             completionHandler(userData)
         }
     }
@@ -105,7 +101,6 @@ class ProfileSettingsViewController: UIViewController, UITableViewDelegate, UITa
     // function to set up option list
     func configure() {
         models.removeAll()
-        print("\(self.data?.firstName)")
         models.append(Section(title: "User Information", options: [
             .editableCell(model: SettingsEditOption(title: "First Name", subtitle: self.data?.firstName ?? "Could not load first name") {
                 let controller = UIAlertController(
@@ -163,40 +158,11 @@ class ProfileSettingsViewController: UIViewController, UITableViewDelegate, UITa
                                     self.tableView.reloadData()
                                 }
                             }
-                            
-                            print(enteredText)
                         }
                     })
                 )
                 self.present(controller, animated: true, completion: nil)
             }),
-//            // self.data?.address ?? "Could not load address"
-//            .editableCell(model: SettingsEditOption(title: "Address", subtitle: self.data?.address ?? "Could not load address") {
-//                let controller = UIAlertController(
-//                    title: "Edit Address",
-//                    message: "",
-//                    preferredStyle: .alert)
-//                controller.addTextField(configurationHandler: {
-//                    (textField:UITextField!) in textField.placeholder = "Enter new address"
-//                })
-//                controller.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
-//                controller.addAction(UIAlertAction(
-//                    title: "OK",
-//                    style: .default,
-//                    handler: {
-//                        (paramAction:UIAlertAction!) in
-//                        if let textFieldArray = controller.textFields {
-//                            let textFields = textFieldArray as [UITextField]
-//                            let enteredText = textFields[0].text!
-//
-//                            self.updateUserData(updateField: "address", updateText: enteredText)
-//
-//                            print(enteredText)
-//                        }
-//                    })
-//                )
-//                self.present(controller, animated: true, completion: nil)
-//            }),
             
             .editableCell(model: SettingsEditOption(title: "Experience", subtitle: self.data?.experienceLevel ?? "Could not load experience level") {
                 let controller = UIAlertController(
@@ -295,8 +261,6 @@ class ProfileSettingsViewController: UIViewController, UITableViewDelegate, UITa
                             Auth.auth().currentUser?.updatePassword(to: enteredText) { error in
                               print("password not accepted")
                             }
-                            
-                            print("password updated !")
                         }
                     })
                 )

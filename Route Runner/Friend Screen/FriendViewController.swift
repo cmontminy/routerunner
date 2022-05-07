@@ -41,7 +41,6 @@ class FriendViewController: UIViewController, UITableViewDelegate, UITableViewDa
         }
         
         cell.profileAction  = { (cell) in
-            print("Viewing profile of \(friend.firstName) \(friend.lastName)")
             self.performSegue(withIdentifier: self.profileSegueIdentifier, sender: friend.uid)
           }
         
@@ -60,8 +59,6 @@ class FriendViewController: UIViewController, UITableViewDelegate, UITableViewDa
             tableView.reloadData()
           }
         
-        // Use placeholder image if none provided
-//        cell.profilePic?.image = friend.picture
         friend.getImage { image in
             cell.profilePic?.image = image
         }
@@ -87,10 +84,7 @@ class FriendViewController: UIViewController, UITableViewDelegate, UITableViewDa
         
         
         if let tableIndices = tableView.indexPathsForVisibleRows {
-            print("reloading")
             tableView.reloadRows(at: tableIndices, with: .none)
-        } else {
-            print("not reloading")
         }
     }
     

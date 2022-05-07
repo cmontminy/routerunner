@@ -87,14 +87,7 @@ class RegisterViewController: UIViewController {
                                 "uid": res!.user.uid,
                                 "email": email,
                                 "experienceLevel": self.skill]
-//                    db.collection("users").addDocument(data: data) { (error) in
-//                        if (error != nil) {
-//                            self.showError("first and last name couldn't be stored")
-//                        }
-//                    }
                     db.collection("users").document(res!.user.uid).setData(data)
-                    //store running skill level
-                    
                 }
             }
             //transition to home screen

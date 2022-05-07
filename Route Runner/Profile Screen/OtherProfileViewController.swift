@@ -33,8 +33,6 @@ class OtherProfileViewController: UIViewController, UICollectionViewDataSource, 
         collectionView.dataSource = self
         collectionView.delegate = self
         
-    //profile picture
-//        profilePicture.image = UIImage(named: "defaultProfile")
         startObserving(&UserInterfaceStyleManager.shared)
         
         //style profile picture
@@ -49,9 +47,6 @@ class OtherProfileViewController: UIViewController, UICollectionViewDataSource, 
         profilePicture.layer.shadowOffset = CGSize.zero;
         profilePicture.layer.shadowOpacity = 1;
         profilePicture.layer.shadowRadius = 1.0;
-        
-        //customize fonts
-        //let fontArr = UIFont.familyNames
         
         let db = Firestore.firestore()
         
@@ -106,9 +101,6 @@ class OtherProfileViewController: UIViewController, UICollectionViewDataSource, 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "myCell", for: indexPath) as! ProfileCollectionViewCell
         let row = indexPath.row
-//        cell.runImage?.image = UIImage(named: dummyData[row])
-//        cell.runImage?.layer.cornerRadius = 8.0
-//        cell.runImage?.layer.masksToBounds = true
         let run = runList[row]
         
 

@@ -129,14 +129,9 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource, UICol
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "myCell", for: indexPath) as! ProfileCollectionViewCell
         let row = indexPath.row
-//        cell.runImage?.image = UIImage(named: dummyData[row])
-//        cell.runImage?.layer.cornerRadius = 8.0
-//        cell.runImage?.layer.masksToBounds = true
         let run = runList[row]
-        
 
         // Use placeholder image if none provided
-//        cell.runImage?.image = run.image ?? UIImage(named: "dummy")
         run.getImage{ image in
             cell.runImage.image = image
         }
@@ -154,7 +149,6 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource, UICol
     func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
         // add the code here to perform action on the cell
         //when run is clicked on, run detials will be shown, similar to past run in history
-//        let cell = collectionView.cellForItem(at: indexPath) as? ProfileCollectionViewCell
     }
     
     override func viewDidLayoutSubviews() {

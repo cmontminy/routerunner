@@ -143,9 +143,6 @@ class RunCreationViewController: UIViewController {
         place = nil
         }
         returnVal = place
-        print("Set returnVal to \(place)")
-        
-        print("Returning \(returnVal)")
         return returnVal
     }
         
@@ -180,7 +177,6 @@ class RunCreationViewController: UIViewController {
         
         let conversion = usingKilometers() ? 1000 : 1609
         let maxDistance = CLLocationDistance(slider.value * Float(conversion))
-        print(maxDistance)
         let region = MKCoordinateRegion(center: curLocation!, latitudinalMeters: 10000, longitudinalMeters: 10000)
         let nearbyPointsReq = MKLocalPointsOfInterestRequest(coordinateRegion: region)
         // filter requests
@@ -206,8 +202,6 @@ class RunCreationViewController: UIViewController {
                 farthestInRange = distanceFromOrigin
                 result = MKPlacemark(coordinate: CLLocationCoordinate2D(latitude: item.placemark.coordinate.latitude, longitude: item.placemark.coordinate.longitude))
             }
-
-            print(name, distanceFromOrigin)
         }
         
         return result
@@ -257,7 +251,6 @@ extension RunCreationViewController: UIImagePickerControllerDelegate, UINavigati
                     print("Error on getting download url: \(error.localizedDescription)")
                     return
                 }
-                print("Download url of \(filepath) is \(url!.absoluteString)")
                 self.imageURL = url!.absoluteString
             }
         }

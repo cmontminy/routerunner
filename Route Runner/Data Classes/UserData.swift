@@ -79,6 +79,8 @@ class UserData: Codable {
     }
     
     func getImage(completionHandler: @escaping (_ image: UIImage) -> Void) {
+        
+        // check if image has already been downloaded
         if let picture = picture {
             completionHandler(picture)
         } else {
@@ -88,5 +90,4 @@ class UserData: Codable {
             }
         }
     }
-    
 }

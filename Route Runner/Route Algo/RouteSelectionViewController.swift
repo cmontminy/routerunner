@@ -302,13 +302,11 @@ extension RouteSelectionViewController: CLLocationManagerDelegate {
     completer.region = region
 
     CLGeocoder().reverseGeocodeLocation(firstLocation) { places, _ in
-//      guard let firstPlace = places?.first, self.originTextField.contents == nil else {
         guard let firstPlace = places?.first, self.originTextField.text == nil else {
         return
       }
 
       self.currentPlace = firstPlace
-//      self.originTextField.text = firstPlace.abbreviation
     }
   }
 

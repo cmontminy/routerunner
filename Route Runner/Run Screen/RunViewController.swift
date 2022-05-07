@@ -182,11 +182,7 @@ class RunViewController: UIViewController {
         if (distanceForCurStep + 10 >= distanceToNextStep) {
             displayNextStepInRoute()
         }
-        
-//        print (latestLocation.distance(from: CLLocation(latitude: nextCheckpoint!.latitude, longitude: nextCheckpoint!.longitude)))
-//        if (latestLocation.distance(from: CLLocation(latitude: nextCheckpoint!.latitude, longitude: nextCheckpoint!.longitude)) < 25) {
-//        }
-        
+                
         // identify nearby points of interest around a 75 meter radius
         let nearbyPointsReq = MKLocalPointsOfInterestRequest(center: latestLocation.coordinate, radius: 75.0)
         // filter requests

@@ -79,15 +79,6 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
             .switchCell(model: SettingsSwitchOption(title: "Distance Units", isOn: UserDefaults.standard.bool(forKey:"RouteRunnerKilometerModeOn"))),
             .switchCell(model: SettingsSwitchOption(title: "TTS Directions", isOn: UserDefaults.standard.bool(forKey:"RouteRunnerTTSModeOn")))
         ]))
-            
-//        models.append(Section(title: "Notifications", options: [
-//            .staticCell(model: SettingsOption(title: "Mute while Running") {
-//                print("tapped mute while running") // dummy action
-//            }),
-//            .staticCell(model: SettingsOption(title: "Vibration") {
-//                print("tapped vibration") // dummy action
-//            })
-//        ]))
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {

@@ -89,7 +89,6 @@ class AddFriendViewController: UIViewController {
                 db.collection("users").document(friend.uid).updateData([
                     "friends": FieldValue.arrayUnion([user.uid])
                 ])
-                print("Added \(friend.firstName) \(friend.lastName) uid: \(friend.uid)")
                 self.resultBox.isHidden = false
                 self.reloadFriends()
             }
